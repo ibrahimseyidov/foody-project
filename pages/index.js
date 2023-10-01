@@ -1,7 +1,8 @@
-import type { NextPage } from "next";
 import Head from "next/head";
+import Image from "next/image";
 
-const AdminDashboard: NextPage = () => {
+const Home = () => {
+
   return (
     <div>
       <Head>
@@ -10,9 +11,15 @@ const AdminDashboard: NextPage = () => {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <h1>Welcome to Admin page</h1>
+      <main>
+        
+      </main>
+
+      <footer>
+    
+      </footer>
     </div>
   );
 };
 
-export default AdminDashboard;
+export default Home;
