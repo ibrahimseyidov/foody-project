@@ -4,7 +4,7 @@ import Navbar from '../common/Navbar/Navbar'
 
 const Layout = ({ children }) => {
     return (
-        <div style={{ backgroundColor: "#1E1E30" }}>
+        <div>
             <Header />
             <div className='flex'>
                 <Navbar />
