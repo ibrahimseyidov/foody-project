@@ -47,7 +47,7 @@ const Header = () => {
                             </button>
                         </div>
 
-                        <div className={styles['header-right-second']}>
+                        <div className={styles['header-right-second']} style={{'display':"none"}}>
 
                             <button className={styles['language-btn']}>
                                 <Image src={turkeyFlag} alt='uk-flag' />
