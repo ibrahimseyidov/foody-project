@@ -1,0 +1,25 @@
+.category-type-bg {
+    background: #27283C;
+    border-radius: 14px;
+    width: 100%;
+    height: 73px;
+    margin-bottom: 52px;
+}
+
+.products-head-text {
+    color: #C7C7C7;
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 24px;
+    letter-spacing: 0.2px;
+}
+
+@media screen and (max-width: 768px) {
+    .category-type-bg {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        height: 143px;
+    }
+}

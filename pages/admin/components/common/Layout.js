@@ -4,13 +4,13 @@ import Navbar from '../common/Navbar/Navbar'
 
 const Layout = ({ children }) => {
     return (
-        <div className='px-4' style={{backgroundColor: "#1E1E30", 'height': '100vh'}}>
+        <body style={{ backgroundColor: "#1E1E30" }}>
             <Header />
             <div className='flex'>
                 <Navbar />
                 {children}
             </div>
-        </div>
+        </body>
     )
 }
 
