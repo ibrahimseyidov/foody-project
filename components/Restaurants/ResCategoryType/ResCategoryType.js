@@ -1,5 +1,5 @@
 import React from 'react'
-import styles from '../../Products/CategoryType/CategoryType'
+import styles from '../../Products/CategoryType/categorytype.module.css'
 import styles2 from '../ResCategoryType/rescategorytype.module.css'
 import ResSelectBox from '../ResSelectBox/ResSelectBox'
 import AddResBtn from '../AddResBtn/AddResBtn'
