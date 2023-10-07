@@ -1,0 +1,73 @@
+.home-client-bg {
+    background: #F3F4F6;
+    display: flex;
+    align-items: center;
+    height: 600px;
+    padding: 0 56px 0 56px;
+    justify-content: space-between;
+}
+
+.hamburger-bg {
+    position: relative;
+    width: 500px;
+    height: 400px;
+    background: #181617;
+    border-radius: 80px;
+}
+
+.hamburger-image {
+    position: absolute;
+    top: 120px;
+    right: 0px;
+    width: 590px;
+}
+
+.hamburger-left {
+    width: 55%
+}
+
+.hamburger-left :nth-child(1) {
+    color: var(--mainBlack, #181617);
+    font-size: 60px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 70px;
+    letter-spacing: 1.8px;
+    margin-bottom: 20px;
+}
+
+.hamburger-left :nth-child(2) {
+    width: 68%;
+    color: #828282;
+    font-family: "Roboto";
+    font-size: 22px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 30px;
+    letter-spacing: 0.66px;
+    margin-bottom: 42px;
+}
+
+.hamburger-btn :nth-child(1) {
+    background: #D63626;
+    border-radius: 30px;
+    width: 220px;
+    height: 70px;
+    color: #FFF;
+    text-align: center;
+    font-family: "Roboto";
+    font-size: 25px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 24px;
+    letter-spacing: 0.75px;
+}
+
+.hamburger-btn :nth-child(2) {
+    width: 220px;
+    height: 70px;
+    border-radius: 30px;
+    border: 2px solid  #828282;
+    background:  #F2F2F2;
+    margin-left: 39px;
+}

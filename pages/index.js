@@ -1,5 +1,9 @@
 import Head from "next/head";
+import '../components/common/ClientHeader/ClientHeader'
 import Image from "next/image";
+import ClientHeader from "../components/common/ClientHeader/ClientHeader";
+import ClientContainer from "../components/common/ClientContainer/ClientContainer";
+import ClientHome from "../components/ClientHome/ClientHome";
 
 const Home = () => {
 
@@ -11,13 +15,12 @@ const Home = () => {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <main>
-        
-      </main>
-
-      <footer>
-    
-      </footer>
+      <>
+        <ClientContainer>
+          <ClientHeader />
+          <ClientHome />
+        </ClientContainer>
+      </>
     </div>
   );
 };
