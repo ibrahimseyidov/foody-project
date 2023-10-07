@@ -1,6 +1,6 @@
 import React from 'react'
 import style from '../AddResBtn/addresbtn.module.css'
-import plusBtn from '../../../src/assets/icons/plusBtn.svg'
+import plusBtn from '../../../assets/icons/plusBtn.svg'
 // import { useDispatch } from 'react-redux'
 // import { addResModal } from 'redux/features/modalSlice'
 import Image from 'next/image'

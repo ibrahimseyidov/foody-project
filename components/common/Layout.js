@@ -4,13 +4,13 @@ import Navbar from '../common/Navbar/Navbar'
 
 const Layout = ({ children }) => {
     return (
-        <div>
+        <>
             <Header />
-            <div className='flex'>
+            <main className='flex'>
                 <Navbar />
                 {children}
-            </div>
-        </div>
+            </main>
+        </>
     )
 }
 

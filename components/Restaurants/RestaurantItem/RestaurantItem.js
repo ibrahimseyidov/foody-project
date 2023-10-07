@@ -1,8 +1,8 @@
 import React from 'react'
 import styles from '../RestaurantItem/restaurantitem.module.css'
-import PapaJohns from '../../../src/assets/images/foodImages/PapaJohnsImg.svg'
-import editImg from '../../../src/assets/icons/edit.svg';
-import trashImg from '../../../src/assets/icons/trash.svg';
+import PapaJohns from '../../../assets/images/foodImages/PapaJohnsImg.svg'
+import editImg from '../../../assets/icons/edit.svg';
+import trashImg from '../../../assets/icons/trash.svg';
 // import { useDispatch } from 'react-redux'
 // import { openDelModal, openResModalEdit } from 'redux/features/modalSlice';
 import { motion } from "framer-motion";

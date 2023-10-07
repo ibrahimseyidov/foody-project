@@ -1,5 +1,5 @@
 import Head from "next/head";
-import Layout from './components/common/Layout'
+import Layout from '../../components/common/Layout'
 
 const AdminDashboard = ({ children }) => {
   return (

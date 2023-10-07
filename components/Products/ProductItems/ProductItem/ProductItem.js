@@ -1,8 +1,8 @@
 import React from 'react'
 import styles from '../../../Products/ProductItems/ProductItem/productitem.module.css'
-import pizzaImg from '../../../../src/assets/images/foodImages/pizza.svg'
-import editImg from '../../../../src/assets/icons/edit.svg';
-import trashImg from '../../../../src/assets/icons/trash.svg';
+import pizzaImg from '../../../../assets/images/foodImages/pizza.svg'
+import editImg from '../../../../assets/icons/edit.svg';
+import trashImg from '../../../../assets/icons/trash.svg';
 // import { useDispatch } from 'react-redux'
 // import { openModal, openModalEdit } from 'redux/features/modalSlice';
 import { motion } from "framer-motion";
