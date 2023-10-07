@@ -1,6 +1,6 @@
 import React from 'react'
 import styles from '../CategoryType/categorytype.module.css'
-import SelectBox from '../../common/Selectbox/Selectbox'
+// import SelectBox from '../../common/Selectbox/Selectbox'
 
 const CategoryType = () => {
     return (
@@ -12,11 +12,9 @@ const CategoryType = () => {
                         <h2 className={styles['products-head-text']}>Products</h2>
                     </div>
                     <div>
-                        <SelectBox />
+                        {/* <SelectBox /> */}
                     </div>
-
                 </div>
-
             </div>
         </>
 

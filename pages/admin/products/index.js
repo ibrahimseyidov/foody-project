@@ -1,8 +1,8 @@
 import React from 'react'
 import AdminDashboard from '../index'
-import ProductContainer from '../components/Products/ProductsContainer'
-import CategoryType from '../components/Products/CategoryType/CategoryType'
-import ProductItems from '../components/Products/ProductItems/ProductItems'
+import ProductContainer from '../../../components/Products/ProductsContainer'
+import CategoryType from '../../../components/Products/CategoryType/CategoryType'
+import ProductItems from '../../../components/Products/ProductItems/ProductItems'
 
 const Products = () => {
   return (
