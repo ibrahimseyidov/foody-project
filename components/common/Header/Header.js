@@ -22,7 +22,6 @@ import Image from 'next/image'
 const Header = () => {
 
     return (
-        <div>
             <header>
                 <div className={styles['header-bg']}>
                     <div className={styles['header-left']}>
@@ -145,7 +144,6 @@ const Header = () => {
                 </div>
 
             </header>
-        </div>
     )
 }
 
