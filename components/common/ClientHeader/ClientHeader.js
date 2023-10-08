@@ -8,7 +8,7 @@ import Image from 'next/image'
 const ClientHeader = () => {
     return (
         <>
-            <header className='mt-4' style={{ "background": "#F3F4F6", "border-radius": "4px" }}>
+            <header style={{ "background": "#F3F4F6", "border-radius": "4px" }}>
                 <div className={styles['header-container']}>
                     <Link href='/'>
                         <Image src={foodyLogo} alt='foody-logo' />

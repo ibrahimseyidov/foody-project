@@ -3,7 +3,7 @@ import React from 'react'
 const ClientContainer = ({children}) => {
   return (
     <>
-        <div className='mx-6'>
+        <div className=''>
             {children}
         </div>
     </>
