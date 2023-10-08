@@ -10,30 +10,30 @@ const ClientHeader = () => {
         <>
             <header className='mt-4' style={{ "background": "#F3F4F6", "border-radius": "4px" }}>
                 <div className={styles['header-container']}>
-                    <Link href='#'>
+                    <Link href='/'>
                         <Image src={foodyLogo} alt='foody-logo' />
                     </Link>
                     <nav className={styles['nav-container']}>
                         <li>
-                            <Link href='#'>Home</Link>
+                            <Link href='/'>Home</Link>
                         </li>
                         <li>
-                            <Link href='#'>Restuarants</Link>
+                            <Link href='/'>Restuarants</Link>
                         </li>
                         <li>
-                            <Link href='#'>About us</Link>
+                            <Link href='/'>About us</Link>
                         </li>
                         <li>
-                            <Link href='#'>How it works</Link>
+                            <Link href='/'>How it works</Link>
                         </li>
                         <li>
-                            <Link href='#'>FAQs</Link>
+                            <Link href='/'>FAQs</Link>
                         </li>
                     </nav>
                     <div className={styles['header-right-container']}>
                         <input type="text" placeholder='Search' />
                         <Image src={ukFlag} alt='uk-flag' />
-                        <Link href='#'>Sign Up</Link>
+                        <Link href='/'>Sign Up</Link>
                     </div>
                 </div>
             </header>
