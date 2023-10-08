@@ -21,7 +21,7 @@ const ClientHeader = () => {
                             <Link href='/restaurants'>Restuarants</Link>
                         </li>
                         <li>
-                            <Link href='/aboutus'>About us</Link>
+                            <Link href='/about'>About us</Link>
                         </li>
                         <li>
                             <Link href='/howitworks'>How it works</Link>
