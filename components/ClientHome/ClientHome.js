@@ -1,30 +1,21 @@
 import React from 'react'
-import Image from 'next/image'
+import HomeSection1 from '../ClientHome/HomeSection1/HomeSection1'
+import HomeSection2 from '../ClientHome/HomeSection2/HomeSection2'
+import HomeSection3 from '../ClientHome/HomeSection3/HomeSection3'
+import HomeSection4 from '../ClientHome/HomeSection4/HomeSection4'
+import HomeSection5 from '../ClientHome/HomeSection5/HomeSection5'
+import HomeSection6 from '../ClientHome/HomeSection6/HomeSection6'
 
-import hamburgerImg from '../../assets/images/foodImages/hamburgerImg.png'
-
-import styles from '../ClientHome/clienthome.module.css'
 
 const ClientHome = () => {
     return (
         <>
-            <section>
-                <div className={styles['home-client-bg']}>
-                    <div className={styles['hamburger-left']}>
-                        <h2>Our Food site makes it easy to find local food</h2>
-                        <p>Lorem ipsum is placeholder text commonly used in the graphic, print, and publishing industries for previewing layouts and visual mockups.</p>
-                        <div className={styles['hamburger-btn']}>
-                            <button>Register</button>
-                            <button>Order now</button>
-                        </div>
-                    </div>
-                    <div>
-                        <div className={styles['hamburger-bg']}></div>
-                        <Image src={hamburgerImg} className={styles['hamburger-image']} alt='hamburger-image' />
-
-                    </div>
-                </div>
-            </section>
+            <HomeSection1 />
+            <HomeSection2 />
+            <HomeSection3 />
+            <HomeSection4 />
+            <HomeSection5 />
+            <HomeSection6 />
         </>
     )
 }
