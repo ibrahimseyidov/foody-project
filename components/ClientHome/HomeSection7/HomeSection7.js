@@ -1,6 +1,6 @@
 import Image from 'next/image'
 
-import PizzaImg from '../../../assets/images/foodImages/PizzaImg.svg'
+import PizzaImg from '../../../assets/images/foodImages/pizzaImg.svg'
 import hamburgerImg from '../../../assets/images/foodImages/hamburgerImg.svg'
 
 import styles from './homesection7.module.css'
