@@ -8,7 +8,7 @@ import styles from '../HomeSection2/homesection2.module.css'
 const HomeSection6 = () => {
     return (
         <>
-            <section className='mb-72'>
+            <section className='mb-72 h-[1000px]'>
                 <div>
                     <div className='flex items-center flex-col mb-10'>
                         <h2 className={styles.features}>Our Popular Update New Foods</h2>
