@@ -1,14 +1,23 @@
-import React from 'react'
+'use client'
+import React, { useEffect } from 'react'
 import Image from 'next/image'
 import homeImg1 from '../../../assets/images/homeImg1.svg'
 import homeImg2 from '../../../assets/images/homeImg2.svg'
 import homeImg3 from '../../../assets/images/homeImg3.svg'
 import styles from './homesection2.module.css'
+import AOS from 'aos';
+import 'aos/dist/aos.css';
 
 const HomeSection1 = () => {
+
+  useEffect(() => {
+    AOS.init()
+
+  }, [])
+
   return (
     <>
-      <section className='mb-72'>
+      <section className='mb-72' data-aos="zoom-in-down">
         <div>
           <div className='flex items-center flex-col mb-10'>
             <h2 className={styles.features}>Features</h2>
@@ -22,12 +31,12 @@ const HomeSection1 = () => {
               <h3>Discount Boucher</h3>
               <p>Lorem ipsum is placeholder commonly used in the graphic</p>
             </div>
-            <div  className={styles['home-card']}>
+            <div className={styles['home-card']}>
               <Image src={homeImg2} alt='homeImage' />
               <h3>Fresh healthy Food</h3>
               <p>Lorem ipsum is placeholder commonly used in the graphic</p>
             </div>
-            <div  className={styles['home-card']}>
+            <div className={styles['home-card']}>
               <Image src={homeImg3} alt='homeImage' />
               <h3>Fast Home Delivery</h3>
               <p>Lorem ipsum is placeholder commonly used in the graphic</p>

@@ -1,12 +1,24 @@
-import React from 'react'
+'use client'
+import React, { useEffect } from 'react'
 import hamburgerImg from '../../../assets/images/foodImages/hamburgerImg.png'
 import styles from '../HomeSection1/homesection1.module.css'
 import Image from 'next/image'
+import pizzaMini from '../../../assets/images/foodImages/pizzaMini.svg'
+import fries from '../../../assets/images/foodImages/fries.svg'
+import burger from '../../../assets/images/foodImages/burger.svg'
+import AOS from 'aos';
+import 'aos/dist/aos.css';
+
 
 const HomeSection1 = () => {
+
+    useEffect(() => {
+        AOS.init()
+    }, [])
+
     return (
         <>
-            <section className='mb-20'>
+            <section className='mb-20' data-aos="fade-up">
                 <div className={styles['home-client-bg']}>
                     <div className={styles['hamburger-left']}>
                         <h2>Our Food site makes it easy to find local food</h2>
@@ -19,6 +31,33 @@ const HomeSection1 = () => {
                     <div>
                         <div className={styles['hamburger-bg']}></div>
                         <Image src={hamburgerImg} className={styles['hamburger-image']} alt='hamburger-image' />
+                        <div className={styles['foody-card']}>
+                            <div className='mr-6'>
+                                <Image src={pizzaMini} alt='pizza' />
+                            </div>
+                            <div className={styles['foody-card-text']}>
+                                <p>Pizza Hut</p>
+                                <p>Yummy....</p>
+                            </div>
+                        </div>
+                        <div className={styles['foody-card-2']}>
+                            <div className='mr-6'>
+                                <Image src={fries} alt='pizza' />
+                            </div>
+                            <div className={styles['foody-card-text']}>
+                                <p>French Fries</p>
+                                <p>Yummy....</p>
+                            </div>
+                        </div>
+                        <div className={styles['foody-card-3']}>
+                            <div className='mr-6'>
+                                <Image src={burger} alt='pizza' />
+                            </div>
+                            <div className={styles['foody-card-text']}>
+                                <p>Cheesburger</p>
+                                <p>Yummy....</p>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </section>
