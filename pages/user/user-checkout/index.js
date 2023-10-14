@@ -24,7 +24,7 @@ const index = () => {
     return (
         <>
             <ProfileLayout>
-                {/* <div className={styles['checkout-bg']}>
+                <div className={styles['checkout-bg']}>
                     <h2 className={styles['checkout-text']}>Checkout</h2>
                     <div>
                         <form>
@@ -85,13 +85,13 @@ const index = () => {
                         <span>Total</span>
                         <span>$17.80</span>
                     </div>
-                </div> */}
-                <div className={styles['success-bg']}>
+                </div>
+                {/* <div className={styles['success-bg']}>
                     <div className={styles['success-area']}>
                         <Image src={success} alt='success' />
                         <span>Your order has been received</span>
                     </div>
-                </div>
+                </div> */}
             </ProfileLayout>
         </>
     )
