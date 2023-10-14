@@ -1,0 +1,53 @@
+.orders-bg {
+    background-color: #F3F4F6;
+    width: 77%;
+    height: 634px;
+    border-radius: 5px;
+    padding: 49px 13px 0 31px;
+}
+
+.orders-head {
+    margin-bottom: 51px;
+}
+
+.orders-head :nth-child(1) {
+    color: #4F4F4F;
+    font-size: 30px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: 24px;
+    letter-spacing: 0.9px;
+}
+
+.table {
+    width: 100%;
+    background-color: #fff;
+    box-shadow: 0px -1px 0px 0px #C9CFDA inset;
+}
+
+.thead tr {
+    border-bottom: 1px solid #ccc;
+    height: 54px;
+}
+
+.tbody td {
+    color: #00072B;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 20px;
+    letter-spacing: 0.25px
+}
+
+.id-border {
+    border-radius: 8px;
+    border: 1px solid #DFE2E9;
+    background: #FFF;
+    padding: 2px 12px;
+}
+
+.orders-tr {
+    height: 60px;
+    text-align: center;
+    border-bottom: 1px solid #DFE2E9;
+}
