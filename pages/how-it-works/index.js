@@ -1,15 +1,23 @@
+'use client'
 import Image from 'next/image'
-import React from 'react'
+import React, { useEffect } from 'react'
 import ClientContainer from '../../components/common/ClientContainer/ClientContainer'
 import styles from './works.module.css'
 import worksBg from '../../assets/images/worksBg.svg'
 import worksImg from '../../assets/images/worksImg.svg'
+import AOS from 'aos';
+import 'aos/dist/aos.css';
 
 const index = () => {
+
+    useEffect(() => {
+        AOS.init()
+    }, [])
+
     return (
         <>
             <ClientContainer>
-                <section className='mt-16 mx-48'>
+                <section className='mt-16 mx-48' data-aos='zoom-in'>
                     <div className={styles['works-head']}>
                         <h2>How it works</h2>
                         <p>

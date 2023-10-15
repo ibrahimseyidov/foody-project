@@ -18,16 +18,16 @@ const ClientHeader = () => {
                             <Link href='/'>Home</Link>
                         </li>
                         <li>
-                            <Link href='/'>Restuarants</Link>
+                            <Link href='/restaurants'>Restuarants</Link>
                         </li>
                         <li>
-                            <Link href='/'>About us</Link>
+                            <Link href='/about-us'>About us</Link>
                         </li>
                         <li>
-                            <Link href='/'>How it works</Link>
+                            <Link href='/how-it-works'>How it works</Link>
                         </li>
                         <li>
-                            <Link href='/'>FAQs</Link>
+                            <Link href='/faqs'>FAQs</Link>
                         </li>
                     </nav>
                     <div className={styles['header-right-container']}>

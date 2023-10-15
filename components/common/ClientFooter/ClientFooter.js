@@ -86,7 +86,7 @@ const ClientFooter = () => {
                             </div>
                         </div>
 
-                        <div>
+                        <div className='flex justify-center text-white mt-14'>
                             <span>All rights reserved © 2003-2023 Foody TERMS OF USE | Privacy Policy</span>
                         </div>
 
