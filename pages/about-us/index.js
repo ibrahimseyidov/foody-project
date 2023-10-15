@@ -1,4 +1,5 @@
-import React from 'react'
+'use client'
+import React, { useEffect } from 'react'
 import Image from 'next/image'
 import littleHam from '../../assets/images/foodImages/littleHam.svg'
 import stars from '../../assets/images/stars.svg'
@@ -8,20 +9,26 @@ import littlePizzas from '../../assets/images/foodImages/littlePizzas.svg'
 import soup from '../../assets/images/foodImages/soup.svg'
 import coffee from '../../assets/images/foodImages/coffe.svg'
 import styles from './aboutus.module.css'
-
+import AOS from 'aos';
+import 'aos/dist/aos.css';
 
 const index = () => {
+
+    useEffect(() => {
+        AOS.init()
+    }, [])
+
     return (
         <>
             <ClientContainer>
                 <section className='mt-28 mx-24 flex justify-between'>
-                    <div className='w-2/4 mr-20'>
+                    <div className='w-2/4 mr-20' data-aos='fade-right'>
                         <h2 className={styles['about-head']}>About Us</h2>
                         <p className={styles['about-para']}>
                             Lorem ipsum is placeholder text commonly used in the graphic, print, and publishing industries for previewing layouts and visual mockups.Lorem ipsum is placeholder text commonly used in the graphic, print, and publishing industries for previewing layouts and visual mockups.Lorem ipsum is placeholder text commonly used in the graphic, print, and publishing industries for previewing layouts and visual mockups.
                         </p>
                     </div>
-                    <div className={styles['about-bg']}>
+                    <div className={styles['about-bg']} data-aos='fade-left'>
                         <Image src={aboutBg} />
                         <div className={styles['about-card']}>
                             <div className='relative'>
