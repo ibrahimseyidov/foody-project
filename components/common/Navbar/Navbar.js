@@ -6,6 +6,7 @@ import restaurants from '../../../assets/icons/navIcons/restaurant.svg';
 import category from '../../../assets/icons/navIcons/category.svg'
 import orders from '../../../assets/icons/navIcons/orders.svg';
 import offer from '../../../assets/icons/navIcons/offer.svg';
+import history from '../../../assets/icons/navIcons/history.png'
 import logout from '../../../assets/icons/navIcons/logout.svg'
 import Image from 'next/image'
 import Link from 'next/link'
@@ -23,7 +24,7 @@ const Navbar = () => {
                     <ul>
 
                         <li>
-                            <Link href='/dashboard' id={styles['navbar']} className={({ isActive }) => isActive ? styles['active'] : ''}>
+                            <Link href='/admin/dashboard' id={styles['navbar']} className={({ isActive }) => isActive ? styles['active'] : ''}>
                                 <Image src={dashboard} alt='dashboard' />
                                 Dashboard
                             </Link>
@@ -44,21 +45,28 @@ const Navbar = () => {
                         </li>
 
                         <li>
-                            <Link href='/category' id={styles['navbar']} className={({ isActive }) => isActive ? styles['active'] : ''}>
+                            <Link href='/admin/category' id={styles['navbar']} className={({ isActive }) => isActive ? styles['active'] : ''}>
                                 <Image src={category} alt='category' />
                                 Category
                             </Link>
                         </li>
 
                         <li>
-                            <Link href='/orders' id={styles['navbar']} className={({ isActive }) => isActive ? styles['active'] : ''}>
+                            <Link href='/admin/orders' id={styles['navbar']} className={({ isActive }) => isActive ? styles['active'] : ''}>
                                 <Image src={orders} alt='orders' />
                                 Orders
                             </Link>
                         </li>
 
                         <li>
-                            <Link href='/offer' id={styles['navbar']} className={({ isActive }) => isActive ? styles['active'] : ''}>
+                            <Link href='/admin/order-history' id={styles['navbar']} className={({ isActive }) => isActive ? styles['active'] : ''}>
+                                <Image src={history} alt='offer' />
+                                History
+                            </Link>
+                        </li>
+
+                        <li>
+                            <Link href='/admin/offers' id={styles['navbar']} className={({ isActive }) => isActive ? styles['active'] : ''}>
                                 <Image src={offer} alt='offer' />
                                 Offer
                             </Link>
