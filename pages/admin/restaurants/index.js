@@ -8,7 +8,7 @@ const Restaurants = () => {
     return (
         <AdminDashboard>
             <ProductContainer>
-                <ResCategoryType />
+                <ResCategoryType pageName={'Restaurants'} />
                 <RestaurantItems />
             </ProductContainer>
         </AdminDashboard>
