@@ -2,16 +2,15 @@ import React from 'react'
 import AdminDashboard from '../index'
 import ProductContainer from '../../../components/Products/ProductsContainer'
 import CategoryType from '../../../components/Products/CategoryType/CategoryType'
-import AdminCategory from '../../../components/AdminCategory/AdminCategory'
-
+import AdminOrders from '../../../components/AdminOrders/AdminOrders'
 
 const index = () => {
     return (
         <>
             <AdminDashboard>
                 <ProductContainer>
-                    <CategoryType pageName={'Category'}/>
-                    <AdminCategory />
+                    <CategoryType pageName={'Orders'} />
+                    <AdminOrders />
                 </ProductContainer>
             </AdminDashboard>
         </>

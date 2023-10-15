@@ -8,7 +8,7 @@ const Products = () => {
   return (
     <AdminDashboard>
       <ProductContainer>
-        <CategoryType />
+        <CategoryType pageName={'Products'} />
         <ProductItems />
       </ProductContainer>
     </AdminDashboard>
