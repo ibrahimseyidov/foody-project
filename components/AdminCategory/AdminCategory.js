@@ -1,16 +1,22 @@
+'use client'
 import Image from 'next/image'
-import React from 'react'
-
+import React, { useEffect } from 'react'
 import littleFood from '../../assets/images/foodImages/littleFood.svg'
 import editIcon from '../../assets/icons/editIcon.svg'
 import trashIcon from '../../assets/icons/trashIcon.svg'
-
+import AOS from 'aos';
+import 'aos/dist/aos.css';
 import styles from './admincategory.module.css'
 
 const AdminCategory = () => {
+
+    useEffect(() => {
+        AOS.init()
+    }, [])
+
     return (
         <>
-            <section className='h-full'>
+            <section className='h-full' data-aos="zoom-in">
                 <div className={styles['table-container']}>
                     <table className={styles['table']}>
                         <thead className={styles['thead']}>
