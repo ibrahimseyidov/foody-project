@@ -16,9 +16,9 @@ const Home = () => {
       </Head>
 
       <>
-        <ClientContainer>
-          <ClientHome />
-        </ClientContainer>
+          <ClientContainer>
+            <ClientHome />
+          </ClientContainer>
       </>
     </div>
   );

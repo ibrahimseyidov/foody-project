@@ -3,14 +3,15 @@ import styles from '../RestaurantItem/restaurantitem.module.css'
 import PapaJohns from '../../../assets/images/foodImages/PapaJohnsImg.svg'
 import editImg from '../../../assets/icons/edit.svg';
 import trashImg from '../../../assets/icons/trash.svg';
-// import { useDispatch } from 'react-redux'
-// import { openDelModal, openResModalEdit } from 'redux/features/modalSlice';
+import { useDispatch } from 'react-redux'
+import { openResModalEdit } from '../../../redux/features/editModalSlice';
+import { openDelModal } from '../../../redux/features/delModalSlice'
 import { motion } from "framer-motion";
 import Image from 'next/image';
 
 const RestaurantItem = () => {
 
-  // const dispatch = useDispatch()
+  const dispatch = useDispatch()
 
   const item = {
     hidden: { y: 20, opacity: 0 },
