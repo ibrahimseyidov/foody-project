@@ -3,15 +3,16 @@ import styles from '../../../Products/ProductItems/ProductItem/productitem.modul
 import pizzaImg from '../../../../assets/images/foodImages/pizza.svg'
 import editImg from '../../../../assets/icons/edit.svg';
 import trashImg from '../../../../assets/icons/trash.svg';
-// import { useDispatch } from 'react-redux'
-// import { openModal, openModalEdit } from 'redux/features/modalSlice';
+import { openModalEdit } from '../../../../redux/features/editModalSlice';
+import { openDelModal } from '../../../../redux/features/delModalSlice'
+import { useDispatch } from 'react-redux'
 import { motion } from "framer-motion";
 import Image from 'next/image';
 
 
 const ProductItem = () => {
 
-    // const dispatch = useDispatch()
+    const dispatch = useDispatch()
 
     const item = {
         hidden: { y: 20, opacity: 0 },
@@ -26,7 +27,7 @@ const ProductItem = () => {
         <>
             <motion.div
                 className={styles["product-bg"]}
-                variants={item} 
+                variants={item}
             >
                 <div className={styles['product-detail']}>
                     <div>
@@ -39,10 +40,10 @@ const ProductItem = () => {
                             <span>$16</span>
                         </div>
                         <div className={styles['product-edit']}>
-                            <button >
+                            <button onClick={() => dispatch(openModalEdit())}>
                                 <Image src={editImg} alt='edit' />
                             </button>
-                            <button>
+                            <button onClick={() => dispatch(openDelModal())}>
                                 <Image src={trashImg} alt='trash' />
                             </button>
                         </div>
