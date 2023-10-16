@@ -18,7 +18,7 @@ const ClientHeader = () => {
                             <Link href='/'>Home</Link>
                         </li>
                         <li>
-                            <Link href='/'>Restuarants</Link>
+                            <Link href='/restaurants'>Restuarants</Link>
                         </li>
                         <li>
                             <Link href='/'>About us</Link>
