@@ -1,6 +1,6 @@
+
 import Head from "next/head";
 import { useRouter } from "next/router";
-
 export default function LoginPage() {
     const{push,query} = useRouter()
   return (
@@ -60,7 +60,7 @@ export default function LoginPage() {
               </div>
             </div>
             <button className="w-full text-22 text-white sm:h-68px bg-clientRed font-medium h-14">
-              Login
+              Login 
             </button>
           </div>
         </div>
