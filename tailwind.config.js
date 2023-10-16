@@ -9,7 +9,22 @@ module.exports = {
     "./src/**/*.{js,ts,jsx,tsx,mdx}",
   ],
   theme: {
-    extend: {},
+    extend: {
+      width:{
+        'wxl':'235px',
+        'wll': '174px'
+      },
+      boxShadow:{
+        'shadoww':'0px 4px 4px 0px rgba(0, 0, 0, 0.25);'
+      },
+      margin:{
+        'mll':'17px'
+      },
+      height:{
+        'hh':'346px'
+      }
+    },
   },
   plugins: [],
+
 }
