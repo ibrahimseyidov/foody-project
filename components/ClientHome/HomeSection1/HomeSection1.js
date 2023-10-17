@@ -18,9 +18,9 @@ const HomeSection1 = () => {
 
     return (
         <>
-            <section className='mb-20' data-aos="fade-up">
+            <section className='mb-20'>
                 <div className={styles['home-client-bg']}>
-                    <div className={styles['hamburger-left']}>
+                    <div className={styles['hamburger-left']} data-aos="fade-up">
                         <h2>Our Food site makes it easy to find local food</h2>
                         <p>Lorem ipsum is placeholder text commonly used in the graphic, print, and publishing industries for previewing layouts and visual mockups.</p>
                         <div className={styles['hamburger-btn']}>
@@ -30,8 +30,8 @@ const HomeSection1 = () => {
                     </div>
                     <div>
                         <div className={styles['hamburger-bg']}></div>
-                        <Image src={hamburgerImg} className={styles['hamburger-image']} alt='hamburger-image' />
-                        <div className={styles['foody-card']}>
+                        <Image src={hamburgerImg} className={styles['hamburger-image']} alt='hamburger-image' data-aos='fade-right' />
+                        <div className={styles['foody-card']} data-aos='fade-right'>
                             <div className='mr-6'>
                                 <Image src={pizzaMini} alt='pizza' />
                             </div>
@@ -40,7 +40,7 @@ const HomeSection1 = () => {
                                 <p>Yummy....</p>
                             </div>
                         </div>
-                        <div className={styles['foody-card-2']}>
+                        <div className={styles['foody-card-2']} data-aos='fade-right'>
                             <div className='mr-6'>
                                 <Image src={fries} alt='pizza' />
                             </div>
@@ -49,7 +49,7 @@ const HomeSection1 = () => {
                                 <p>Yummy....</p>
                             </div>
                         </div>
-                        <div className={styles['foody-card-3']}>
+                        <div className={styles['foody-card-3']} data-aos='fade-right'>
                             <div className='mr-6'>
                                 <Image src={burger} alt='pizza' />
                             </div>
