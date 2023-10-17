@@ -57,3 +57,16 @@
     letter-spacing: 0.48px;
     cursor: pointer;
 }
+
+.link-bg {
+    color: #D63626 !important;
+    font-weight: 700;
+}
+
+.home-link {
+    transition: 0.5s all ease;
+}
+
+.home-link:hover {
+    color: #D63626 !important;
+}
