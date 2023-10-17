@@ -7,13 +7,18 @@ import littleFood from '../../assets/images/foodImages/littleFood.svg'
 import AOS from 'aos';
 import 'aos/dist/aos.css';
 import styles from '../AdminCategory/admincategory.module.css'
+import { useDispatch } from 'react-redux'
+import { openOfferModalEdit } from '../../redux/features/editModalSlice'
+import { openDelModal } from '../../redux/features/delModalSlice'
 
 const AdminOffers = () => {
+
+    const dispatch = useDispatch()
 
     useEffect(() => {
         AOS.init()
     }, [])
-    
+
     return (
         <>
             <section className='h-full' data-aos="zoom-in">
@@ -35,10 +40,10 @@ const AdminOffers = () => {
                                 <td>Do you like Pizza at Pap...</td>
                                 <td>Yummy this pizza but...</td>
                                 <td>
-                                    <button className='mr-4'>
+                                    <button onClick={() => dispatch(openOfferModalEdit())} className='mr-4'>
                                         <Image src={editIcon} alt='edit-icon' />
                                     </button>
-                                    <button>
+                                    <button onClick={() => dispatch(openDelModal())}>
                                         <Image src={trashIcon} alt='trash-icon' />
                                     </button>
                                 </td>
@@ -49,10 +54,10 @@ const AdminOffers = () => {
                                 <td>Do you like Pizza at Pap...</td>
                                 <td>Yummy this pizza but...</td>
                                 <td>
-                                    <button className='mr-4'>
+                                    <button onClick={() => dispatch(openOfferModalEdit())} className='mr-4'>
                                         <Image src={editIcon} alt='edit-icon' />
                                     </button>
-                                    <button>
+                                    <button onClick={() => dispatch(openDelModal())}>
                                         <Image src={trashIcon} alt='trash-icon' />
                                     </button>
                                 </td>
@@ -63,10 +68,10 @@ const AdminOffers = () => {
                                 <td>Do you like Pizza at Pap...</td>
                                 <td>Yummy this pizza but...</td>
                                 <td>
-                                    <button className='mr-4'>
+                                    <button onClick={() => dispatch(openOfferModalEdit())} className='mr-4'>
                                         <Image src={editIcon} alt='edit-icon' />
                                     </button>
-                                    <button>
+                                    <button onClick={() => dispatch(openDelModal())}>
                                         <Image src={trashIcon} alt='trash-icon' />
                                     </button>
                                 </td>

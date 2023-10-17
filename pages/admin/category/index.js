@@ -3,6 +3,8 @@ import AdminDashboard from '../index'
 import ProductContainer from '../../../components/Products/ProductsContainer'
 import CategoryType from '../../../components/Products/CategoryType/CategoryType'
 import AdminCategory from '../../../components/AdminCategory/AdminCategory'
+import EditModal from '../../../components/common/EditModal/EditModal'
+import DelModal from '../../../components/common/DelModal/DelModal'
 
 
 const index = () => {
@@ -10,8 +12,10 @@ const index = () => {
         <>
             <AdminDashboard>
                 <ProductContainer>
-                    <CategoryType pageName={'Category'}/>
+                    <CategoryType pageName={'Category'} />
                     <AdminCategory />
+                    <DelModal />
+                    <EditModal />
                 </ProductContainer>
             </AdminDashboard>
         </>

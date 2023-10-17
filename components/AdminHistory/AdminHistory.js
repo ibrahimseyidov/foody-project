@@ -5,8 +5,12 @@ import Image from 'next/image'
 import trashIcon from '../../assets/icons/trashIcon.svg'
 import AOS from 'aos';
 import 'aos/dist/aos.css';
+import { useDispatch } from 'react-redux'
+import { openDelModal } from '../../redux/features/delModalSlice'
 
 const AdminHistory = () => {
+
+    const dispatch = useDispatch()
 
     useEffect(() => {
         AOS.init()
@@ -39,7 +43,7 @@ const AdminHistory = () => {
                                 <td>Cash On Delivery</td>
                                 <td>994-51-410-3130</td>
                                 <td className='mt-2 pr-3'>
-                                    <button>
+                                    <button onClick={() => dispatch(openDelModal())}>
                                         <Image src={trashIcon} alt='trash-icon' />
                                     </button>
                                 </td>
@@ -53,7 +57,7 @@ const AdminHistory = () => {
                                 <td>Cash On Delivery</td>
                                 <td>994-51-410-3130</td>
                                 <td className='mt-2 pr-3'>
-                                    <button>
+                                    <button onClick={() => dispatch(openDelModal())}>
                                         <Image src={trashIcon} alt='trash-icon' />
                                     </button>
                                 </td>
@@ -67,7 +71,7 @@ const AdminHistory = () => {
                                 <td>Cash On Delivery</td>
                                 <td>994-51-410-3130</td>
                                 <td className='mt-2 pr-3'>
-                                    <button>
+                                    <button onClick={() => dispatch(openDelModal())}>
                                         <Image src={trashIcon} alt='trash-icon' />
                                     </button>
                                 </td>
@@ -81,7 +85,7 @@ const AdminHistory = () => {
                                 <td>Cash On Delivery</td>
                                 <td>994-51-410-3130</td>
                                 <td className='mt-2 pr-3'>
-                                    <button>
+                                    <button onClick={() => dispatch(openDelModal())}>
                                         <Image src={trashIcon} alt='trash-icon' />
                                     </button>
                                 </td>
@@ -95,7 +99,7 @@ const AdminHistory = () => {
                                 <td>Cash On Delivery</td>
                                 <td>994-51-410-3130</td>
                                 <td className='mt-2 pr-3'>
-                                    <button>
+                                    <button onClick={() => dispatch(openDelModal())}>
                                         <Image src={trashIcon} alt='trash-icon' />
                                     </button>
                                 </td>
@@ -109,7 +113,7 @@ const AdminHistory = () => {
                                 <td>Cash On Delivery</td>
                                 <td>994-51-410-3130</td>
                                 <td className='mt-2 pr-3'>
-                                    <button>
+                                    <button onClick={() => dispatch(openDelModal())}>
                                         <Image src={trashIcon} alt='trash-icon' />
                                     </button>
                                 </td>

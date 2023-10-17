@@ -2,6 +2,7 @@ import { createSlice } from '@reduxjs/toolkit'
 
 const initialState = {
     deLModalActive: false,
+    showOrderActive: false
 }
 
 export const delModalSlice = createSlice({
@@ -14,9 +15,15 @@ export const delModalSlice = createSlice({
         closeDelModal: (state) => {
             state.deLModalActive = false;
         },
+        showOrderModal: (state) => {
+            state.showOrderActive = true
+        },
+        closeOrderModal: (state) => {
+            state.showOrderActive = false
+        }
     }
 })
 
-export const { openDelModal, closeDelModal } = delModalSlice.actions
+export const { openDelModal, closeDelModal, showOrderModal, closeOrderModal } = delModalSlice.actions
 
 export default delModalSlice.reducer

@@ -18,8 +18,12 @@ import logout from '../../../assets/icons/navIcons/logout.svg';
 import mobFoodyLogo from '../../../assets/icons/mobFoodyLogo.svg';
 import leftArrow from '../../../assets/icons/leftArrow.svg';
 import Image from 'next/image'
+import { useDispatch } from 'react-redux';
+import { openAddProductModal } from '../../../redux/features/editModalSlice';
 
 const Header = () => {
+
+    const dispatch = useDispatch()
 
     return (
             <header>
@@ -36,7 +40,7 @@ const Header = () => {
                     <div className={styles['header-right-container']}>
 
                         <div className={styles['header-right-first']}>
-                            <button className={styles['add-product-btn']}>
+                            <button onClick={() => dispatch(openAddProductModal())} className={styles['add-product-btn']}>
                                 <Image src={plusBtn} alt='plus-button' />
                                 Add Product
                             </button>
