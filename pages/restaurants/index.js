@@ -1,17 +1,19 @@
 import React from "react";
 import Leftsidebar from "../../components/Clientrestaurants/leftsidebar";
 import Rightsidebar from "../../components/Clientrestaurants/rightsidebar";
+import ClientContainer from "../../components/common/ClientContainer/ClientContainer";
 import Rightdetail from './../../components/Clientrestaurants/rightdetail';
 
 const index = () => {
   return (
-    <div className="flex gap-9 flex-wrap">
-      <Leftsidebar />
-      <Rightdetail />
-      <Rightsidebar />
-     
-      
-    </div>
+    <ClientContainer>
+      <div className="flex gap-9 mt-4 mb-16">
+        <Leftsidebar />
+
+        {/* <Rightdetail /> */}
+        <Rightsidebar />
+      </div>
+    </ClientContainer>
   );
 };
 

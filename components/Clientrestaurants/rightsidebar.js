@@ -1,146 +1,172 @@
+'use client'
+import { useEffect } from "react";
 import styles from "./rightsidebar.module.css";
+import AOS from 'aos';
+import 'aos/dist/aos.css';
 
 function Foodydetail() {
+
+  useEffect(() => {
+    AOS.init()
+  }, [])
+
   return (
-    <div className="flex items-start gap-8">
-      <div className="w-wxl h-hh shadow-shadoww">
+    <div className={`${styles['res-card-container']}`} data-aos='fade-left'>
+      <div className={styles['res-card']}>
         <img
           className={styles.img_div}
           src="/coffemania.svg"
           alt="coffeemania"
         />
-        <div className="ml-mll">
-          <h1 className= {styles.coffdiv} >Coffee Mania</h1>
+        <div>
+          <h1 className={styles.coffdiv} >Coffee Mania</h1>
           <span className={styles.spn_div}>
             chinese, sea-food, thai, lebanese, caribbean
           </span>
           <div className="flex justify-between items-center pr-2">
             <p className={styles.pdiv}>$5 Delivery</p>
-            <button className={styles.btndiv}>09 Min</button>
-          </div>
-        </div>
-      </div>{" "}
-      <div className="w-wxl h-hh shadow-shadoww">
-        <img
-          className={styles.img_div}
-          src="/coffemania.svg"
-          alt="coffeemania"
-        />
-        <div className="ml-mll">
-          <h1 className={styles.coffdiv}>Coffee Mania</h1>
-          <span className={styles.spn_div}>
-            chinese, sea-food, thai, lebanese, caribbean
-          </span>
-          <div className="flex justify-between items-center pr-2">
-            <p className={styles.pdiv}>$5 Delivery</p>
-            <button className={styles.btndiv}>09 Min</button>
-          </div>
-        </div>
-      </div>{" "}
-      <div className="w-wxl h-hh shadow-shadoww">
-        <img
-          className={styles.img_div}
-          src="/coffemania.svg"
-          alt="coffeemania"
-        />
-        <div className="ml-mll">
-          <h1 className={styles.coffdiv}>Coffee Mania</h1>
-          <span className={styles.spn_div}>
-            chinese, sea-food, thai, lebanese, caribbean
-          </span>
-          <div className="flex justify-between items-center pr-2">
-            <p className={styles.pdiv}>$5 Delivery</p>
-            <button className={styles.btndiv}>09 Min</button>
-          </div>
-        </div>
-      </div>{" "}
-      <div className="w-wxl h-hh shadow-shadoww">
-        <img
-          className={styles.img_div}
-          src="/coffemania.svg"
-          alt="coffeemania"
-        />
-        <div className="ml-mll">
-          <h1 className={styles.coffdiv}>Coffee Mania</h1>
-          <span className={styles.spn_div}>
-            chinese, sea-food, thai, lebanese, caribbean
-          </span>
-          <div className="flex justify-between items-center pr-2">
-            <p className={styles.pdiv}>$5 Delivery</p>
-            <button className={styles.btndiv}>09 Min</button>
-          </div>
-        </div>
-      </div>{" "}
-      <div className="w-wxl h-hh shadow-shadoww">
-        <img
-          className={styles.img_div}
-          src="/coffemania.svg"
-          alt="coffeemania"
-        />
-        <div className="ml-mll">
-          <h1 className={styles.coffdiv}>Coffee Mania</h1>
-          <span className={styles.spn_div}>
-            chinese, sea-food, thai, lebanese, caribbean
-          </span>
-          <div className="flex justify-between items-center pr-2">
-            <p className={styles.pdiv}>$5 Delivery</p>
-            <button className={styles.btndiv}>09 Min</button>
-          </div>
-        </div>
-      </div>{" "}
-      <div className="w-wxl h-hh shadow-shadoww">
-        <img
-          className={styles.img_div}
-          src="/coffemania.svg"
-          alt="coffeemania"
-        />
-        <div className="ml-mll">
-          <h1 className={styles.coffdiv}>Coffee Mania</h1>
-          <span className={styles.spn_div}>
-            chinese, sea-food, thai, lebanese, caribbean
-          </span>
-          <div className="flex justify-between items-center pr-2">
-            <p className={styles.pdiv}>$5 Delivery</p>
-            <button className={styles.btndiv}>09 Min</button>
-          </div>
-        </div>
-      </div>{" "}
-      <div className="w-wxl h-hh shadow-shadoww">
-        <img
-          className={styles.img_div}
-          src="/coffemania.svg"
-          alt="coffeemania"
-        />
-        <div className="ml-mll">
-          <h1 className={styles.coffdiv}>Coffee Mania</h1>
-          <span className={styles.spn_div}>
-            chinese, sea-food, thai, lebanese, caribbean
-          </span>
-          <div className="flex justify-between items-center pr-2">
-            <p className={styles.pdiv}>$5 Delivery</p>
-            <button className={styles.btndiv}>09 Min</button>
+            <span className={styles.btndiv}>09 Min</span>
           </div>
         </div>
       </div>
-      <div className="w-wxl h-hh shadow-shadoww">
-        <button className={styles.ticket}>New</button>
+      <div className={styles['res-card']}>
         <img
           className={styles.img_div}
-          src="/burgerking.svg"
+          src="/coffemania.svg"
           alt="coffeemania"
         />
-        <div className="ml-mll">
-          <h1 className={styles.coffdiv}>Coffee Mania</h1>
+        <div>
+          <h1 className={styles.coffdiv} >Coffee Mania</h1>
           <span className={styles.spn_div}>
             chinese, sea-food, thai, lebanese, caribbean
           </span>
           <div className="flex justify-between items-center pr-2">
             <p className={styles.pdiv}>$5 Delivery</p>
-            <button className={styles.btndiv}>09 Min</button>
+            <span className={styles.btndiv}>09 Min</span>
           </div>
         </div>
       </div>
-    </div>
+      <div className={styles['res-card']}>
+        <img
+          className={styles.img_div}
+          src="/coffemania.svg"
+          alt="coffeemania"
+        />
+        <div>
+          <h1 className={styles.coffdiv} >Coffee Mania</h1>
+          <span className={styles.spn_div}>
+            chinese, sea-food, thai, lebanese, caribbean
+          </span>
+          <div className="flex justify-between items-center pr-2">
+            <p className={styles.pdiv}>$5 Delivery</p>
+            <span className={styles.btndiv}>09 Min</span>
+          </div>
+        </div>
+      </div>
+      <div className={styles['res-card']}>
+        <img
+          className={styles.img_div}
+          src="/coffemania.svg"
+          alt="coffeemania"
+        />
+        <div>
+          <h1 className={styles.coffdiv} >Coffee Mania</h1>
+          <span className={styles.spn_div}>
+            chinese, sea-food, thai, lebanese, caribbean
+          </span>
+          <div className="flex justify-between items-center pr-2">
+            <p className={styles.pdiv}>$5 Delivery</p>
+            <span className={styles.btndiv}>09 Min</span>
+          </div>
+        </div>
+      </div>
+      <div className={styles['res-card']}>
+        <img
+          className={styles.img_div}
+          src="/coffemania.svg"
+          alt="coffeemania"
+        />
+        <div>
+          <h1 className={styles.coffdiv} >Coffee Mania</h1>
+          <span className={styles.spn_div}>
+            chinese, sea-food, thai, lebanese, caribbean
+          </span>
+          <div className="flex justify-between items-center pr-2">
+            <p className={styles.pdiv}>$5 Delivery</p>
+            <span className={styles.btndiv}>09 Min</span>
+          </div>
+        </div>
+      </div>
+      <div className={styles['res-card']}>
+        <img
+          className={styles.img_div}
+          src="/coffemania.svg"
+          alt="coffeemania"
+        />
+        <div>
+          <h1 className={styles.coffdiv} >Coffee Mania</h1>
+          <span className={styles.spn_div}>
+            chinese, sea-food, thai, lebanese, caribbean
+          </span>
+          <div className="flex justify-between items-center pr-2">
+            <p className={styles.pdiv}>$5 Delivery</p>
+            <span className={styles.btndiv}>09 Min</span>
+          </div>
+        </div>
+      </div>
+
+      <div className={styles['res-card']}>
+        <img
+          className={styles.img_div}
+          src="/coffemania.svg"
+          alt="coffeemania"
+        />
+        <div>
+          <h1 className={styles.coffdiv} >Coffee Mania</h1>
+          <span className={styles.spn_div}>
+            chinese, sea-food, thai, lebanese, caribbean
+          </span>
+          <div className="flex justify-between items-center pr-2">
+            <p className={styles.pdiv}>$5 Delivery</p>
+            <span className={styles.btndiv}>09 Min</span>
+          </div>
+        </div>
+      </div>
+      <div className={styles['res-card']}>
+        <img
+          className={styles.img_div}
+          src="/coffemania.svg"
+          alt="coffeemania"
+        />
+        <div>
+          <h1 className={styles.coffdiv} >Coffee Mania</h1>
+          <span className={styles.spn_div}>
+            chinese, sea-food, thai, lebanese, caribbean
+          </span>
+          <div className="flex justify-between items-center pr-2">
+            <p className={styles.pdiv}>$5 Delivery</p>
+            <span className={styles.btndiv}>09 Min</span>
+          </div>
+        </div>
+      </div>
+      <div className={styles['res-card']}>
+        <img
+          className={styles.img_div}
+          src="/coffemania.svg"
+          alt="coffeemania"
+        />
+        <div>
+          <h1 className={styles.coffdiv} >Coffee Mania</h1>
+          <span className={styles.spn_div}>
+            chinese, sea-food, thai, lebanese, caribbean
+          </span>
+          <div className="flex justify-between items-center pr-2">
+            <p className={styles.pdiv}>$5 Delivery</p>
+            <span className={styles.btndiv}>09 Min</span>
+          </div>
+        </div>
+      </div>
+    </div >
   );
 }
 
