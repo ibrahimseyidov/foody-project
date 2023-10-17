@@ -12,7 +12,12 @@
 .table-row {
     text-align: center;
     height: 48px;
+    transition: 0.5s all ease;
     border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+}
+
+.table-row:hover {
+    background: rgba(0, 0, 0, 0.1);
 }
 
 .table-container {

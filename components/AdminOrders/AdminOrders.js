@@ -6,8 +6,12 @@ import eye from '../../assets/icons/eye.svg'
 import trashIcon from '../../assets/icons/trashIcon.svg'
 import AOS from 'aos';
 import 'aos/dist/aos.css';
+import { useDispatch } from 'react-redux'
+import { openDelModal, showOrderModal } from '../../redux/features/delModalSlice'
 
 const AdminOrders = () => {
+
+    const dispatch = useDispatch()
 
     useEffect(() => {
         AOS.init()
@@ -29,7 +33,6 @@ const AdminOrders = () => {
                                 <th>Contact</th>
                             </tr>
                         </thead>
-
                         <tbody className={styles['tbody']}>
                             <tr className={styles['table-row']}>
                                 <td><span className={styles['table-id']}>9177</span></td>
@@ -40,10 +43,10 @@ const AdminOrders = () => {
                                 <td>Cash On Delivery</td>
                                 <td>994-51-410-3130</td>
                                 <td className='flex items-center mt-2'>
-                                    <button className='mr-4'>
+                                    <button onClick={() => dispatch(showOrderModal())} className='mr-4'>
                                         <Image src={eye} alt='edit-icon' />
                                     </button>
-                                    <button>
+                                    <button onClick={() => dispatch(openDelModal())}>
                                         <Image src={trashIcon} alt='trash-icon' />
                                     </button>
                                 </td>
@@ -57,10 +60,10 @@ const AdminOrders = () => {
                                 <td>Cash On Delivery</td>
                                 <td>994-51-410-3130</td>
                                 <td className='flex items-center mt-2'>
-                                    <button className='mr-4'>
+                                    <button onClick={() => dispatch(showOrderModal())} className='mr-4'>
                                         <Image src={eye} alt='edit-icon' />
                                     </button>
-                                    <button>
+                                    <button onClick={() => dispatch(openDelModal())}>
                                         <Image src={trashIcon} alt='trash-icon' />
                                     </button>
                                 </td>
@@ -74,10 +77,10 @@ const AdminOrders = () => {
                                 <td>Cash On Delivery</td>
                                 <td>994-51-410-3130</td>
                                 <td className='flex items-center mt-2'>
-                                    <button className='mr-4'>
+                                    <button onClick={() => dispatch(showOrderModal())} className='mr-4'>
                                         <Image src={eye} alt='edit-icon' />
                                     </button>
-                                    <button>
+                                    <button onClick={() => dispatch(openDelModal())}>
                                         <Image src={trashIcon} alt='trash-icon' />
                                     </button>
                                 </td>
@@ -91,10 +94,10 @@ const AdminOrders = () => {
                                 <td>Cash On Delivery</td>
                                 <td>994-51-410-3130</td>
                                 <td className='flex items-center mt-2'>
-                                    <button className='mr-4'>
+                                    <button onClick={() => dispatch(showOrderModal())} className='mr-4'>
                                         <Image src={eye} alt='edit-icon' />
                                     </button>
-                                    <button>
+                                    <button onClick={() => dispatch(openDelModal())}>
                                         <Image src={trashIcon} alt='trash-icon' />
                                     </button>
                                 </td>
@@ -108,10 +111,10 @@ const AdminOrders = () => {
                                 <td>Cash On Delivery</td>
                                 <td>994-51-410-3130</td>
                                 <td className='flex items-center mt-2'>
-                                    <button className='mr-4'>
+                                    <button onClick={() => dispatch(showOrderModal())} className='mr-4'>
                                         <Image src={eye} alt='edit-icon' />
                                     </button>
-                                    <button>
+                                    <button onClick={() => dispatch(openDelModal())}>
                                         <Image src={trashIcon} alt='trash-icon' />
                                     </button>
                                 </td>
@@ -125,10 +128,10 @@ const AdminOrders = () => {
                                 <td>Cash On Delivery</td>
                                 <td>994-51-410-3130</td>
                                 <td className='flex items-center mt-2'>
-                                    <button className='mr-4'>
+                                    <button onClick={() => dispatch(showOrderModal())} className='mr-4'>
                                         <Image src={eye} alt='edit-icon' />
                                     </button>
-                                    <button>
+                                    <button onClick={() => dispatch(openDelModal())}>
                                         <Image src={trashIcon} alt='trash-icon' />
                                     </button>
                                 </td>
@@ -142,10 +145,10 @@ const AdminOrders = () => {
                                 <td>Cash On Delivery</td>
                                 <td>994-51-410-3130</td>
                                 <td className='flex items-center mt-2'>
-                                    <button className='mr-4'>
+                                    <button onClick={() => dispatch(showOrderModal())} className='mr-4'>
                                         <Image src={eye} alt='edit-icon' />
                                     </button>
-                                    <button>
+                                    <button onClick={() => dispatch(openDelModal())}>
                                         <Image src={trashIcon} alt='trash-icon' />
                                     </button>
                                 </td>
@@ -159,10 +162,10 @@ const AdminOrders = () => {
                                 <td>Cash On Delivery</td>
                                 <td>994-51-410-3130</td>
                                 <td className='flex items-center mt-2'>
-                                    <button className='mr-4'>
+                                    <button onClick={() => dispatch(showOrderModal())} className='mr-4'>
                                         <Image src={eye} alt='edit-icon' />
                                     </button>
-                                    <button>
+                                    <button onClick={() => dispatch(openDelModal())}>
                                         <Image src={trashIcon} alt='trash-icon' />
                                     </button>
                                 </td>
