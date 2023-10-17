@@ -8,6 +8,7 @@ import { openDelModal } from '../../../../redux/features/delModalSlice'
 import { useDispatch } from 'react-redux'
 import { motion } from "framer-motion";
 import Image from 'next/image';
+import axios from 'axios';
 
 
 const ProductItem = () => {
@@ -21,7 +22,6 @@ const ProductItem = () => {
             opacity: 1
         }
     };
-
 
     return (
         <>
