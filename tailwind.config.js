@@ -21,8 +21,11 @@ module.exports = {
       },
       padding: {
         '10px': '10px',
-        '19': '19px',
-        '40px':'40px'
+        '11px': '11px',
+        '19px': '19px',
+        '40px':'40px',
+        '57px':'57px',
+        '6px':'6px',
         
       },
       margin:{
@@ -102,6 +105,7 @@ module.exports = {
       },
       backgroundColor:{
         "loginBgc":"#38394E",
+        "bgc":"#1E1E30",
         "loginBtn":"#C035A2"
       }
     },
