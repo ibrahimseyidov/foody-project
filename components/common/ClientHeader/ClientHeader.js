@@ -4,8 +4,12 @@ import ukFlag from '../../../assets/icons/countryFlags/uk.svg'
 import styles from '../ClientHeader/clientheader.module.css'
 import Link from 'next/link'
 import Image from 'next/image'
+import { usePathname } from 'next/navigation'
 
 const ClientHeader = () => {
+
+    const pathname = usePathname()
+
     return (
         <>
             <header className='mt-4' style={{ "background": "#F3F4F6", "border-radius": "4px" }}>
@@ -15,19 +19,19 @@ const ClientHeader = () => {
                     </Link>
                     <nav className={styles['nav-container']}>
                         <li>
-                            <Link href='/'>Home</Link>
+                            <Link href='/' className={pathname === '/' ? `${styles['link-bg']}` : `${styles['home-link']}`}>Home</Link>
                         </li>
                         <li>
-                            <Link href='/restaurants'>Restuarants</Link>
+                            <Link href='/restaurants' className={pathname === '/restaurants' ? `${styles['link-bg']}` : `${styles['home-link']}`}>Restaurants</Link>
                         </li>
                         <li>
-                            <Link href='/about-us'>About us</Link>
+                            <Link href='/about-us' className={pathname === '/about-us' ? `${styles['link-bg']}` : `${styles['home-link']}`}>About us</Link>
                         </li>
                         <li>
-                            <Link href='/how-it-works'>How it works</Link>
+                            <Link href='/how-it-works' className={pathname === '/how-it-works' ? `${styles['link-bg']}` : `${styles['home-link']}`}>How it works</Link>
                         </li>
                         <li>
-                            <Link href='/faqs'>FAQs</Link>
+                            <Link href='/faqs' className={pathname === '/faqs' ? `${styles['link-bg']}` : `${styles['home-link']}`}>FAQs</Link>
                         </li>
                     </nav>
                     <div className={styles['header-right-container']}>

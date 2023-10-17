@@ -23,9 +23,9 @@ function classNames(...classes) {
 
 export default function Example() {
 
-    const onSuccess = (data) => {
-        console.log(data);
-    }
+    // const onSuccess = (data) => {
+    //     console.log(data);
+    // }
 
     // const { data } = useProductsCategory(onSuccess)
 
@@ -36,10 +36,10 @@ export default function Example() {
 
     // const { t } = useTranslation()
 
-    const handleProductsCategory = (category, categoryID) => {
-        dispatch(handleProductCategoryID(categoryID))
-        navigate(`/products/${category}`)
-    }
+    // const handleProductsCategory = (category, categoryID) => {
+    //     dispatch(handleProductCategoryID(categoryID))
+    //     navigate(`/products/${category}`)
+    // }
 
     return (
 

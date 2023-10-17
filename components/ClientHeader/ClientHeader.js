@@ -12,7 +12,6 @@ const ClientHeader=()=>{
             alt=""
           />
         </nav>
-
     )
 }
 export default ClientHeader;
