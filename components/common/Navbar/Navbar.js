@@ -11,17 +11,16 @@ import logout from '../../../assets/icons/navIcons/logout.svg'
 import Image from 'next/image'
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
-
+import { useTranslation } from 'next-i18next'
 
 const Navbar = () => {
-
     const pathname = usePathname()
 
+    const { t } = useTranslation('common')
     return (
         <>
 
             <nav>
-
                 <div className={styles['navbar-container']}>
 
                     <ul>
@@ -29,56 +28,56 @@ const Navbar = () => {
                         <li>
                             <Link href='/admin/dashboard' id={styles['navbar']} className={pathname === '/admin/dashboard' ? `${styles['active']}` : ''}>
                                 <Image src={dashboard} alt='dashboard' />
-                                Dashboard
+                                {t('Dashboard')}
                             </Link>
                         </li>
 
                         <li>
                             <Link href='/admin/products' id={styles['navbar']} className={pathname === '/admin/products' ? `${styles['active']}` : ''}>
                                 <Image src={products} alt='products' />
-                                Products
+                                {t('Products')}
                             </Link>
                         </li>
 
                         <li>
                             <Link href='/admin/restaurants' id={styles['navbar']} className={pathname === '/admin/restaurants' ? `${styles['active']}` : ''}>
                                 <Image src={restaurants} alt='restaurants' />
-                                Restaurants
+                                {t('Restaurants')}
                             </Link>
                         </li>
 
                         <li>
                             <Link href='/admin/category' id={styles['navbar']} className={pathname === '/admin/category' ? `${styles['active']}` : ''}>
                                 <Image src={category} alt='category' />
-                                Category
+                                {t('Category')}
                             </Link>
                         </li>
 
                         <li>
                             <Link href='/admin/orders' id={styles['navbar']} className={pathname === '/admin/orders' ? `${styles['active']}` : ''}>
                                 <Image src={orders} alt='orders' />
-                                Orders
+                                {t('Orders')}
                             </Link>
                         </li>
 
                         <li>
                             <Link href='/admin/order-history' id={styles['navbar']} className={pathname === '/admin/order-history' ? `${styles['active']}` : ''}>
                                 <Image src={history} alt='offer' />
-                                History
+                                {t('History')}
                             </Link>
                         </li>
 
                         <li>
                             <Link href='/admin/offers' id={styles['navbar']} className={pathname === '/admin/offers' ? `${styles['active']}` : ''}>
                                 <Image src={offer} alt='offer' />
-                                Offer
+                                {t('Offer')}
                             </Link>
                         </li>
 
                         <li>
                             <Link href='/' id={styles['navbar']} className={styles['navbar-last']}>
                                 <Image src={logout} alt='logout' />
-                                Logout
+                                {t('Logout')}
                             </Link>
                         </li>
 

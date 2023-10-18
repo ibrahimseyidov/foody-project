@@ -2,8 +2,12 @@ import Head from "next/head";
 import Layout from '../../components/common/Layout'
 import { store } from '../../redux/app/store'
 import { Provider } from 'react-redux'
+import { useTranslation } from 'next-i18next';
+import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
 
 const AdminDashboard = ({ children }) => {
+  const { t, i18n } = useTranslation()
+
   return (
     <div>
       <Head>
@@ -12,7 +16,7 @@ const AdminDashboard = ({ children }) => {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <Provider store={store}>
-        <Layout>
+        <Layout t={t}>
           {children}
         </Layout>
       </Provider >
@@ -22,3 +26,10 @@ const AdminDashboard = ({ children }) => {
 };
 
 export default AdminDashboard;
+
+export const getServerSideProps = async ({ locale }) => ({
+  props: {
+    ...(await serverSideTranslations(locale, ['common']))
+  }
+
+});

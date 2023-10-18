@@ -5,14 +5,17 @@ import CategoryType from '../../../components/Products/CategoryType/CategoryType
 import AdminCategory from '../../../components/AdminCategory/AdminCategory'
 import EditModal from '../../../components/common/EditModal/EditModal'
 import DelModal from '../../../components/common/DelModal/DelModal'
-
+import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
+import { useTranslation } from 'next-i18next'
 
 const index = () => {
+    const { t } = useTranslation('common')
+
     return (
         <>
             <AdminDashboard>
                 <ProductContainer>
-                    <CategoryType pageName={'Category'} />
+                    <CategoryType pageName={t('Category')} />
                     <AdminCategory />
                     <DelModal />
                     <EditModal />
@@ -23,3 +26,9 @@ const index = () => {
 }
 
 export default index
+
+export const getServerSideProps = async ({ locale }) => ({
+    props: {
+        ...(await serverSideTranslations(locale, ['common']))
+    }
+});
