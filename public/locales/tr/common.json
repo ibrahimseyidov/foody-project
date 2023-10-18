@@ -39,5 +39,16 @@
   "Delivery Price": "Kargo Ücreti",
   "Delivery Min": "Minimum Kargo Ücreti",
   "Minimum Delivery": "Minimum Kargo Ücreti",
-  "Address": "Adres"
+  "Address": "Adres",
+  "Projects by": "Hesaba göre",
+  "account": "Projeler",
+  "Total Salary": "Toplam Maaş",
+  "Years": "Yıl",
+  "February": "Şubat",
+  "March": "Mart",
+  "April": "Nisan",
+  "Assigned Risks": "Kayıt Olunan Riskler",
+  "There are no risks assigned.": "Risk Bulunmuyor",
+  "Assigned Action Items": "Kayıt Altına Alınan Maddeler",
+  "There are no action items assigned.": "Kayıt altına alınmış eğlem yok"
 }

@@ -40,5 +40,16 @@
         "Delivery Price": "Çatdırılma Qiyməti",
         "Delivery Min": "Minimum Çatdırılma",
         "Minimum Delivery": "Minimum Çatdırılma",
-        "Address": "Adres"
+        "Address": "Adres",
+        "Projects by": "Hesaba görə",
+        "account": "Proyektlər",
+        "Total Salary": "Ümumi Maaş",
+        "Years": "İl",
+        "February": "Fevral",
+        "March": "Mart",
+        "April": "Aprel",
+        "Assigned Risks": "Qeydə Alınmış Risklər",
+        "There are no risks assigned.": "Risk Qeydə Alınmayıb",
+        "Assigned Action Items": "Qeydə Alınmış Fəaliyyət Maddələri",
+        "There are no action items assigned.": "Qeydə alınmış fəaliyyət yoxdur."
 }

@@ -3,22 +3,23 @@ import Emptycell from "../../../components/Dashboard/Emptycell";
 import Statisticaltable from "../../../components/Dashboard/Statisticaltable";
 import Emptycelltwo from "../../../components/Dashboard/Emptycelltwo";
 import AdminDashboard from '../index'
+import Dashboard from "../../../components/Dashboard/Dashboard";
+import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
 
 function index() {
   return (
-    <AdminDashboard>
-      <div className="bg-bgb">
-      <div className="flex justify-end gap-gapp mb-5 ml-mlu">
-        <Doughnut />
-        <Statisticaltable />
-      </div>
-      <div className="flex justify-end gap-gapp">
-        <Emptycell />
-        <Emptycelltwo />
-      </div>
-    </div>
-    </AdminDashboard>
+    <>
+      <AdminDashboard>
+        <Dashboard />
+      </AdminDashboard>
+    </>
   );
 }
 
 export default index;
+
+export const getServerSideProps = async ({ locale }) => ({
+  props: {
+      ...(await serverSideTranslations(locale, ['common']))
+  }
+});
