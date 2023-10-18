@@ -19,6 +19,9 @@ module.exports = {
         '4': '4px',
         '5':'5px',
       },
+      boxShadow:{
+        'shadoww':'0px 4px 4px 0px rgba(0, 0, 0, 0.25);'
+      },
       padding: {
         '10px': '10px',
         '11px': '11px',
@@ -27,6 +30,10 @@ module.exports = {
         '57px':'57px',
         '6px':'6px',
         
+      },
+      gap:{
+        'gapp':'30px',
+        'gp': '45px'
       },
       margin:{
         "57px":"57px",
@@ -55,13 +62,19 @@ module.exports = {
         "40px":"40px",
         "48px":"48px",
         "58px":"58px",
-        "47px":"47px"
+        "47px":"47px",
+        'mll':'17px',
+        'mld': '153px',
+        'mtd': '22px',
+        'mlu': '16px'
       },
       height:{
         "input":"50px",
         "68px":"68px",
         '153':'153px',
-        "resinput":"28px"
+        "resinput":"28px",
+        'hh':'346px',
+        'dashh': '472px'
       },
       fontSize:{
         "28":"28px",
@@ -85,7 +98,10 @@ module.exports = {
         '318': '318px',
         '405': '405px',
         '33':'33px',
-        '41':'41px'
+        '41':'41px',
+        'wxl':'235px',
+        'wll': '174px',
+        'wsl': '472px'
       },
       colors:{
         'pink': '#C74FEB',
@@ -106,7 +122,9 @@ module.exports = {
       backgroundColor:{
         "loginBgc":"#38394E",
         "bgc":"#1E1E30",
-        "loginBtn":"#C035A2"
+        "loginBtn":"#C035A2",
+        'bgg':'#27283C',
+        'bgb': '#1E1E30'
       }
     },
   },
