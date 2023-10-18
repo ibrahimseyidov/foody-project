@@ -40,5 +40,16 @@
     "Delivery Price": "Delivery Price",
     "Delivery Min": "Delivery Min",
     "Minimum Delivery": "Minimum Delivery",
-    "Address": "Address"
+    "Address": "Address",
+    "Projects by": "Projects by",
+    "account": "account",
+    "Total Salary": "Total Salary",
+    "Years": "Years",
+    "February": "February",
+    "March": "March",
+    "April": "April",
+    "Assigned Risks": "Assigned Risks",
+    "There are no risks assigned.": "There are no risks assigned.",
+    "Assigned Action Items": "Assigned Action Items",
+    "There are no action items assigned.": "There are no action items assigned."
 }
