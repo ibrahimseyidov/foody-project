@@ -6,8 +6,8 @@ import Link from 'next/link'
 import Image from 'next/image'
 import { usePathname } from 'next/navigation'
 
-const ClientHeader = () => {
 
+const ClientHeader = () => {
     const pathname = usePathname()
 
     return (
@@ -46,3 +46,4 @@ const ClientHeader = () => {
 }
 
 export default ClientHeader
+

@@ -5,12 +5,16 @@ import ResCategoryType from '../../../components/Restaurants/ResCategoryType/Res
 import RestaurantItems from '../../../components/Restaurants/RestaurantItems'
 import EditModal from '../../../components/common/EditModal/EditModal'
 import DelModal from '../../../components/common/DelModal/DelModal'
+import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
+import { useTranslation } from 'next-i18next'
 
 const Restaurants = () => {
+    const { t } = useTranslation('common')
+
     return (
         <AdminDashboard>
             <ProductContainer>
-                <ResCategoryType pageName={'Restaurants'} />
+                <ResCategoryType pageName={t('Restaurants')} />
                 <RestaurantItems />
                 <DelModal />
                 <EditModal />
@@ -20,3 +24,10 @@ const Restaurants = () => {
 }
 
 export default Restaurants
+
+export const getServerSideProps = async ({ locale }) => ({
+    props: {
+        ...(await serverSideTranslations(locale, ['common']))
+    }
+
+});

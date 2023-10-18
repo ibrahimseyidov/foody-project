@@ -1,6 +1,7 @@
+import { appWithTranslation } from 'next-i18next';
 import '../styles/globals.css'
 import { Roboto } from 'next/font/google'
- 
+
 const roboto = Roboto({
   weight: ['400', '700', '900'],
   style: ['normal', 'italic'],
@@ -16,4 +17,4 @@ function MyApp({ Component, pageProps }) {
   )
 }
 
-export default MyApp
+export default appWithTranslation(MyApp);

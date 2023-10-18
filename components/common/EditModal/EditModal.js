@@ -11,8 +11,11 @@ import { closeAddProductModal, closeAddResModal, closeCategoryModalEdit, closeMo
 import Image from 'next/image'
 import AOS from 'aos';
 import 'aos/dist/aos.css';
+import { useTranslation } from 'next-i18next'
 
 const EditModal = () => {
+
+    const { t } = useTranslation('common')
 
     const selEditModal = useSelector((state) => state.modal.isActiveModal)
     const selAddProductModal = useSelector((state) => state.modal.isActiveAddProductModal)
@@ -41,52 +44,52 @@ const EditModal = () => {
                         <div className={styles['show-editmodal']} data-aos="fade-left" data-aos-duration="500">
 
                             <div className={styles['editmodal-head']}>
-                                <h3>Edit product</h3>
+                                <h3>{t('Edit product')}</h3>
                             </div>
                             <div className={styles["editmodal-top"]}>
                                 <div className={styles['editmodal-left-contain']}>
                                     <div className={styles['editmodal-left-top']}>
-                                        <h3>Edit product</h3>
-                                        <span>Upload your product image</span>
+                                        <h3>{t('Edit product')}</h3>
+                                        <span>{t('Upload your product image')}</span>
                                         <Image src={productImg} alt='product' />
                                     </div>
                                     <div className={styles['editmodal-left-bot']}>
                                         <span>
-                                            Edit your Product description and necessary information
+                                            {t('Edit your Product description and necessary information')}
                                         </span>
                                     </div>
                                 </div>
                                 <div className={styles['editmodal-right-contain']}>
                                     <div className={styles['mob-upload-text']}>
-                                        <span>Upload your restaurants image</span>
+                                        <span>{t('Upload your product image')}</span>
                                     </div>
                                     <div className={styles['editmodal-right-top']}>
                                         <button>
                                             <Image src={uploadImg} alt="upload" />
-                                            upload
+                                            {t('upload')}
                                         </button>
                                     </div>
                                     <div className={styles['editmodal-right-bot']}>
                                         <div className={styles['mob-restaurant-info']}>
                                             <span>
-                                                Add your Product description and necessary information
+                                                {t('Add your Product description and necessary information')}
                                             </span>
                                         </div>
                                         <form>
                                             <div className={styles['product-name']}>
-                                                <label htmlFor="name">Name</label>
-                                                <input type="text" id='price' placeholder='Product Name' />
+                                                <label htmlFor="name">{t('Name')}</label>
+                                                <input type="text" id='price' placeholder={t('Product Name')} />
                                             </div>
                                             <div className={styles['product-description']}>
-                                                <label htmlFor="description">Description</label>
-                                                <textarea name="description" id={styles['desc']} placeholder='Description'></textarea>
+                                                <label htmlFor="description">{t('Description')}</label>
+                                                <textarea name="description" id={styles['desc']} placeholder={t('Description')}></textarea>
                                             </div>
                                             <div className={styles['product-price']}>
-                                                <label htmlFor="price">Price</label>
-                                                <input type="text" id='price' placeholder='Price' />
+                                                <label htmlFor="price">{t('Price')}</label>
+                                                <input type="text" id='price' placeholder={t('Price')} />
                                             </div>
                                             <div className={styles['product-selectbox']}>
-                                                <label className={styles.restaurants} htmlFor="restaurants">Restaurants</label>
+                                                <label className={styles.restaurants} htmlFor="restaurants">{t('Restaurants')}</label>
                                                 {/* <Editselectbox /> */}
                                             </div>
                                         </form>
@@ -94,8 +97,8 @@ const EditModal = () => {
                                 </div>
                             </div>
                             <div className={styles['editmodal-bot']}>
-                                <button onClick={() => dispatch(closeModalEdit())} className={styles['edit-cancel']}>Cancel</button>
-                                <button className={styles['edit-update']}>Update Product</button>
+                                <button onClick={() => dispatch(closeModalEdit())} className={styles['edit-cancel']}>{t('Cancel')}</button>
+                                <button className={styles['edit-update']}>{t('Update Product')}</button>
                             </div>
                         </div>
                         <div className={styles['close-contain']}>
@@ -111,40 +114,40 @@ const EditModal = () => {
                             <div className={styles['show-editmodal']} data-aos="fade-left" data-aos-duration="500">
 
                                 <div className={styles['editmodal-head']}>
-                                    <h3>Add product</h3>
+                                    <h3>{t('Add product')}</h3>
                                 </div>
                                 <div className={styles["editmodal-top"]}>
                                     <div className={styles['editmodal-left-contain']}>
                                         <div className={styles['editmodal-left-top']}>
-                                            <h3>Add product</h3>
-                                            <span>Upload your product image</span>
+                                            <h3>{t('Add product')}</h3>
+                                            <span>{t('Upload your product image')}</span>
                                             {/* <Image src={productImg} alt='product' /> */}
                                         </div>
                                         <div className={styles['editmodal-left-bot']}>
                                             <span>
-                                                Add your Product description and necessary information
+                                                {t('Add your Product description and necessary information')}
                                             </span>
                                         </div>
                                     </div>
                                     <div className={styles['editmodal-right-contain']}>
                                         <div className={styles['mob-upload-text']}>
-                                            <span>Upload your restaurants image</span>
+                                            <span>{t('Upload your restaurants image')}</span>
                                         </div>
                                         <div className={styles['editmodal-right-top']}>
                                             <button>
                                                 <Image src={uploadImg} alt="upload" />
-                                                upload
+                                                {t('upload')}
                                             </button>
                                         </div>
                                         <div className={styles['editmodal-right-bot']}>
                                             <div className={styles['mob-restaurant-info']}>
                                                 <span>
-                                                    Add your Product description and necessary information
+                                                    {t('Add your Product description and necessary information')}
                                                 </span>
                                             </div>
                                             <form>
                                                 <div className={styles['product-name']}>
-                                                    <label htmlFor="name">Name</label>
+                                                    <label htmlFor="name">{t('Name')}</label>
                                                     <input type="text" id='price' placeholder='Product Name' />
                                                 </div>
                                                 <div className={styles['product-description']}>
@@ -164,8 +167,8 @@ const EditModal = () => {
                                     </div>
                                 </div>
                                 <div onClick={() => dispatch(closeAddProductModal())} className={styles['editmodal-bot']}>
-                                    <button className={styles['edit-cancel']}>Cancel</button>
-                                    <button className={styles['edit-update']}>Update Product</button>
+                                    <button className={styles['edit-cancel']}>{t('Cancel')}</button>
+                                    <button className={styles['edit-update']}>{t('Update Product')}</button>
                                 </div>
                             </div>
                             <div className={styles['close-contain']}>
@@ -176,82 +179,82 @@ const EditModal = () => {
                         </div>
                     </> : selAddResModal ?
                         <>
-                           <div className={styles.overlay}>
-                                    <div className={styles['show-editmodal']} data-aos="fade-left" data-aos-duration="500">
+                            <div className={styles.overlay}>
+                                <div className={styles['show-editmodal']} data-aos="fade-left" data-aos-duration="500">
 
-                                        <div className={styles['editmodal-head']}>
-                                            <h3>Add restaurants</h3>
+                                    <div className={styles['editmodal-head']}>
+                                        <h3>{t('Add restaurants')}</h3>
+                                    </div>
+                                    <div className={styles["editmodal-top"]}>
+                                        <div className={styles['editmodal-left-contain']}>
+                                            <div className={styles['editmodal-left-top']}>
+                                                <h3>{t('Add restaurants')}</h3>
+                                                <span>{t('Upload image')}</span>
+                                                {/* <Image src={} alt="restaurant" /> */}
+                                            </div>
+                                            <div className={styles['editmodal-left-bot']}>
+                                                <span>
+                                                    {t('Add your Restaurant information')}
+                                                </span>
+                                            </div>
                                         </div>
-                                        <div className={styles["editmodal-top"]}>
-                                            <div className={styles['editmodal-left-contain']}>
-                                                <div className={styles['editmodal-left-top']}>
-                                                    <h3>Add Restaurant</h3>
-                                                    <span>Upload image</span>
-                                                    {/* <Image src={} alt="restaurant" /> */}
-                                                </div>
-                                                <div className={styles['editmodal-left-bot']}>
+                                        <div className={styles['editmodal-right-contain']}>
+                                            <div className={styles['mob-upload-text']}>
+                                                <span>{t('Upload your restaurants image')}</span>
+                                            </div>
+                                            <div className={styles['editmodal-right-top']}>
+                                                <button>
+                                                    <Image src={uploadImg} alt="upload" />
+                                                    {t('upload')}
+                                                </button>
+                                            </div>
+                                            <div className={styles['editmodal-right-bot']}>
+                                                <div className={styles['mob-restaurant-info']}>
                                                     <span>
-                                                        Add your Restaurant information
+                                                        {t('Edit your Restaurants information')}
                                                     </span>
                                                 </div>
-                                            </div>
-                                            <div className={styles['editmodal-right-contain']}>
-                                                <div className={styles['mob-upload-text']}>
-                                                    <span>Upload your restaurants image</span>
-                                                </div>
-                                                <div className={styles['editmodal-right-top']}>
-                                                    <button>
-                                                        <Image src={uploadImg} alt="upload" />
-                                                        upload
-                                                    </button>
-                                                </div>
-                                                <div className={styles['editmodal-right-bot']}>
-                                                    <div className={styles['mob-restaurant-info']}>
-                                                        <span>
-                                                            Edit your Restaurants information
-                                                        </span>
+                                                <form>
+                                                    <div className={styles['product-name']}>
+                                                        <label htmlFor="name">{t('Name')}</label>
+                                                        <input type="text" id='price' placeholder={t('Product Name')} />
                                                     </div>
-                                                    <form>
-                                                        <div className={styles['product-name']}>
-                                                            <label htmlFor="name">Name</label>
-                                                            <input type="text" id='price' placeholder='Product Name' />
-                                                        </div>
-                                                        <div className={styles['product-description']}>
-                                                            <label htmlFor="description">Cuisine</label>
-                                                            <textarea name="description" id={styles['desc']} placeholder='Description'></textarea>
-                                                        </div>
-                                                        <div className={styles['product-price']}>
-                                                            <label htmlFor="deliveryprice">Delivery Price $</label>
-                                                            <input type="text" id='deliveryprice' placeholder='Price' />
-                                                        </div>
-                                                        <div className={styles['product-price']}>
-                                                            <label htmlFor="deliverymin">Delivery Min</label>
-                                                            <input type="text" id='deliverymin' placeholder='Minimum Delivery' />
-                                                        </div>
-                                                        <div className={styles['product-price']}>
-                                                            <label htmlFor="price">Address</label>
-                                                            <input type="text" id='price' placeholder='Address' />
-                                                        </div>
-                                                        <div className={styles['product-selectbox']}>
-                                                            <label className={styles.restaurants} htmlFor="restaurants">Restaurants</label>
-                                                            {/* <Editselectbox /> */}
-                                                        </div>
-                                                    </form>
-                                                </div>
+                                                    <div className={styles['product-description']}>
+                                                        <label htmlFor="description">{t('Cuisine')}</label>
+                                                        <textarea name="description" id={styles['desc']} placeholder={t('Description')}></textarea>
+                                                    </div>
+                                                    <div className={styles['product-price']}>
+                                                        <label htmlFor="deliveryprice">{t('Delivery Price')} $</label>
+                                                        <input type="text" id='deliveryprice' placeholder={t('Price')} />
+                                                    </div>
+                                                    <div className={styles['product-price']}>
+                                                        <label htmlFor="deliverymin">{t('Delivery Min')}</label>
+                                                        <input type="text" id='deliverymin' placeholder={t('Minimum Delivery')} />
+                                                    </div>
+                                                    <div className={styles['product-price']}>
+                                                        <label htmlFor="price">{t('Address')}</label>
+                                                        <input type="text" id='price' placeholder={t('Address')} />
+                                                    </div>
+                                                    <div className={styles['product-selectbox']}>
+                                                        <label className={styles.restaurants} htmlFor="restaurants">{t('Restaurants')}</label>
+                                                        {/* <Editselectbox /> */}
+                                                    </div>
+                                                </form>
                                             </div>
-                                        </div>
-                                        <div className={styles['editmodal-bot']}>
-                                            <button onClick={() => dispatch(closeAddResModal())} className={styles['edit-cancel']}>Cancel</button>
-                                            <button className={styles['edit-update']}>Update Product</button>
                                         </div>
                                     </div>
-
-                                    <div className={styles['close-contain']}>
-                                        <button onClick={() => dispatch(closeAddResModal())} className={styles['close-btn']} >
-                                            <Image src={closeBtn} alt="close-button" />
-                                        </button>
+                                    <div className={styles['editmodal-bot']}>
+                                        <button onClick={() => dispatch(closeAddResModal())} className={styles['edit-cancel']}>{t('Cancel')}</button>
+                                        <button className={styles['edit-update']}>{t('Update Product')}</button>
                                     </div>
                                 </div>
+
+                                <div className={styles['close-contain']}>
+                                    <button onClick={() => dispatch(closeAddResModal())} className={styles['close-btn']} >
+                                        <Image src={closeBtn} alt="close-button" />
+                                    </button>
+                                </div>
+                            </div>
                         </>
                         : selResEditModal ?
                             <>
@@ -259,60 +262,60 @@ const EditModal = () => {
                                     <div className={styles['show-editmodal']} data-aos="fade-left" data-aos-duration="500">
 
                                         <div className={styles['editmodal-head']}>
-                                            <h3>Edit restaurants</h3>
+                                            <h3>{t('Edit restaurants')}</h3>
                                         </div>
                                         <div className={styles["editmodal-top"]}>
                                             <div className={styles['editmodal-left-contain']}>
                                                 <div className={styles['editmodal-left-top']}>
-                                                    <h3>Edit Restaurant</h3>
-                                                    <span>Upload image</span>
+                                                    <h3>{t('Edit Restaurant')}</h3>
+                                                    <span>{t('Upload Image')}</span>
                                                     {/* <Image src={} alt="restaurant" /> */}
                                                 </div>
                                                 <div className={styles['editmodal-left-bot']}>
                                                     <span>
-                                                        Edit your Restaurant information
+                                                        {t('Edit your Restaurant information')}
                                                     </span>
                                                 </div>
                                             </div>
                                             <div className={styles['editmodal-right-contain']}>
                                                 <div className={styles['mob-upload-text']}>
-                                                    <span>Upload your restaurants image</span>
+                                                    <span>{t('Upload your restaurants image')}</span>
                                                 </div>
                                                 <div className={styles['editmodal-right-top']}>
                                                     <button>
                                                         <Image src={uploadImg} alt="upload" />
-                                                        upload
+                                                        {t('upload')}
                                                     </button>
                                                 </div>
                                                 <div className={styles['editmodal-right-bot']}>
                                                     <div className={styles['mob-restaurant-info']}>
                                                         <span>
-                                                            Edit your Restaurants information
+                                                            {t('Edit your Restaurants information')}
                                                         </span>
                                                     </div>
                                                     <form>
                                                         <div className={styles['product-name']}>
-                                                            <label htmlFor="name">Name</label>
-                                                            <input type="text" id='price' placeholder='Product Name' />
+                                                            <label htmlFor="name">{t('Name')}</label>
+                                                            <input type="text" id='price' placeholder={t('Product Name')} />
                                                         </div>
                                                         <div className={styles['product-description']}>
-                                                            <label htmlFor="description">Cuisine</label>
-                                                            <textarea name="description" id={styles['desc']} placeholder='Description'></textarea>
+                                                            <label htmlFor="description">{t('Cuisine')}</label>
+                                                            <textarea name="description" id={styles['desc']} placeholder={t('Description')}></textarea>
                                                         </div>
                                                         <div className={styles['product-price']}>
-                                                            <label htmlFor="deliveryprice">Delivery Price $</label>
-                                                            <input type="text" id='deliveryprice' placeholder='Price' />
+                                                            <label htmlFor="deliveryprice">{t('Delivery Price')} $</label>
+                                                            <input type="text" id='deliveryprice' placeholder={t('Price')} />
                                                         </div>
                                                         <div className={styles['product-price']}>
-                                                            <label htmlFor="deliverymin">Delivery Min</label>
-                                                            <input type="text" id='deliverymin' placeholder='Minimum Delivery' />
+                                                            <label htmlFor="deliverymin">{t('Delivery Min')}</label>
+                                                            <input type="text" id='deliverymin' placeholder={t('Minimum Delivery')} />
                                                         </div>
                                                         <div className={styles['product-price']}>
-                                                            <label htmlFor="price">Address</label>
-                                                            <input type="text" id='price' placeholder='Address' />
+                                                            <label htmlFor="price">{t('Address')}</label>
+                                                            <input type="text" id='price' placeholder={t('Address')} />
                                                         </div>
                                                         <div className={styles['product-selectbox']}>
-                                                            <label className={styles.restaurants} htmlFor="restaurants">Restaurants</label>
+                                                            <label className={styles.restaurants} htmlFor="restaurants">{t('Restaurants')}</label>
                                                             {/* <Editselectbox /> */}
                                                         </div>
                                                     </form>
@@ -320,8 +323,8 @@ const EditModal = () => {
                                             </div>
                                         </div>
                                         <div className={styles['editmodal-bot']}>
-                                            <button onClick={() => dispatch(closeResModalEdit())} className={styles['edit-cancel']}>Cancel</button>
-                                            <button className={styles['edit-update']}>Update Product</button>
+                                            <button onClick={() => dispatch(closeResModalEdit())} className={styles['edit-cancel']}>{t('Cancel')}</button>
+                                            <button className={styles['edit-update']}>{t('Update Product')}</button>
                                         </div>
                                     </div>
 
@@ -338,13 +341,13 @@ const EditModal = () => {
                                         <div className={styles['show-editmodal']} data-aos="fade-left" data-aos-duration="500">
 
                                             <div className={styles['editmodal-head']}>
-                                                <h3>Add Category</h3>
+                                                <h3>{t('Add Category')}</h3>
                                             </div>
                                             <div className={styles["editmodal-top"]}>
                                                 <div className={styles['editmodal-left-contain']}>
                                                     <div className={styles['editmodal-left-top']}>
-                                                        <h3>Add Category</h3>
-                                                        <span>Upload image</span>
+                                                        <h3>{t('Add Category')}</h3>
+                                                        <span>{t('Upload image')}</span>
                                                         {/* <Image src={productImg} alt='product' /> */}
                                                     </div>
                                                     <div className={`${styles['editmodal-left-bot']} mt-52 w-[260px]`}>
@@ -355,32 +358,32 @@ const EditModal = () => {
                                                 </div>
                                                 <div className={styles['editmodal-right-contain']}>
                                                     <div className={styles['mob-upload-text']}>
-                                                        <span>Upload your restaurants image</span>
+                                                        <span>{t('Upload your restaurants image')}</span>
                                                     </div>
                                                     <div className={styles['editmodal-right-top']}>
                                                         <button>
                                                             <Image src={uploadImg} alt="upload" />
-                                                            upload
+                                                            {t('upload')}
                                                         </button>
                                                     </div>
                                                     <div className={styles['editmodal-right-bot']}>
                                                         <div className={styles['mob-restaurant-info']}>
                                                             <span>
-                                                                Add your Product description and necessary information
+                                                                {t('Add your Product description and necessary information')}
                                                             </span>
                                                         </div>
                                                         <form>
                                                             <div className={styles['product-name']}>
-                                                                <label htmlFor="name">Name</label>
-                                                                <input type="text" id='price' placeholder='Category Name' />
+                                                                <label htmlFor="name">{t('Name')}</label>
+                                                                <input type="text" id='price' placeholder={t('Category Name')} />
                                                             </div>
                                                         </form>
                                                     </div>
                                                 </div>
                                             </div>
                                             <div className={`${styles['editmodal-bot']} pt-16`}>
-                                                <button onClick={() => dispatch(closeCategoryModalEdit())} className={styles['edit-cancel']}>Cancel</button>
-                                                <button className={styles['edit-update']}>Update Product</button>
+                                                <button onClick={() => dispatch(closeCategoryModalEdit())} className={styles['edit-cancel']}>{t('Cancel')}</button>
+                                                <button className={styles['edit-update']}>{t('Update Product')}</button>
                                             </div>
                                         </div>
                                         <div className={styles['close-contain']}>
@@ -395,53 +398,53 @@ const EditModal = () => {
                                         <div className={styles['show-editmodal']} data-aos="fade-left" data-aos-duration="500">
 
                                             <div className={styles['editmodal-head']}>
-                                                <h3>Add Offer</h3>
+                                                <h3>{t('Add Offer')}</h3>
                                             </div>
                                             <div className={styles["editmodal-top"]}>
                                                 <div className={styles['editmodal-left-contain']}>
                                                     <div className={styles['editmodal-left-top']}>
-                                                        <h3>Add Offer</h3>
-                                                        <span>Upload image</span>
+                                                        <h3>{t('Add Offer')}</h3>
+                                                        <span>{t('Upload image')}</span>
                                                         {/* <Image src={productImg} alt='product' /> */}
                                                     </div>
                                                     <div className={`${styles['editmodal-left-bot']} mt-52 w-[260px]`}>
                                                         <span>
-                                                            Add your Offer information
+                                                            {t('Add your Offer information')}
                                                         </span>
                                                     </div>
                                                 </div>
                                                 <div className={styles['editmodal-right-contain']}>
                                                     <div className={styles['mob-upload-text']}>
-                                                        <span>Upload your offer image</span>
+                                                        <span>{t('Upload your offer image')}</span>
                                                     </div>
                                                     <div className={styles['editmodal-right-top']}>
                                                         <button>
                                                             <Image src={uploadImg} alt="upload" />
-                                                            upload
+                                                            {t('upload')}
                                                         </button>
                                                     </div>
                                                     <div className={styles['editmodal-right-bot']}>
                                                         <div className={styles['mob-restaurant-info']}>
                                                             <span>
-                                                                Add your Product description and necessary information
+                                                                {t('Add your Product description and necessary information')}
                                                             </span>
                                                         </div>
                                                         <form>
                                                             <div className={styles['product-name']}>
-                                                                <label htmlFor="name">Title</label>
+                                                                <label htmlFor="name">{t('Title')}</label>
                                                                 <input type="text" id='price' placeholder='Title Name' />
                                                             </div>
                                                             <div className={styles['product-description']}>
-                                                                <label htmlFor="description">Description</label>
-                                                                <textarea name="description" id={styles['desc']} placeholder='Description'></textarea>
+                                                                <label htmlFor="description">{t('Description')}</label>
+                                                                <textarea name="description" id={styles['desc']} placeholder={t('Description')}></textarea>
                                                             </div>
                                                         </form>
                                                     </div>
                                                 </div>
                                             </div>
                                             <div className={`${styles['editmodal-bot']} pt-16`}>
-                                                <button onClick={() => dispatch(closeOfferModalEdit())} className={styles['edit-cancel']}>Cancel</button>
-                                                <button className={styles['edit-update']}>Update Product</button>
+                                                <button onClick={() => dispatch(closeOfferModalEdit())} className={styles['edit-cancel']}>{t('Cancel')}</button>
+                                                <button className={styles['edit-update']}>{t('Update Product')}</button>
                                             </div>
                                         </div>
                                         <div className={styles['close-contain']}>
