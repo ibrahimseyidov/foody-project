@@ -6,6 +6,7 @@ import { getStorage } from "firebase/storage";
 const firebaseConfig = {
     apiKey: "AIzaSyCwYduTq7WSuBMz_N5ifNglxViW2QGmU5A",
     authDomain: "foody-project-4611e.firebaseapp.com",
+    databaseURL: "https://foody-project-4611e-default-rtdb.firebaseio.com",
     projectId: "foody-project-4611e",
     storageBucket: "foody-project-4611e.appspot.com",
     messagingSenderId: "282915645606",
@@ -14,5 +15,4 @@ const firebaseConfig = {
 
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
-
 export const fileStorage = getStorage(app);

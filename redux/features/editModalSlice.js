@@ -1,7 +1,7 @@
 import { createSlice } from '@reduxjs/toolkit'
 
 const initialState = {
-    isActiveModal: false,
+    isActiveModal: '',
     isActiveAddProductModal: false,
     isActiveAddResModal: false,
     isActiveResModal: false,
@@ -13,8 +13,8 @@ export const editModalSlice = createSlice({
     name: 'modal',
     initialState,
     reducers: {
-        openModalEdit: (state) => {
-            state.isActiveModal = true;
+        openModalEdit: (state, action) => {
+            state.isActiveModal = action.payload;
         },
         closeModalEdit: (state) => {
             state.isActiveModal = false
