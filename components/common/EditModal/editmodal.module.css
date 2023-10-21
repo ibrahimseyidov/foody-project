@@ -8,6 +8,11 @@
     z-index: 999;
 } */
 
+.product-selectbox {
+    display: flex;
+    flex-direction: column;
+}
+
 .show-editmodal {
     transition: 0.5s all ease;
     width: 65.9%;
@@ -129,6 +134,7 @@
     font-weight: 500;
     line-height: 21px;
     letter-spacing: 0.1px;
+    margin-bottom: 12px;
 }
 
 .product-name :nth-child(2),

@@ -1,8 +1,20 @@
+'use client'
 import React from 'react'
 import styles from '../CategoryType/categorytype.module.css'
-// import SelectBox from '../../common/Selectbox/Selectbox'
+import SelectBox from '../../common/Selectbox/Selectbox'
+import { useQuery } from '@tanstack/react-query';
+import axios from 'axios';
 
 const CategoryType = ({pageName}) => {
+
+    const { data } = useQuery({
+        queryKey: ['products'],
+        queryFn: async () => {
+            const { data } = await axios.get('/api/products')
+            return data
+        },
+    })
+    
     return (
 
         <>
@@ -12,7 +24,7 @@ const CategoryType = ({pageName}) => {
                         <h2 className={styles['products-head-text']}>{pageName}</h2>
                     </div>
                     <div>
-                        {/* <SelectBox /> */}
+                        <SelectBox categories={...data} />
                     </div>
                 </div>
             </div>

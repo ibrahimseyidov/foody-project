@@ -18,6 +18,10 @@
     transform: scale(1.05) !important;
 }
 
+.product-detail {
+    padding: 0 10px 0 18px;
+}
+
 .product-detail h3 {
     color: #1E1E30;
     font-size: 18px;
