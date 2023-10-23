@@ -1,3 +1,4 @@
+"use client"
 import { Fragment, useState } from 'react'
 import { Menu, Transition } from '@headlessui/react'
 import { ChevronDownIcon } from '@heroicons/react/20/solid'
@@ -8,7 +9,7 @@ import { handleRestID } from '../../../redux/features/restaurantSlice'
 import { useDispatch } from 'react-redux';
 
 
-export default function SelectBox() {
+export default function EditSelectBox() {
 
     const { t } = useTranslation('common')
     const dispatch = useDispatch()
@@ -73,7 +74,6 @@ export default function SelectBox() {
                                     href="#"
                                     onClick={() => handleChangeCategory(restaurant?.name, restaurant?.id)}
                                     className='bg-gray-100 text-gray-900'>
-                                    {/* {category?.description} */}
                                     {restaurant?.name}
                                 </a>
                             </Menu.Item>

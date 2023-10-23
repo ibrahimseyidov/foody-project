@@ -5,13 +5,15 @@ import { useDispatch, useSelector } from 'react-redux'
 import { handleCategoryData } from '../../../redux/features/productSlice'
 import axios from 'axios'
 import { useQuery } from '@tanstack/react-query'
-import { useRouter } from 'next/navigation';
+import { handleResCategoryData, handleRestCategory } from '../../../redux/features/restaurantSlice'
+import { useRouter } from 'next/router';
 
-export default function SelectBox({ categories }) {
+export default function EditRestSelectBox() {
 
     const dispatch = useDispatch()
-    const router = useRouter()
+
     const selAllCategoryData = useSelector((state) => state.product.allCategoryData)
+    const router = useRouter()
 
     const [isCurrentCategory, setCurrentCategory] = useState()
 
@@ -32,16 +34,17 @@ export default function SelectBox({ categories }) {
         return categoryList
     }
 
-    const handleChangeCategory = (category) => {
-        router.push(`/admin/products?category=${category.slug}`)
-        setCurrentCategory(category.name)
-        dispatch(handleCategoryData(category))
+    const handleChangeCategory = (currentCategoryID, currentRestCategory) => {
+        router.push(`/admin/restaurants?category=${currentRestCategory.slug}`)
+        setCurrentCategory(currentRestCategory.name)
+        dispatch(handleRestCategory(currentCategoryID))
+        dispatch(handleResCategoryData(currentRestCategory))
     }
 
     return (
         <Menu as="div" className="relative inline-block text-left">
             <div>
-                <Menu.Button className="flex justify-between w-[199px] gap-x-1.5 rounded-xl bg-[#5A5B70] text-[#F2F2F2] px-4 py-2 text-sm font-semibold shadow-sm hover:opacity-90">
+                <Menu.Button className="flex justify-between w-[200px] gap-x-1.5 rounded-xl bg-[#5A5B70] text-[#F2F2F2] px-4 py-2 text-sm font-semibold shadow-sm hover:opacity-90">
                     {isCurrentCategory ? isCurrentCategory : 'Category type'}
                     <ChevronDownIcon className="-mr-1 h-5 w-5 text-gray-400" aria-hidden="true" />
                 </Menu.Button>
@@ -56,7 +59,7 @@ export default function SelectBox({ categories }) {
                 leaveFrom="transform opacity-100 scale-100"
                 leaveTo="transform opacity-0 scale-95"
             >
-                <Menu.Items className="absolute right-0 z-10 mt-2 w-[199px] rounded-md bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none" style={{ maxHeight: '250px', overflowY: 'auto' }}>
+                <Menu.Items className="absolute right-0 z-10 mt-2 w-[200px] rounded-md bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none" style={{ maxHeight: '250px', overflowY: 'auto' }}>
                     <style>
                         {`
                             ::-webkit-scrollbar {
@@ -82,7 +85,7 @@ export default function SelectBox({ categories }) {
                             <Menu.Item key={category?.id} className='hover:bg-[#C74FEB] hover:text-white ease-linear duration-200 py-2 px-3' >
                                 <a
                                     href="#"
-                                    onClick={() => handleChangeCategory(category)}
+                                    onClick={() => handleChangeCategory(category?.id, category)}
                                     className='bg-gray-100 text-gray-900'>
                                     {category?.name}
                                 </a>
