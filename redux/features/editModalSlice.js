@@ -4,7 +4,7 @@ const initialState = {
     isActiveModal: '',
     isActiveAddProductModal: false,
     isActiveAddResModal: false,
-    isActiveResModal: false,
+    isActiveResModal: '',
     isActiveCategoryModal: false,
     isActiveOfferModal: false
 }
@@ -31,8 +31,8 @@ export const editModalSlice = createSlice({
         closeAddResModal: (state) => {
             state.isActiveAddResModal = false
         },
-        openResModalEdit: (state) => {
-            state.isActiveResModal = true;
+        openResModalEdit: (state, action) => {
+            state.isActiveResModal = action.payload;
         },
         closeResModalEdit: (state) => {
             state.isActiveResModal = false;

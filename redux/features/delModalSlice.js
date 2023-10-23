@@ -2,6 +2,7 @@ import { createSlice } from '@reduxjs/toolkit'
 
 const initialState = {
     deLModalActive: '',
+    resDelModalActive: '',
     showOrderActive: false
 }
 
@@ -20,10 +21,16 @@ export const delModalSlice = createSlice({
         },
         closeOrderModal: (state) => {
             state.showOrderActive = false
+        },
+        openResDelModal: (state, action) => {
+            state.resDelModalActive = action.payload
+        },
+        closeResDelModal: (state) => {
+            state.resDelModalActive = false;
         }
     }
 })
 
-export const { openDelModal, closeDelModal, showOrderModal, closeOrderModal } = delModalSlice.actions
+export const { openDelModal, closeDelModal, showOrderModal, closeOrderModal, openResDelModal, closeResDelModal } = delModalSlice.actions
 
 export default delModalSlice.reducer

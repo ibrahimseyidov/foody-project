@@ -10,13 +10,13 @@ import Image from 'next/image'
 import AOS from 'aos';
 import 'aos/dist/aos.css';
 import EditSelectBox from '../EditSelectBox/EditSelectBox'
+import EditRestSelectBox from '../EditRestSelectBox/EditRestSelectBox'
+import AddResCategoryBox from '../AddResCategoryBox/AddResCategoryBox'
 import { useTranslation } from 'next-i18next'
 import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query'
 import { uuidGenerator } from '../../../utils/uuidGenerator'
 import { getDownloadURL, ref, uploadBytes } from "firebase/storage"
 import { fileStorage } from '../../../server/configs/firebase'
-import { handleRestName } from '../../../redux/features/restaurantSlice'
-import { handleAllCategoryData } from '../../../redux/features/productSlice'
 
 const EditModal = () => {
 
@@ -31,22 +31,33 @@ const EditModal = () => {
         "description": '',
         "price": ''
     })
-
-    const uptProductName = useRef()
-    const uptProductPrice = useRef()
-    const uptProductDesc = useRef()
+    const [currentRestData, setCurrentRestData] = useState({
+        "cuisine": '',
+        "delivery_price": '',
+        "delivery_min": '',
+        "address": '',
+        "name": ''
+    })
 
     const productName = useRef()
     const productDesc = useRef()
     const productPrice = useRef()
 
+    const restName = useRef()
+    const restDesc = useRef()
+    const restDelPrice = useRef()
+    const restDelMin = useRef()
+    const restAddress = useRef()
+
     const productNameRef = productName.current
     const productDescRef = productDesc.current
     const productPriceRef = productPrice.current
 
-    const uptProductNameRef = uptProductName.current
-    const uptProductPriceRef = uptProductPrice.current
-    const uptProductDescRef = uptProductDesc.current
+    const restNameRef = restName.current
+    const restDescRef = restDesc.current
+    const restDelPriceRef = restDelPrice.current
+    const restDelMinRef = restDelMin.current
+    const restAddressRef = restAddress.current
 
     const selEditModal = useSelector((state) => state.modal.isActiveModal)
     const selAddProductModal = useSelector((state) => state.modal.isActiveAddProductModal)
@@ -55,7 +66,10 @@ const EditModal = () => {
     const selCategoryEditModal = useSelector((state) => state.modal.isActiveCategoryModal)
     const selOfferEditModal = useSelector((state) => state.modal.isActiveOfferModal)
     const selProductRestID = useSelector((state) => state.restaurant.isActiveRestID)
+    const selRestCategoryID = useSelector((state) => state.restaurant.isActiveRestCategory)
     const dispatch = useDispatch()
+
+    // *Product Data Handling
 
     const { mutate: addProduct } = useMutation({
         mutationFn: async () => await axios.post('/api/products', {
@@ -96,6 +110,53 @@ const EditModal = () => {
         }
     })
 
+    // !Restaurant Data Handling
+
+    const { mutate: addRest } = useMutation({
+        mutationFn: async () => await axios.post('/api/restuarants', {
+            "cuisine": restDescRef.value,
+            "delivery_price": +(restDelPriceRef.value),
+            "category_id": selProductRestID,
+            "delivery_min": +(restDelMinRef.value),
+            "address": restAddressRef.value,
+            "name": restNameRef.value,
+            "img_url": lastProductImg,
+        }),
+        onSuccess: () => {
+            dispatch(closeAddResModal())
+            setLastProductImg(null)
+            setAddProductImg(null)
+            alert('success')
+            queryClient.invalidateQueries(['restaurants'])
+        },
+        onError: () => {
+            alert('error')
+        }
+    })
+
+    const { mutate: updateRest } = useMutation({
+        mutationFn: async () => await axios.put(`/api/restuarants/${selResEditModal?.id}`, {
+            "name": currentRestData.name,
+            "category_id": selRestCategoryID ? selRestCategoryID : currentRestData.category_id,
+            "img_url": lastProductImg ? lastProductImg : currentRestData.img_url,
+            "cuisine": currentRestData.cuisine,
+            "address": currentRestData.address,
+            "delivery_min": +(currentRestData.delivery_min),
+            "delivery_price": +(currentRestData.delivery_price),
+        }),
+        onSuccess: () => {
+            dispatch(closeResModalEdit())
+            setAddProductImg(null)
+            alert('success')
+            queryClient.invalidateQueries(['restaurants'])
+        },
+        onError: () => {
+            alert('error')
+        }
+    })
+
+    // *Category Data Handling
+
     const { mutate: addCategory } = useMutation({
         mutationFn: async () => await axios.post('/api/category', {
             "name": productDescRef.value,
@@ -116,13 +177,14 @@ const EditModal = () => {
     useEffect(() => {
         AOS.init()
         setCurrentProductData(selEditModal)
+        setCurrentRestData(selResEditModal)
         const htmlEl = document.querySelector('html');
         if (selEditModal) {
             htmlEl.style.overflow = 'hidden';
         } else {
             htmlEl.style.overflow = 'auto';
         }
-    }, [selEditModal])
+    }, [selEditModal, selResEditModal])
 
     const handleNewProductImg = (e) => {
         const selectedFile = e.target.files[0]
@@ -172,6 +234,44 @@ const EditModal = () => {
         setCurrentProductData(updatedProductData)
     }
 
+    const handleCreateRest = () => {
+        addRest()
+    }
+
+    const handleUpdateRest = () => {
+        updateRest()
+    }
+
+    const handleChangeRestName = (e) => {
+        const updatedRestData = { ...currentRestData };
+        updatedRestData.name = e.target.value;
+        setCurrentRestData(updatedRestData)
+    }
+
+    const handleChangeCuisineName = (e) => {
+        const updatedRestData = { ...currentRestData };
+        updatedRestData.cuisine = e.target.value;
+        setCurrentRestData(updatedRestData)
+    }
+
+    const handleChangeDelPriceName = (e) => {
+        const updatedRestData = { ...currentRestData };
+        updatedRestData.delivery_price = e.target.value;
+        setCurrentRestData(updatedRestData)
+    }
+
+    const handleChangeDelMinName = (e) => {
+        const updatedRestData = { ...currentRestData };
+        updatedRestData.delivery_min = e.target.value;
+        setCurrentRestData(updatedRestData)
+    }
+
+    const handleChangeAddressName = (e) => {
+        const updatedRestData = { ...currentRestData };
+        updatedRestData.address = e.target.value;
+        setCurrentRestData(updatedRestData)
+    }
+
     return (
         <>
             {selEditModal ?
@@ -215,15 +315,15 @@ const EditModal = () => {
                                         <form>
                                             <div className={styles['product-name']}>
                                                 <label htmlFor="name">{t('Name')}</label>
-                                                <input ref={uptProductName} type="text" id='price' onChange={(e) => handleChangeProductName(e)} value={currentProductData?.name} placeholder={t('Product Name')} />
+                                                <input type="text" id='price' onChange={(e) => handleChangeProductName(e)} value={currentProductData?.name} placeholder={t('Product Name')} />
                                             </div>
                                             <div className={styles['product-description']}>
                                                 <label htmlFor="description">{t('Description')}</label>
-                                                <textarea ref={uptProductDesc} name="description" onChange={(e) => handleChangeProductDesc(e)} value={currentProductData?.description} id={styles['desc']} placeholder={t('Description')}></textarea>
+                                                <textarea name="description" onChange={(e) => handleChangeProductDesc(e)} value={currentProductData?.description} id={styles['desc']} placeholder={t('Description')}></textarea>
                                             </div>
                                             <div className={styles['product-price']}>
                                                 <label htmlFor="price">{t('Price')}</label>
-                                                <input ref={uptProductPrice} type="text" onChange={(e) => handleChangeProductPrice(e)} value={currentProductData?.price} id='price' placeholder={t('Price')} />
+                                                <input type="text" onChange={(e) => handleChangeProductPrice(e)} value={currentProductData?.price} id='price' placeholder={t('Price')} />
                                             </div>
                                             <div className={styles['product-selectbox']}>
                                                 <label className={styles.restaurants} htmlFor="restaurants">{t('Restaurants')}</label>
@@ -328,7 +428,7 @@ const EditModal = () => {
                                             <div className={styles['editmodal-left-top']}>
                                                 <h3>{t('Add restaurants')}</h3>
                                                 <span>{t('Upload image')}</span>
-                                                {/* <Image src={} alt="restaurant" /> */}
+                                                {addProductImg && <Image src={addProductImg} width={200} height={200} alt='product' />}
                                             </div>
                                             <div className={styles['editmodal-left-bot']}>
                                                 <span>
@@ -341,9 +441,10 @@ const EditModal = () => {
                                                 <span>{t('Upload your restaurants image')}</span>
                                             </div>
                                             <div className={styles['editmodal-right-top']}>
-                                                <button>
+                                                <button className='flex flex-col items-center relative'>
                                                     <Image src={uploadImg} alt="upload" />
                                                     {t('upload')}
+                                                    <input onChange={(e) => handleNewProductImg(e)} className='absolute -top-4 w-[100px] h-[120px]' type="file" style={{ opacity: 0, cursor: 'pointer' }} />
                                                 </button>
                                             </div>
                                             <div className={styles['editmodal-right-bot']}>
@@ -355,27 +456,27 @@ const EditModal = () => {
                                                 <form>
                                                     <div className={styles['product-name']}>
                                                         <label htmlFor="name">{t('Name')}</label>
-                                                        <input type="text" id='price' placeholder={t('Product Name')} />
+                                                        <input ref={restName} type="text" id='name' placeholder={t('Restaurant Name')} />
                                                     </div>
                                                     <div className={styles['product-description']}>
                                                         <label htmlFor="description">{t('Cuisine')}</label>
-                                                        <textarea name="description" id={styles['desc']} placeholder={t('Description')}></textarea>
+                                                        <textarea ref={restDesc} name="description" id={styles['desc']} placeholder={t('Description')}></textarea>
                                                     </div>
                                                     <div className={styles['product-price']}>
                                                         <label htmlFor="deliveryprice">{t('Delivery Price')} $</label>
-                                                        <input type="text" id='deliveryprice' placeholder={t('Price')} />
+                                                        <input ref={restDelPrice} type="text" id='deliveryprice' placeholder={t('Price')} />
                                                     </div>
                                                     <div className={styles['product-price']}>
                                                         <label htmlFor="deliverymin">{t('Delivery Min')}</label>
-                                                        <input type="text" id='deliverymin' placeholder={t('Minimum Delivery')} />
+                                                        <input ref={restDelMin} type="text" id='deliverymin' placeholder={t('Minimum Delivery')} />
                                                     </div>
                                                     <div className={styles['product-price']}>
-                                                        <label htmlFor="price">{t('Address')}</label>
-                                                        <input type="text" id='price' placeholder={t('Address')} />
+                                                        <label htmlFor="address">{t('Address')}</label>
+                                                        <input ref={restAddress} type="text" id='address' placeholder={t('Address')} />
                                                     </div>
                                                     <div className={styles['product-selectbox']}>
-                                                        <label className={styles.restaurants} htmlFor="restaurants">{t('Restaurants')}</label>
-                                                        {/* <Editselectbox /> */}
+                                                        <label className={styles.restaurants} htmlFor="restaurants">{t('Category')}</label>
+                                                        <AddResCategoryBox />
                                                     </div>
                                                 </form>
                                             </div>
@@ -383,7 +484,7 @@ const EditModal = () => {
                                     </div>
                                     <div className={styles['editmodal-bot']}>
                                         <button onClick={() => dispatch(closeAddResModal())} className={styles['edit-cancel']}>{t('Cancel')}</button>
-                                        <button className={styles['edit-update']}>{t('Update Product')}</button>
+                                        <button onClick={() => handleCreateRest()} className={styles['edit-update']}>{t('Create Restaurant')}</button>
                                     </div>
                                 </div>
 
@@ -407,7 +508,7 @@ const EditModal = () => {
                                                 <div className={styles['editmodal-left-top']}>
                                                     <h3>{t('Edit Restaurant')}</h3>
                                                     <span>{t('Upload Image')}</span>
-                                                    {/* <Image src={} alt="restaurant" /> */}
+                                                    {selResEditModal.img_url && !addProductImg ? <Image src={selResEditModal.img_url} width={200} height={200} alt='restaurant' /> : <Image src={addProductImg} width={200} height={200} alt='restaurant' />}
                                                 </div>
                                                 <div className={styles['editmodal-left-bot']}>
                                                     <span>
@@ -420,9 +521,10 @@ const EditModal = () => {
                                                     <span>{t('Upload your restaurants image')}</span>
                                                 </div>
                                                 <div className={styles['editmodal-right-top']}>
-                                                    <button>
+                                                    <button className='flex flex-col items-center relative'>
                                                         <Image src={uploadImg} alt="upload" />
                                                         {t('upload')}
+                                                        <input onChange={(e) => handleNewProductImg(e)} className='absolute -top-4 w-[100px] h-[120px]' type="file" style={{ opacity: 0, cursor: 'pointer' }} />
                                                     </button>
                                                 </div>
                                                 <div className={styles['editmodal-right-bot']}>
@@ -433,28 +535,28 @@ const EditModal = () => {
                                                     </div>
                                                     <form>
                                                         <div className={styles['product-name']}>
-                                                            <label htmlFor="name">{t('Name')}</label>
-                                                            <input type="text" id='price' placeholder={t('Product Name')} />
+                                                            <label htmlFor="restaurant">{t('Name')}</label>
+                                                            <input type="text" id='restaurant' onChange={(e) => handleChangeRestName(e)} value={currentRestData?.name} placeholder={t('Restaurant Name')} />
                                                         </div>
                                                         <div className={styles['product-description']}>
                                                             <label htmlFor="description">{t('Cuisine')}</label>
-                                                            <textarea name="description" id={styles['desc']} placeholder={t('Description')}></textarea>
+                                                            <textarea name="description" id={styles['desc']} onChange={(e) => handleChangeCuisineName(e)} value={currentRestData?.cuisine} placeholder={t('Cuisine')}></textarea>
                                                         </div>
                                                         <div className={styles['product-price']}>
                                                             <label htmlFor="deliveryprice">{t('Delivery Price')} $</label>
-                                                            <input type="text" id='deliveryprice' placeholder={t('Price')} />
+                                                            <input type="text" id='deliveryprice' onChange={(e) => handleChangeDelPriceName(e)} value={currentRestData?.delivery_price} placeholder={t('Deliverey Price')} />
                                                         </div>
                                                         <div className={styles['product-price']}>
                                                             <label htmlFor="deliverymin">{t('Delivery Min')}</label>
-                                                            <input type="text" id='deliverymin' placeholder={t('Minimum Delivery')} />
+                                                            <input type="text" id='deliverymin' onChange={(e) => handleChangeDelMinName(e)} value={currentRestData?.delivery_min} placeholder={t('Minimum Delivery')} />
                                                         </div>
                                                         <div className={styles['product-price']}>
-                                                            <label htmlFor="price">{t('Address')}</label>
-                                                            <input type="text" id='price' placeholder={t('Address')} />
+                                                            <label htmlFor="address">{t('Address')}</label>
+                                                            <input type="text" id='address' onChange={(e) => handleChangeAddressName(e)} value={currentRestData?.address} placeholder={t('Address')} />
                                                         </div>
                                                         <div className={styles['product-selectbox']}>
                                                             <label className={styles.restaurants} htmlFor="restaurants">{t('Restaurants')}</label>
-                                                            {/* <Editselectbox /> */}
+                                                            <EditRestSelectBox />
                                                         </div>
                                                     </form>
                                                 </div>
@@ -462,7 +564,7 @@ const EditModal = () => {
                                         </div>
                                         <div className={styles['editmodal-bot']}>
                                             <button onClick={() => dispatch(closeResModalEdit())} className={styles['edit-cancel']}>{t('Cancel')}</button>
-                                            <button className={styles['edit-update']}>{t('Update Product')}</button>
+                                            <button onClick={() => handleUpdateRest()} className={styles['edit-update']}>{t('Update Restaurant')}</button>
                                         </div>
                                     </div>
 

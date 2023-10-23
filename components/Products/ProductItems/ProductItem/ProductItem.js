@@ -10,9 +10,10 @@ import Image from 'next/image';
 import { useQuery } from '@tanstack/react-query';
 import axios from 'axios';
 import { useRouter } from 'next/navigation';
+import { useEffect } from 'react';
 
 const ProductItem = ({ productsData }) => {
-    const { data } = productsData.result
+    const { data } = productsData?.result
 
     const dispatch = useDispatch()
     const selActiveProductCategory = useSelector((state) => state.product.isActiveProductCategory)
@@ -34,13 +35,16 @@ const ProductItem = ({ productsData }) => {
         }
     };
 
+    useEffect(() => {
+        router.push(`/admin/products`)
+    },[])
+
     const handleRestName = (productID) => {
         return restData?.result.data.filter((rest) => rest.id === productID)[0]?.name
     }
 
     const handleProdutData = () => {
         if (selActiveProductCategory) {
-            router.push(`/admin/products?category=${selActiveProductCategory.slug}`)
             const filteredProducts = data?.filter((product) => product.description === selActiveProductCategory.name)
             return filteredProducts?.map((product) => (
                 <motion.div
