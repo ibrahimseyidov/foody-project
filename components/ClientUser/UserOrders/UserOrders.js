@@ -1,13 +1,11 @@
 import Image from 'next/image'
 import React from 'react'
-import ProfileLayout from '../../../components/common/ProfileLayout/ProfileLayout'
-import styles from './orders.module.css'
+import styles from './userorders.module.css'
 import dots from '../../../assets/icons/dots.svg'
 
-const index = () => {
+const UserOrders = () => {
     return (
         <>
-            <ProfileLayout>
                 <div className={styles['orders-bg']}>
                     <div className={styles['orders-head']}>
                         <h2>Your Orders</h2>
@@ -68,9 +66,8 @@ const index = () => {
                         </table>
                     </div>
                 </div>
-            </ProfileLayout>
         </>
     )
 }
 
-export default index
+export default UserOrders

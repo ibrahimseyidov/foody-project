@@ -1,4 +1,3 @@
-'use client'
 import React, { useEffect } from 'react'
 import styles from '../HomeSection3/homesection3.module.css'
 import Image from 'next/image'

@@ -2,8 +2,11 @@ import Head from "next/head";
 import '../components/common/ClientHeader/ClientHeader'
 import ClientContainer from "../components/common/ClientContainer/ClientContainer";
 import ClientHome from "../components/ClientHome/ClientHome";
+import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
+import { Provider } from "react-redux";
+import { store } from '../redux/app/store'
 
-const Home = () => {
+const Client = () => {
 
   return (
     <div lang="en">
@@ -14,12 +17,20 @@ const Home = () => {
       </Head>
 
       <>
+        <Provider store={store}>
           <ClientContainer>
             <ClientHome />
           </ClientContainer>
+        </Provider>
       </>
     </div>
   );
 };
 
-export default Home;
+export default Client;
+
+export const getServerSideProps = async ({ locale }) => ({
+  props: {
+    ...(await serverSideTranslations(locale, ['common']))
+  }
+});

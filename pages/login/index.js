@@ -2,8 +2,11 @@
 import Head from "next/head";
 import { useRouter } from "next/router";
 import ClientHeader from "../../components/ClientHeader/ClientHeader";
+import { useTranslation } from 'next-i18next'
+
 export default function LoginPage() {
-    const{push,query} = useRouter()
+  const { t } = useTranslation('common')
+  const { push, query } = useRouter()
   return (
     <>
       <Head>
@@ -12,7 +15,7 @@ export default function LoginPage() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <main className="sm:mr-32px sm:ml-32px">
-        <ClientHeader/>
+        <ClientHeader />
         <div className="flex-col mx-3 my-3 flex sm:flex-row sm:mx-0 ">
           <div className="bg-clientRed h-fit rounded-4 sm:mr-10 ">
             <img
@@ -24,16 +27,16 @@ export default function LoginPage() {
           <div className="">
             <div className="flex ml-20 flex-row sm:gap-x-16 sm:ml-174px sm:mb-18 sm:mt-105px mt-11 gap-x-9 mb-15">
               <p className="text-clientRed sm:text-3xl text-xl font-medium ">
-                Login
+                {t('Login')}
               </p>
-              <p onClick={()=>push('/register')} className="cursor-pointer text-clientGray sm:text-3xl text-xl font-normal sm:mr-48">
-                Register
+              <p onClick={() => push('/register')} className="cursor-pointer text-clientGray sm:text-3xl text-xl font-normal sm:mr-48">
+                {t('Register')}
               </p>
             </div>
             <div className="">
               <div className="mb-26px">
                 <p className=" font-body text-lg sm:mb-10px  text-grayInput sm:text-xl mb-4 font-medium">
-                  Username
+                  {t('Username')}
                 </p>
                 <input
                   placeholder="Username"
@@ -42,7 +45,7 @@ export default function LoginPage() {
               </div>
               <div className="mb-26px">
                 <p className=" font-body sm:mb-10px text-lg text-grayInput sm:text-xl mb-4 font-medium">
-                  Password
+                  {t('Password')}
                 </p>
                 <input
                   type="password"
@@ -52,7 +55,7 @@ export default function LoginPage() {
               </div>
             </div>
             <button className="w-full text-22 text-white sm:h-68px bg-clientRed font-medium h-14">
-              Login 
+              {t('Login')}
             </button>
           </div>
         </div>

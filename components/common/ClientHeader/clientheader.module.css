@@ -21,7 +21,11 @@
     align-items: center;
 }
 
-.header-right-container :nth-child(1) {
+.search-inp {
+    display: flex;
+}
+
+.search-inp :nth-child(1) {
     width: 304px;
     height: 45px;
     border-radius: 10px;
@@ -35,11 +39,7 @@
     margin-right: 31px;
 }
 
-.header-right-container :nth-child(2) {
-    margin-right: 27px;
-}
-
-.header-right-container :nth-child(3) {
+.signup-btn :nth-child(1) {
     background-color: #D63626;
     border-radius: 30px;
     display: flex;
