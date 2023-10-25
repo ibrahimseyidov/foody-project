@@ -4,15 +4,17 @@ import pizzas from '../../../../assets/icons/pizzas.svg'
 import plus from '../../../../assets/icons/plus.svg';
 import whitePlus from '../../../../assets/icons/whitePlus.svg'
 import styles from './restaurantdetailleft.module.css'
+import { useTranslation } from 'next-i18next';
 
 const RestaurantDetailLeft = () => {
+    const { t } = useTranslation('common')
 
     return (
         <>
             <div className={styles['products-bg']}>
 
                 <div className={styles['products-text']}>
-                    <h2>Products</h2>
+                    <h2>{t('Products')}</h2>
                 </div>
 
                 <div className={styles['product-card']}>
@@ -21,7 +23,7 @@ const RestaurantDetailLeft = () => {
                             <Image src={pizzas} alt='food' />
                         </div>
                         <div className={styles['detail-title']}>
-                            <h3>Papa John's Pizza Restaurant</h3>
+                            <h3>Papa John's Pizza {t('Restaurant')}</h3>
                             <span>Prepared with a patty, a slice of cheese and special sauce</span>
                         </div>
                     </div>
@@ -39,7 +41,7 @@ const RestaurantDetailLeft = () => {
                             <Image src={pizzas} alt='food' />
                         </div>
                         <div className={styles['detail-title']}>
-                            <h3>Papa John's Pizza Restaurant</h3>
+                            <h3>Papa John's Pizza {t('Restaurant')}</h3>
                             <span>Prepared with a patty, a slice of cheese and special sauce</span>
                         </div>
                     </div>
@@ -57,7 +59,7 @@ const RestaurantDetailLeft = () => {
                             <Image src={pizzas} alt='food' />
                         </div>
                         <div className={styles['detail-title']}>
-                            <h3>Papa John's Pizza Restaurant</h3>
+                            <h3>Papa John's Pizza {t('Restaurant')}</h3>
                             <span>Prepared with a patty, a slice of cheese and special sauce</span>
                         </div>
                     </div>
@@ -75,7 +77,7 @@ const RestaurantDetailLeft = () => {
                             <Image src={pizzas} alt='food' />
                         </div>
                         <div className={styles['detail-title']}>
-                            <h3>Papa John's Pizza Restaurant</h3>
+                            <h3>Papa John's Pizza {t('Restaurant')}</h3>
                             <span>Prepared with a patty, a slice of cheese and special sauce</span>
                         </div>
                     </div>
@@ -93,7 +95,7 @@ const RestaurantDetailLeft = () => {
                             <Image src={pizzas} alt='food' />
                         </div>
                         <div className={styles['detail-title']}>
-                            <h3>Papa John's Pizza Restaurant</h3>
+                            <h3>Papa John's Pizza {t('Restaurant')}</h3>
                             <span>Prepared with a patty, a slice of cheese and special sauce</span>
                         </div>
                     </div>
@@ -111,7 +113,7 @@ const RestaurantDetailLeft = () => {
                             <Image src={pizzas} alt='food' />
                         </div>
                         <div className={styles['detail-title']}>
-                            <h3>Papa John's Pizza Restaurant</h3>
+                            <h3>Papa John's Pizza {t('Restaurant')}</h3>
                             <span>Prepared with a patty, a slice of cheese and special sauce</span>
                         </div>
                     </div>
@@ -129,7 +131,7 @@ const RestaurantDetailLeft = () => {
                             <Image src={pizzas} alt='food' />
                         </div>
                         <div className={styles['detail-title']}>
-                            <h3>Papa John's Pizza Restaurant</h3>
+                            <h3>Papa John's Pizza {t('Restaurant')}</h3>
                             <span>Prepared with a patty, a slice of cheese and special sauce</span>
                         </div>
                     </div>

@@ -1,4 +1,3 @@
-'use client'
 import React, { useEffect } from 'react'
 import Image from 'next/image'
 import foodImg1 from '../../../assets/images/foodImages/foodImg1.svg'

@@ -1,4 +1,3 @@
-'use client'
 import React, { useEffect } from 'react'
 import Image from 'next/image'
 import homeImg1 from '../../../assets/images/homeImg1.svg'
@@ -7,8 +6,10 @@ import homeImg3 from '../../../assets/images/homeImg3.svg'
 import styles from './homesection2.module.css'
 import AOS from 'aos';
 import 'aos/dist/aos.css';
+import { useTranslation } from 'next-i18next'
 
 const HomeSection1 = () => {
+  const { t } = useTranslation('common')
 
   useEffect(() => {
     AOS.init()
@@ -20,7 +21,7 @@ const HomeSection1 = () => {
       <section className='mb-72' data-aos="zoom-in-down">
         <div>
           <div className='flex items-center flex-col mb-10'>
-            <h2 className={styles.features}>Features</h2>
+            <h2 className={styles.features}>{t('Features')}</h2>
             <p className={styles['home-para']}>
               Lorem ipsum is placeholder text commonly used in the graphic, print, and publishing industries for previewing layouts and visual mockups.
             </p>
@@ -28,17 +29,17 @@ const HomeSection1 = () => {
           <div className='flex justify-center'>
             <div className={styles['home-card']}>
               <Image src={homeImg1} alt='homeImage' />
-              <h3>Discount Boucher</h3>
+              <h3>{t('Discount Boucher')}</h3>
               <p>Lorem ipsum is placeholder commonly used in the graphic</p>
             </div>
             <div className={styles['home-card']}>
               <Image src={homeImg2} alt='homeImage' />
-              <h3>Fresh healthy Food</h3>
+              <h3>{t('Fresh healthy Food')}</h3>
               <p>Lorem ipsum is placeholder commonly used in the graphic</p>
             </div>
             <div className={styles['home-card']}>
               <Image src={homeImg3} alt='homeImage' />
-              <h3>Fast Home Delivery</h3>
+              <h3>{t('Fast Home Delivery')}</h3>
               <p>Lorem ipsum is placeholder commonly used in the graphic</p>
             </div>
           </div>

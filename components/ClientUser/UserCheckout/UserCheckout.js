@@ -3,7 +3,7 @@ import React from 'react'
 import { useState } from 'react'
 import ProfileLayout from '../../../components/common/ProfileLayout/ProfileLayout'
 import success from '../../../assets/images/success.svg'
-import styles from './checkout.module.css'
+import styles from './usercheckout.module.css'
 import Image from 'next/image'
 
 const index = () => {
@@ -23,7 +23,6 @@ const index = () => {
 
     return (
         <>
-            <ProfileLayout>
                 <div className={styles['checkout-bg']}>
                     <h2 className={styles['checkout-text']}>Checkout</h2>
                     <div>
@@ -92,7 +91,6 @@ const index = () => {
                         <span>Your order has been received</span>
                     </div>
                 </div> */}
-            </ProfileLayout>
         </>
     )
 }

@@ -1,11 +1,13 @@
-'use client'
 import React, { useEffect, useState } from 'react'
 import ClientContainer from '../../components/common/ClientContainer/ClientContainer'
 import styles from './faq.module.css'
 import AOS from 'aos';
 import 'aos/dist/aos.css';
+import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
+import { useTranslation } from 'next-i18next';
 
 const index = () => {
+    const { t } = useTranslation('common')
 
     useEffect(() => {
         AOS.init()
@@ -26,12 +28,12 @@ const index = () => {
             <ClientContainer>
                 <section className='mt-20 mx-48 mb-72' data-aos='fade-up'>
                     <div className='flex justify-center'>
-                        <h2 className={styles.faq}>F.A.Q</h2>
+                        <h2 className={styles.faq}>{t('F.A.Q')}</h2>
                     </div>
                     <div>
                         <div className={styles['faq-card-container']}>
                             <div className={styles['faq-card']}>
-                                <span>How to contact with Customer Service?</span>
+                                <span>{t('How to contact with Customer Service?')}</span>
                                 {isOpenedMenu === 'service' && isOpenedMenu !== 'service-close' ?
                                     <button onClick={() => handleFAQCloseMenu('service-close')}>
                                         -
@@ -45,14 +47,14 @@ const index = () => {
                             {isOpenedMenu === 'service' &&
                                 <div className={styles['faq-para']}>
                                     <p>
-                                        Our Customer Experience Team is available 7 days a week and we offer 2 ways to get in contact.Email and Chat . We try to reply quickly, so you need not to wait too long for a response!.
+                                        {t('Our Customer Experience Team is available 7 days a week and we offer 2 ways to get in contact.Email and Chat . We try to reply quickly, so you need not to wait too long for a response!.')}
                                     </p>
                                 </div>
                             }
                         </div>
                         <div className={styles['faq-card-container']}>
                             <div className={styles['faq-card']}>
-                                <span>App installation failed, how to update system information?</span>
+                                <span>{t('App installation failed, how to update system information?')}</span>
                                 {isOpenedMenu === 'information' && isOpenedMenu !== 'information-close' ?
                                     <button onClick={() => handleFAQCloseMenu('information-close')}>
                                         -
@@ -66,14 +68,14 @@ const index = () => {
                             {isOpenedMenu === 'information' &&
                                 <div className={styles['faq-para']}>
                                     <p>
-                                        Our Customer Experience Team is available 7 days a week and we offer 2 ways to get in contact.Email and Chat . We try to reply quickly, so you need not to wait too long for a response!.
+                                        {t('Our Customer Experience Team is available 7 days a week and we offer 2 ways to get in contact.Email and Chat . We try to reply quickly, so you need not to wait too long for a response!.')}
                                     </p>
                                 </div>
                             }
                         </div>
                         <div className={styles['faq-card-container']}>
                             <div className={styles['faq-card']}>
-                                <span>Website reponse taking time, how to improve?</span>
+                                <span>{t('Website reponse taking time, how to improve?')}</span>
                                 {isOpenedMenu === 'improve' && isOpenedMenu !== 'improve-close' ?
                                     <button onClick={() => handleFAQCloseMenu('improve-close')}>
                                         -
@@ -86,15 +88,15 @@ const index = () => {
                             </div>
                             {isOpenedMenu === 'improve' &&
                                 <div className={styles['faq-para']}>
-                                    <p>
-                                        Our Customer Experience Team is available 7 days a week and we offer 2 ways to get in contact.Email and Chat . We try to reply quickly, so you need not to wait too long for a response!.
+                                     <p>
+                                        {t('Our Customer Experience Team is available 7 days a week and we offer 2 ways to get in contact.Email and Chat . We try to reply quickly, so you need not to wait too long for a response!.')}
                                     </p>
                                 </div>
                             }
                         </div>
                         <div className={styles['faq-card-container']}>
                             <div className={styles['faq-card']}>
-                                <span>How do I create a account?</span>
+                                <span>{t('How do I create a account?')}</span>
                                 {isOpenedMenu === 'account' && isOpenedMenu !== 'account-close' ?
                                     <button onClick={() => handleFAQCloseMenu('account-close')}>
                                         -
@@ -108,14 +110,14 @@ const index = () => {
                             {isOpenedMenu === 'account' &&
                                 <div className={styles['faq-para']}>
                                     <p>
-                                        Our Customer Experience Team is available 7 days a week and we offer 2 ways to get in contact.Email and Chat . We try to reply quickly, so you need not to wait too long for a response!.
+                                        {t('Our Customer Experience Team is available 7 days a week and we offer 2 ways to get in contact.Email and Chat . We try to reply quickly, so you need not to wait too long for a response!.')}
                                     </p>
                                 </div>
                             }
                         </div>
                         <div className={styles['faq-card-container']}>
                             <div className={styles['faq-card']}>
-                                <span>Website reponse taking time, how to improve?</span>
+                                <span>{t('Website reponse taking time, how to improve?')}</span>
                                 {isOpenedMenu === 'website' && isOpenedMenu !== 'website-close' ?
                                     <button onClick={() => handleFAQCloseMenu('website-close')}>
                                         -
@@ -128,8 +130,8 @@ const index = () => {
                             </div>
                             {isOpenedMenu === 'website' &&
                                 <div className={styles['faq-para']}>
-                                    <p>
-                                        Our Customer Experience Team is available 7 days a week and we offer 2 ways to get in contact.Email and Chat . We try to reply quickly, so you need not to wait too long for a response!.
+                                     <p>
+                                        {t('Our Customer Experience Team is available 7 days a week and we offer 2 ways to get in contact.Email and Chat . We try to reply quickly, so you need not to wait too long for a response!.')}
                                     </p>
                                 </div>
                             }
@@ -143,3 +145,9 @@ const index = () => {
 }
 
 export default index
+
+export const getServerSideProps = async ({ locale }) => ({
+    props: {
+        ...(await serverSideTranslations(locale, ['common']))
+    }
+});

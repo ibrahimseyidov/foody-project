@@ -1,4 +1,3 @@
-'use client'
 import React, { useEffect } from 'react'
 import hamburgerImg from '../../../assets/images/foodImages/hamburgerImg.png'
 import styles from '../HomeSection1/homesection1.module.css'
@@ -8,9 +7,10 @@ import fries from '../../../assets/images/foodImages/fries.svg'
 import burger from '../../../assets/images/foodImages/burger.svg'
 import AOS from 'aos';
 import 'aos/dist/aos.css';
-
+import { useTranslation } from 'next-i18next'
 
 const HomeSection1 = () => {
+    const { t } = useTranslation('common')
 
     useEffect(() => {
         AOS.init()
@@ -21,11 +21,11 @@ const HomeSection1 = () => {
             <section className='mb-20'>
                 <div className={styles['home-client-bg']}>
                     <div className={styles['hamburger-left']} data-aos="fade-up">
-                        <h2>Our Food site makes it easy to find local food</h2>
+                        <h2>{t('Our Food site makes it easy to find local food')}</h2>
                         <p>Lorem ipsum is placeholder text commonly used in the graphic, print, and publishing industries for previewing layouts and visual mockups.</p>
                         <div className={styles['hamburger-btn']}>
-                            <button>Register</button>
-                            <button>Order now</button>
+                            <button>{t('Register')}</button>
+                            <button>{t('Order now')}</button>
                         </div>
                     </div>
                     <div>

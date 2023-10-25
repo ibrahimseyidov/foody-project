@@ -5,15 +5,18 @@ import delIcon from '../../../../assets/icons/delIcon.svg'
 import styles from './restaurantdetailright.module.css'
 import emptyBasket from '../../../../assets/icons/emptyBasket.png'
 import React from 'react'
+import { useTranslation } from 'next-i18next';
 
 const RestaurantDetailRight = () => {
+    const { t } = useTranslation('common')
+
     return (
         <>
             <div className={styles['basket-bg']}>
                 <div className={styles['basket-top']}>
                     <Image className='mr-2' src={basket} alt='basket' />
                     <span className={styles['basket-items']}>
-                        3 items
+                        3 {t('items')}
                     </span>
                 </div>
                 <div className='flex flex-col justify-between'>
@@ -23,7 +26,7 @@ const RestaurantDetailRight = () => {
                                 <Image src={pizzas} alt='food' />
                             </div>
                             <div className={styles['basket-title']}>
-                                <h3>Papa John's Pizza Restaurant</h3>
+                                <h3>Papa John's Pizza {t('Restaurant')}</h3>
                                 <span>$15.80</span>
                             </div>
                             <div className='flex items-start'>
@@ -44,7 +47,7 @@ const RestaurantDetailRight = () => {
                                 <Image src={pizzas} alt='food' />
                             </div>
                             <div className={styles['basket-title']}>
-                                <h3>Papa John's Pizza Restaurant</h3>
+                                <h3>Papa John's Pizza {t('Restaurant')}</h3>
                                 <span>$15.80</span>
                             </div>
                             <div className='flex items-start'>
@@ -65,7 +68,7 @@ const RestaurantDetailRight = () => {
                                 <Image src={pizzas} alt='food' />
                             </div>
                             <div className={styles['basket-title']}>
-                                <h3>Papa John's Pizza Restaurant</h3>
+                                <h3>Papa John's Pizza {t('Restaurant')}</h3>
                                 <span>$15.80</span>
                             </div>
                             <div className='flex items-start'>
@@ -86,7 +89,7 @@ const RestaurantDetailRight = () => {
                                 <Image src={pizzas} alt='food' />
                             </div>
                             <div className={styles['basket-title']}>
-                                <h3>Papa John's Pizza Restaurant</h3>
+                                <h3>Papa John's Pizza {t('Restaurant')}</h3>
                                 <span>$15.80</span>
                             </div>
                             <div className='flex items-start'>
@@ -107,7 +110,7 @@ const RestaurantDetailRight = () => {
                                 <Image src={pizzas} alt='food' />
                             </div>
                             <div className={styles['basket-title']}>
-                                <h3>Papa John's Pizza Restaurant</h3>
+                                <h3>Papa John's Pizza {t('Restaurant')}</h3>
                                 <span>$15.80</span>
                             </div>
                             <div className='flex items-start'>
@@ -128,7 +131,7 @@ const RestaurantDetailRight = () => {
                                 <Image src={pizzas} alt='food' />
                             </div>
                             <div className={styles['basket-title']}>
-                                <h3>Papa John's Pizza Restaurant</h3>
+                                <h3>Papa John's Pizza {t('Restaurant')}</h3>
                                 <span>$15.80</span>
                             </div>
                             <div className='flex items-start'>
@@ -146,7 +149,7 @@ const RestaurantDetailRight = () => {
                         </div>
                     </div>
                     <div className={styles['basket-checkout']}>
-                        <span className={styles['checkout-text']}>Checkout</span>
+                        <span className={styles['checkout-text']}>{t('Checkout')}</span>
                         <div className={styles['checkout-bg']}>
                             $37.40
                         </div>

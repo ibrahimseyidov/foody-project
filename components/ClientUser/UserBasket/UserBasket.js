@@ -1,15 +1,13 @@
 import Image from 'next/image'
 import React from 'react'
-import ProfileLayout from '../../../components/common/ProfileLayout/ProfileLayout'
 import styles from './userbasket.module.css'
 import basketIcon from '../../../assets/icons/basket.svg'
 import foods from '../../../assets/icons/foods.svg'
 import delIcon from '../../../assets/icons/delIcon.svg'
 
-const index = () => {
+const UserBasket = () => {
     return (
         <>
-            <ProfileLayout>
                 <div className={styles['basket-bg']}>
 
                     <div className={styles['basket-head']}>
@@ -130,9 +128,8 @@ const index = () => {
                     </div>
 
                 </div>
-            </ProfileLayout>
         </>
     )
 }
 
-export default index
+export default UserBasket

@@ -1,13 +1,14 @@
 import Image from 'next/image'
-
 import PizzaImg from '../../../assets/images/foodImages/pizzaImg.svg'
 import hamburgerImg from '../../../assets/images/foodImages/hamburgerImg.svg'
 import AOS from 'aos';
 import 'aos/dist/aos.css';
 import styles from './homesection7.module.css'
 import React, { useEffect } from 'react'
+import { useTranslation } from 'next-i18next';
 
 const HomeSection7 = () => {
+    const { t } = useTranslation('common')
 
     useEffect(() => {
         AOS.init()
@@ -23,9 +24,9 @@ const HomeSection7 = () => {
                     </div>
                     <div className={styles['section7-middle']}>
                         <h3>
-                            Discover Restaurants Near From you
+                            {t('Discover Restaurants Near From you')}
                         </h3>
-                        <button>Explore now</button>
+                        <button>{t('Explore now')}</button>
                     </div>
                     <div>
                         <Image src={hamburgerImg} loading='lazy' alt='hamburger' />

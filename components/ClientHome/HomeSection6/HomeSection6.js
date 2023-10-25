@@ -6,8 +6,10 @@ import foodTwister from '../../../assets/images/foodImages/foodTwister.svg'
 import styles from '../HomeSection2/homesection2.module.css'
 import AOS from 'aos';
 import 'aos/dist/aos.css';
+import { useTranslation } from 'next-i18next'
 
 const HomeSection6 = () => {
+    const { t } = useTranslation('common')
 
     useEffect(() => {
         AOS.init()
@@ -19,7 +21,7 @@ const HomeSection6 = () => {
                 data-aos-duration="3000">
                 <div>
                     <div className='flex items-center flex-col mb-10'>
-                        <h2 className={styles.features}>Our Popular Update New Foods</h2>
+                        <h2 className={styles.features}>{t('Our Popular Update New Foods')}</h2>
                         <p className={styles['home-para']}>
                             Lorem ipsum is placeholder text commonly used in the graphic, print, and publishing industries for previewing layouts and visual mockups.
                         </p>
