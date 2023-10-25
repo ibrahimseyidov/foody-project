@@ -1,5 +1,6 @@
 import React from 'react'
 import styles from '../Navbar/navbar.module.css'
+import {useRouter} from 'next/router'
 import dashboard from '../../../assets/icons/navIcons/dashIcon.svg';
 import products from '../../../assets/icons/navIcons/storeIcon.svg';
 import restaurants from '../../../assets/icons/navIcons/restaurant.svg';
@@ -10,10 +11,14 @@ import history from '../../../assets/icons/navIcons/history.png'
 import logout from '../../../assets/icons/navIcons/logout.svg'
 import Image from 'next/image'
 import Link from 'next/link'
-
+import Cookies from 'js-cookie'
 
 const Navbar = () => {
-
+    const router = useRouter()
+    const handleLogOut = ()=>{
+        Cookies.remove('accessJWT')
+        router.push('/admin/login')
+    }
     return (
         <>
 
@@ -73,7 +78,7 @@ const Navbar = () => {
                         </li>
 
                         <li>
-                            <Link href='/' id={styles['navbar']} className={styles['navbar-last']}>
+                            <Link onClick={()=>handleLogOut()} href='/' id={styles['navbar']} className={styles['navbar-last']}>
                                 <Image src={logout} alt='logout' />
                                 Logout
                             </Link>
