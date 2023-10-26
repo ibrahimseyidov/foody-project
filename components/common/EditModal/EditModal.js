@@ -13,7 +13,7 @@ import EditSelectBox from '../EditSelectBox/EditSelectBox'
 import EditRestSelectBox from '../EditRestSelectBox/EditRestSelectBox'
 import AddResCategoryBox from '../AddResCategoryBox/AddResCategoryBox'
 import { useTranslation } from 'next-i18next'
-import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query'
+import { useMutation, useQueryClient } from '@tanstack/react-query'
 import { uuidGenerator } from '../../../utils/uuidGenerator'
 import { getDownloadURL, ref, uploadBytes } from "firebase/storage"
 import { fileStorage } from '../../../server/configs/firebase'
