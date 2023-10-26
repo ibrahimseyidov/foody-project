@@ -1,130 +1,125 @@
-'use client'
-import React, { useEffect } from 'react'
-import styles from '../AdminCategory/admincategory.module.css'
-import Image from 'next/image'
-import trashIcon from '../../assets/icons/trashIcon.svg'
-import AOS from 'aos';
-import 'aos/dist/aos.css';
-import { useDispatch } from 'react-redux'
-import { openDelModal } from '../../redux/features/delModalSlice'
+"use client";
+import React, { useEffect } from "react";
+import styles from "../AdminCategory/admincategory.module.css";
+import Image from "next/image";
+import trashIcon from "../../assets/icons/trashIcon.svg";
+import AOS from "aos";
+import "aos/dist/aos.css";
+import { useDispatch } from "react-redux";
+import { openDelModal } from "../../redux/features/delModalSlice";
+import { useMutation, useQuery } from "@tanstack/react-query";
+import axios from "axios";
+import { BounceLoader } from "react-spinners";
 
 const AdminHistory = () => {
+  const dispatch = useDispatch();
 
-    const dispatch = useDispatch()
+  const { data, isLoading, isError } = useQuery({
+    queryKey: ["category"],
+    queryFn: async () => {
+      const { response } = await axios.get("/api/category");
+      return response.data ;
+    },
+  });
+  console.log(data)
 
-    useEffect(() => {
-        AOS.init()
-    }, [])
+  // const { mutate: addOffer } = useMutation({
+  //     mutationFn: async () => await axios.post('/api/offer', {
+  //         "name": "string",
+  //         "description": "string",
+  //         "img_url": "string"
+  //       }),
 
+  //     onSuccess: () => {
+  //         setAddOfferImg(null)
+  //         alert('success')
+  //         queryClient.invalidateQueries(['offer'])
+  //     },
+  //     onError: () => {
+  //         alert('error')
+  //     }
+  // })
+
+  // const { mutate: deleteOffer } = useMutation({
+  //   mutationFn: async (offerId) => await axios.delete("/api/category/{id}"),
+
+  //   onSuccess: () => {
+  //     alert("success");
+  //   },
+
+  //   onError: () => {
+  //     alert("error");
+  //   },
+  // });
+
+  if (isLoading) {
     return (
-        <>
-            <section className='h-full'  data-aos="zoom-in">
-                <div className={styles['table-container']}>
-                    <table className={styles['table']}>
-                        <thead className={styles['thead']}>
-                            <tr className={styles['thead-row']}>
-                                <th>ID</th>
-                                <th>Customer ID</th>
-                                <th>Time</th>
-                                <th>Delivery Address</th>
-                                <th>Amount</th>
-                                <th>Payment Method</th>
-                                <th>Contact</th>
-                            </tr>
-                        </thead>
+      <div className="flex justify-center items-center mx-0 my-auto">
+        <BounceLoader
+          color="#C74FEB"
+          loading={true}
+          size={70}
+          aria-label="Loading Spinner"
+          data-testid="loader"
+        />
+      </div>
+    );
+  }
+  if (isError) return <div className="text-white">error...</div>;
 
-                        <tbody className={styles['tbody']}>
-                            <tr className={styles['table-row']}>
-                                <td><span className={styles['table-id']}>9177</span></td>
-                                <td><span className={styles['table-id']}>022401</span></td>
-                                <td>25 Dec 2021</td>
-                                <td className='w-48 text-left'>29 Eve Street, 543 Evenue Road, Ny 87876</td>
-                                <td>$249.7</td>
-                                <td>Cash On Delivery</td>
-                                <td>994-51-410-3130</td>
-                                <td className='mt-2 pr-3'>
-                                    <button onClick={() => dispatch(openDelModal())}>
-                                        <Image src={trashIcon} alt='trash-icon' />
-                                    </button>
-                                </td>
-                            </tr>
-                            <tr className={styles['table-row']}>
-                                <td><span className={styles['table-id']}>9177</span></td>
-                                <td><span className={styles['table-id']}>022401</span></td>
-                                <td>25 Dec 2021</td>
-                                <td className='w-48 text-left'>29 Eve Street, 543 Evenue Road, Ny 87876</td>
-                                <td>$249.7</td>
-                                <td>Cash On Delivery</td>
-                                <td>994-51-410-3130</td>
-                                <td className='mt-2 pr-3'>
-                                    <button onClick={() => dispatch(openDelModal())}>
-                                        <Image src={trashIcon} alt='trash-icon' />
-                                    </button>
-                                </td>
-                            </tr>
-                            <tr className={styles['table-row']}>
-                                <td><span className={styles['table-id']}>9177</span></td>
-                                <td><span className={styles['table-id']}>022401</span></td>
-                                <td>25 Dec 2021</td>
-                                <td className='w-48 text-left'>29 Eve Street, 543 Evenue Road, Ny 87876</td>
-                                <td>$249.7</td>
-                                <td>Cash On Delivery</td>
-                                <td>994-51-410-3130</td>
-                                <td className='mt-2 pr-3'>
-                                    <button onClick={() => dispatch(openDelModal())}>
-                                        <Image src={trashIcon} alt='trash-icon' />
-                                    </button>
-                                </td>
-                            </tr>
-                            <tr className={styles['table-row']}>
-                                <td><span className={styles['table-id']}>9177</span></td>
-                                <td><span className={styles['table-id']}>022401</span></td>
-                                <td>25 Dec 2021</td>
-                                <td className='w-48 text-left'>29 Eve Street, 543 Evenue Road, Ny 87876</td>
-                                <td>$249.7</td>
-                                <td>Cash On Delivery</td>
-                                <td>994-51-410-3130</td>
-                                <td className='mt-2 pr-3'>
-                                    <button onClick={() => dispatch(openDelModal())}>
-                                        <Image src={trashIcon} alt='trash-icon' />
-                                    </button>
-                                </td>
-                            </tr>
-                            <tr className={styles['table-row']}>
-                                <td><span className={styles['table-id']}>9177</span></td>
-                                <td><span className={styles['table-id']}>022401</span></td>
-                                <td>25 Dec 2021</td>
-                                <td className='w-48 text-left'>29 Eve Street, 543 Evenue Road, Ny 87876</td>
-                                <td>$249.7</td>
-                                <td>Cash On Delivery</td>
-                                <td>994-51-410-3130</td>
-                                <td className='mt-2 pr-3'>
-                                    <button onClick={() => dispatch(openDelModal())}>
-                                        <Image src={trashIcon} alt='trash-icon' />
-                                    </button>
-                                </td>
-                            </tr>
-                            <tr className={styles['table-row']}>
-                                <td><span className={styles['table-id']}>9177</span></td>
-                                <td><span className={styles['table-id']}>022401</span></td>
-                                <td>25 Dec 2021</td>
-                                <td className='w-48 text-left'>29 Eve Street, 543 Evenue Road, Ny 87876</td>
-                                <td>$249.7</td>
-                                <td>Cash On Delivery</td>
-                                <td>994-51-410-3130</td>
-                                <td className='mt-2 pr-3'>
-                                    <button onClick={() => dispatch(openDelModal())}>
-                                        <Image src={trashIcon} alt='trash-icon' />
-                                    </button>
-                                </td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
+  // useEffect(() => {
+  //     AOS.init()
+  // }, [])
 
-            </section>
-        </>
-    )
-}
+  return (
+    <>
+      <section className="h-full" data-aos="zoom-in">
+        <div className={styles["table-container"]}>
+          <table className={styles["table"]}>
+            <thead className={styles["thead"]}>
+              <tr className={styles["thead-row"]}>
+                <th>ID</th>
+                <th>Customer ID</th>
+                <th>Time</th>
+                <th>Delivery Address</th>
+                <th>Amount</th>
+                <th>Payment Method</th>
+                <th>Contact</th>
+              </tr>
+            </thead>
 
-export default AdminHistory
+            <tbody className={styles["tbody"]}>
+             
+              {
+                data?.result.data.map((history)=>(
+                  <tr className={styles["table-row"]}>
+                  <td>
+                    <span className={styles["table-id"]}>{history.id}</span>
+                  </td>
+                  <td>
+                    <span className={styles["table-id"]}>{history.created}</span>
+                  </td>
+                  <td>{history.name}</td>
+                  <td className="w-48 text-left">
+                    {history.name}
+                  </td>
+                  <td>{history.slug}</td>
+                  <td>{history.name}</td>
+                  <td>{history.slug}</td>
+                  <td className="mt-2 pr-3">
+                    <button onClick={() => dispatch(openDelModal())}>
+                      <Image src={trashIcon} alt="trash-icon" />
+                    </button>
+                  </td>
+                </tr>
+                ))
+              }
+            </tbody>
+          </table>
+        </div>
+      </section>
+    </>
+  );
+};
+
+export default AdminHistory;
