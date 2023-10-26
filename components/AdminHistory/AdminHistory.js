@@ -40,18 +40,21 @@ const AdminHistory = () => {
   //     }
   // })
 
-  // const { mutate: deleteOffer } = useMutation({
-  //   mutationFn: async (offerId) => await axios.delete("/api/category/{id}"),
+  const { mutate: deleteCategory } = useMutation({
+    mutationFn: async (categoryId) => await axios.delete("/api/category/${category.id}"),
 
-  //   onSuccess: () => {
-  //     alert("success");
-  //   },
+    onSuccess: () => {
+      alert("success");
+    },
 
-  //   onError: () => {
-  //     alert("error");
-  //   },
-  // });
-
+    onError: () => {
+      alert("error");
+    },
+  });
+  const handleDelete = (categoryId) => {
+    dispatch(openDelModal());
+    deleteCategory(categoryId);
+  };
   if (isLoading) {
     return (
       <div className="flex justify-center items-center mx-0 my-auto">
@@ -92,7 +95,7 @@ const AdminHistory = () => {
              
               {
                 data?.result.data.map((history)=>(
-                  <tr className={styles["table-row"]}>
+                  <tr className={styles["table-row"]} key={history.id}>
                   <td>
                     <span className={styles["table-id"]}>{history.id}</span>
                   </td>
@@ -107,7 +110,7 @@ const AdminHistory = () => {
                   <td>{history.name}</td>
                   <td>{history.slug}</td>
                   <td className="mt-2 pr-3">
-                    <button onClick={() => dispatch(openDelModal())}>
+                    <button onClick={() => handleDelete(history.id)}>
                       <Image src={trashIcon} alt="trash-icon" />
                     </button>
                   </td>

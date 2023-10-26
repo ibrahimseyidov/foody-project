@@ -72,7 +72,9 @@ export default function EditSelectBox() {
                             <Menu.Item key={restaurant?.id} className='hover:bg-[#C74FEB] hover:text-white ease-linear duration-200 py-2 px-3' >
                                 <a
                                     href="#"
-                                    onClick={() => handleChangeCategory(restaurant?.name, restaurant?.id)}
+                                    onClick={() =>
+                                        handleChangeCategory(restaurant?.name, restaurant?.id)}
+                                    
                                     className='bg-gray-100 text-gray-900'>
                                     {restaurant?.name}
                                 </a>
