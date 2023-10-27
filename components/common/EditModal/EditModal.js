@@ -1,30 +1,39 @@
-
-'use client'
-import React, { useEffect, useState, useRef } from 'react'
-import styles from 'components/common/EditModal/editmodal.module.css'
-import axios from 'axios'
-import uploadImg from '../../../assets/icons/upload.svg'
-import closeBtn from '../../../assets/icons/closeBtn.svg'
-import { useSelector, useDispatch } from 'react-redux'
-import { closeAddProductModal, closeAddResModal, closeCategoryModalEdit, closeModalEdit, closeOfferModalEdit, closeResModalEdit } from '../../../redux/features/editModalSlice'
-import Image from 'next/image'
-import AOS from 'aos';
-import 'aos/dist/aos.css';
-import EditSelectBox from '../EditSelectBox/EditSelectBox'
-import EditRestSelectBox from '../EditRestSelectBox/EditRestSelectBox'
-import AddResCategoryBox from '../AddResCategoryBox/AddResCategoryBox'
-import { useTranslation } from 'next-i18next'
-import { useMutation, useQueryClient } from '@tanstack/react-query'
-import { uuidGenerator } from '../../../utils/uuidGenerator'
-import { getDownloadURL, ref, uploadBytes } from "firebase/storage"
-import { fileStorage } from '../../../server/configs/firebase'
+"use client";
+import React, { useEffect, useState, useRef } from "react";
+import styles from "components/common/EditModal/editmodal.module.css";
+import axios from "axios";
+import uploadImg from "../../../assets/icons/upload.svg";
+import closeBtn from "../../../assets/icons/closeBtn.svg";
+import { useSelector, useDispatch } from "react-redux";
+import {
+  closeAddCategoryModal,
+  closeAddProductModal,
+  closeAddResModal,
+  closeCategoryModalEdit,
+  closeModalEdit,
+  closeOfferModalEdit,
+  closeResModalEdit,
+} from "../../../redux/features/editModalSlice";
+import Image from "next/image";
+import AOS from "aos";
+import "aos/dist/aos.css";
+import EditSelectBox from "../EditSelectBox/EditSelectBox";
+import EditRestSelectBox from "../EditRestSelectBox/EditRestSelectBox";
+import AddResCategoryBox from "../AddResCategoryBox/AddResCategoryBox";
+import { useTranslation } from "next-i18next";
+import { useMutation, useQueryClient } from "@tanstack/react-query";
+import { uuidGenerator } from "../../../utils/uuidGenerator";
+import { getDownloadURL, ref, uploadBytes } from "firebase/storage";
+import { fileStorage } from "../../../server/configs/firebase";
 const EditModal = () => {
   const { t } = useTranslation("common");
   const queryClient = useQueryClient();
 
   const [addProductImg, setAddProductImg] = useState(null);
+  const [addCategoryImg, setAddCategoryImg] = useState(null);
   const [isCurrentRest, setIsCurrentRest] = useState(null);
   const [lastProductImg, setLastProductImg] = useState(null);
+  const [lastCategoryImg, setLastCategoryImg] = useState(null);
   const [currentProductData, setCurrentProductData] = useState({
     name: "",
     description: "",
@@ -58,6 +67,12 @@ const EditModal = () => {
   const restDelMinRef = restDelMin.current;
   const restAddressRef = restAddress.current;
 
+  const categoryName = useRef();
+  const categorySlug = useRef();
+
+  const categoryNameRef = categoryName.current;
+  const categorySlugRef = categorySlug.current;
+
   const selEditModal = useSelector((state) => state.modal.isActiveModal);
   const selAddProductModal = useSelector(
     (state) => state.modal.isActiveAddProductModal
@@ -66,6 +81,9 @@ const EditModal = () => {
     (state) => state.modal.isActiveAddResModal
   );
   const selResEditModal = useSelector((state) => state.modal.isActiveResModal);
+  const selCategoryAddModal = useSelector(
+    (state) => state.modal.isActiveAddCategoryModal
+  );
   const selCategoryEditModal = useSelector(
     (state) => state.modal.isActiveCategoryModal
   );
@@ -177,21 +195,21 @@ const EditModal = () => {
   const { mutate: addCategory } = useMutation({
     mutationFn: async () =>
       await axios.post("/api/category", {
-        name: productDescRef.value,
-        slug: (productDescRef?.value).replace(/ /g, "-"),
-        img_url: lastProductImg,
+        name: categoryNameRef.value,
+        slug: (categorySlugRef?.value).replace(/ /g, "-"),
+        img_url: lastCategoryImg,
       }),
 
     onSuccess: () => {
-      setLastProductImg(null);
-      alert("succes");
+      setAddCategoryImg(null);
+      alert("success");
+
       queryClient.invalidateQueries(["category"]);
     },
     onError: () => {
       alert("error");
     },
   });
-
   useEffect(() => {
     AOS.init();
     setCurrentProductData(selEditModal);
@@ -225,6 +243,26 @@ const EditModal = () => {
       });
   };
 
+  const handleNewCategoryImg = (e) => {
+    const selectedFile = e.target.files[0];
+    setAddCategoryImg(URL.createObjectURL(selectedFile));
+    const newUUID = uuidGenerator();
+    const imageRef = ref(fileStorage, `images/${selectedFile.name + newUUID}`);
+    uploadBytes(imageRef, selectedFile)
+      .then((snapshot) => {
+        getDownloadURL(snapshot.ref)
+          .then((downloadURL) => {
+            setLastCategoryImg(downloadURL);
+            console.log("Dosyanın Firebase Storage URL'si: ", downloadURL);
+          })
+          .catch((error) => {
+            console.error("Download URL alınırken bir hata oluştu: ", error);
+          });
+      })
+      .catch((error) => {
+        console.error("Dosya yüklenirken bir hata oluştu: ", error);
+      });
+  };
   const handleAddProduct = () => {
     addCategory();
     addProduct();
@@ -233,7 +271,9 @@ const EditModal = () => {
   const handleUpdateProduct = () => {
     updateProduct();
   };
-
+  const handleAddCategory = () => {
+    addCategory();
+  };
   const handleChangeProductName = (e) => {
     const updatedProductData = { ...currentProductData };
     updatedProductData.name = e.target.value;
@@ -839,19 +879,19 @@ const EditModal = () => {
               data-aos-duration="500"
             >
               <div className={styles["editmodal-head"]}>
-                <h3>{t("Add Category")}</h3>
+                <h3>{t("Edit Category")}</h3>
               </div>
               <div className={styles["editmodal-top"]}>
                 <div className={styles["editmodal-left-contain"]}>
                   <div className={styles["editmodal-left-top"]}>
-                    <h3>{t("Add Category")}</h3>
+                    <h3>{t("Edit Category")}</h3>
                     <span>{t("Upload image")}</span>
                     {/* <Image src={productImg} alt='product' /> */}
                   </div>
                   <div
                     className={`${styles["editmodal-left-bot"]} mt-52 w-[260px]`}
                   >
-                    <span>Add your Category information</span>
+                    <span>Edit your Category information</span>
                   </div>
                 </div>
                 <div className={styles["editmodal-right-contain"]}>
@@ -873,7 +913,7 @@ const EditModal = () => {
                       </span>
                     </div>
                     <form>
-                      <div className={styles["product-name"]}>
+                      {/* <div className={styles["product-name"]}>
                         <label htmlFor="name">{t("Name")}</label>
                         <input
                           type="text"
@@ -881,6 +921,15 @@ const EditModal = () => {
                           placeholder={t("Category Name")}
                         />
                       </div>
+                      <div className={styles["product-name"]}>
+                        <label htmlFor="name">{t("Slug")}</label>
+                        <input
+                      
+                          type="text"
+                          id="price"
+                          placeholder={t("Category Name")}
+                        />
+                      </div> */}
                     </form>
                   </div>
                 </div>
@@ -899,7 +948,99 @@ const EditModal = () => {
             </div>
             <div className={styles["close-contain"]}>
               <button
-                onClick={() => dispatch(() => closeCategoryModalEdit())}
+                onClick={() => dispatch(() => closeAddCategoryModal())}
+                className={styles["close-btn"]}
+              >
+                <Image src={closeBtn} alt="close-button" />
+              </button>
+            </div>
+          </div>
+        </>
+      ) : selCategoryAddModal ? (
+        <>
+          <div className={styles.overlay}>
+            <div
+              className={styles["show-editmodal"]}
+              data-aos="fade-left"
+              data-aos-duration="500"
+            >
+              <div className={styles["editmodal-head"]}>
+                <h3>{t("Add Category")}</h3>
+              </div>
+              <div className={styles["editmodal-top"]}>
+                <div className={styles["editmodal-left-contain"]}>
+                  <div className={styles["editmodal-left-top"]}>
+                    <h3>{t("Add Category")}</h3>
+                    <span>{t("Upload  image")}</span>
+                    {addCategoryImg && (
+                      <Image
+                        src={addCategoryImg}
+                        width={200}
+                        height={200}
+                        alt="product"
+                      />
+                    )}
+                  </div>
+                  <div className={styles["editmodal-left-bot"]}>
+                    <span>{t("Add your category information")}</span>
+                  </div>
+                </div>
+                <div className={styles["editmodal-right-contain"]}>
+                  <div className={styles["mob-upload-text"]}>
+                    <span>{t("Upload your restaurants image")}</span>
+                  </div>
+                  <div className={styles["editmodal-right-top"]}>
+                    <button className="flex flex-col items-center relative">
+                      <Image src={uploadImg} alt="upload" />
+                      {t("upload")}
+                      <input
+                        onChange={(e) => handleNewCategoryImg(e)}
+                        className="absolute -top-4 w-[100px] h-[120px]"
+                        type="file"
+                        style={{ opacity: 0, cursor: "pointer" }}
+                      />
+                    </button>
+                  </div>
+                  <div className={styles["editmodal-right-bot"]}>
+                    <form>
+                      <div className={styles["product-name"]}>
+                        <label htmlFor="name">{t("Name")}</label>
+                        <input
+                          ref={categoryName}
+                          type="text"
+                          id="price"
+                          placeholder={t("Category Name")}
+                        />
+                      </div>
+                      <div className={styles["product-name"]}>
+                        <label htmlFor="name">{t("Slug")}</label>
+                        <input
+                          ref={categorySlug}
+                          type="text"
+                          id="price"
+                          placeholder={t("Category Name")}
+                        />
+                      </div>
+                    </form>
+                  </div>
+                </div>
+              </div>
+              <div
+                onClick={() => dispatch(closeAddCategoryModal())}
+                className={styles["editmodal-bot"]}
+              >
+                <button className={styles["edit-cancel"]}>{t("Cancel")}</button>
+                <button
+                  onClick={() => handleAddCategory()}
+                  className={styles["edit-update"]}
+                >
+                  {t("Create Category")}
+                </button>
+              </div>
+            </div>
+            <div className={styles["close-contain"]}>
+              <button
+                onClick={() => dispatch(closeAddCategoryModal())}
                 className={styles["close-btn"]}
               >
                 <Image src={closeBtn} alt="close-button" />

@@ -4,7 +4,7 @@ import styles from '../CategoryType/categorytype.module.css'
 import SelectBox from '../../common/Selectbox/Selectbox'
 import { useQuery } from '@tanstack/react-query';
 import axios from 'axios';
-import { openCategoryModalEdit } from '../../../redux/features/editModalSlice';
+import { openAddCategoryModal } from '../../../redux/features/editModalSlice';
 import { useDispatch } from 'react-redux';
 
 const CategoryType = ({pageName}) => {
@@ -27,7 +27,7 @@ const dispatch=useDispatch();
                     </div>
                     <div className='flex gap-10 items-center'>
                         <SelectBox categories={...data} />
-                        <button onClick={()=>dispatch(openCategoryModalEdit())} className={styles['add-category-btn']}>+Add category</button>
+                        <button onClick={()=>dispatch(openAddCategoryModal())} className={styles['add-category-btn']}>+Add category</button>
                     </div>
                 </div>
             </div>

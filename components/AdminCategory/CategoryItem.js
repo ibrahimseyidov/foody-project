@@ -3,14 +3,17 @@ import styles from "./admincategory.module.css";
 import littleFood from "../../assets/images/foodImages/littleFood.svg";
 import editIcon from "../../assets/icons/editIcon.svg";
 import trashIcon from "../../assets/icons/trashIcon.svg";
-import { useDispatch } from "react-redux";
+
 
 import { openCategoryModalEdit } from "../../redux/features/editModalSlice";
 import { openDelCatModal } from "../../redux/features/delModalSlice";
 import Image from "next/image";
+import { useDispatch } from "react-redux";
 const CategoryItem = ({ categoryData }) => {
+const dispatch=useDispatch();
   const categoryResult = categoryData?.result;
-  const dispatch = useDispatch();
+
+  
   return categoryResult?.data?.map((category,index) => (
     <tr className={styles["table-row"]} key={category.id}>
       <td>
@@ -28,12 +31,12 @@ const CategoryItem = ({ categoryData }) => {
       <td>{category.slug}</td>
       <td>
         <button
-          onClick={() => dispatch(openCategoryModalEdit(category))}
+          onClick={() => dispatch(openCategoryModalEdit())}
           className="mr-4"
         >
           <Image width="20" height="20" src={editIcon} alt="edit-icon" />
         </button>
-        <button onClick={() => dispatch(openDelCatModal(category?.id))}>
+        <button onClick={() => dispatch(openDelCatModal(category.id))}>
           <Image width="15" height="15" src={trashIcon} alt="trash-icon" />
         </button>
       </td>

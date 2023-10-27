@@ -12,14 +12,12 @@ export const delModalSlice = createSlice({
     initialState,
     reducers: {
         openDelModal: (state, action) => {
-            console.log(action.payload)
             state.deLModalActive = action.payload;
         },
         closeDelModal: (state) => {
             state.deLModalActive = false;
         },
         openDelCatModal: (state, action) => {
-            console.log(action.payload)
             state.catDelModal = action.payload;
         },
         closeDelCatModal: (state) => {
