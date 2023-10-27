@@ -4,7 +4,7 @@ import React from 'react'
 import uploadImg from '../../../assets/images/uploadImg.svg'
 import { useTranslation } from 'next-i18next'
 
-const UserProfile = () => {
+const UserProfile = ({addUser}) => {
     const { t } = useTranslation('common')
 
     return (

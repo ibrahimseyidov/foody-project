@@ -1,30 +1,23 @@
-"use client";
-import React, { useEffect, useState, useRef } from "react";
-import styles from "components/common/EditModal/editmodal.module.css";
-import axios from "axios";
-import uploadImg from "../../../assets/icons/upload.svg";
-import closeBtn from "../../../assets/icons/closeBtn.svg";
-import { useSelector, useDispatch } from "react-redux";
-import {
-  closeAddProductModal,
-  closeAddResModal,
-  closeCategoryModalEdit,
-  closeModalEdit,
-  closeOfferModalEdit,
-  closeResModalEdit,
-} from "../../../redux/features/editModalSlice";
-import Image from "next/image";
-import AOS from "aos";
-import "aos/dist/aos.css";
-import EditSelectBox from "../EditSelectBox/EditSelectBox";
-import EditRestSelectBox from "../EditRestSelectBox/EditRestSelectBox";
-import AddResCategoryBox from "../AddResCategoryBox/AddResCategoryBox";
-import { useTranslation } from "next-i18next";
-import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
-import { uuidGenerator } from "../../../utils/uuidGenerator";
-import { getDownloadURL, ref, uploadBytes } from "firebase/storage";
-import { fileStorage } from "../../../server/configs/firebase";
 
+'use client'
+import React, { useEffect, useState, useRef } from 'react'
+import styles from 'components/common/EditModal/editmodal.module.css'
+import axios from 'axios'
+import uploadImg from '../../../assets/icons/upload.svg'
+import closeBtn from '../../../assets/icons/closeBtn.svg'
+import { useSelector, useDispatch } from 'react-redux'
+import { closeAddProductModal, closeAddResModal, closeCategoryModalEdit, closeModalEdit, closeOfferModalEdit, closeResModalEdit } from '../../../redux/features/editModalSlice'
+import Image from 'next/image'
+import AOS from 'aos';
+import 'aos/dist/aos.css';
+import EditSelectBox from '../EditSelectBox/EditSelectBox'
+import EditRestSelectBox from '../EditRestSelectBox/EditRestSelectBox'
+import AddResCategoryBox from '../AddResCategoryBox/AddResCategoryBox'
+import { useTranslation } from 'next-i18next'
+import { useMutation, useQueryClient } from '@tanstack/react-query'
+import { uuidGenerator } from '../../../utils/uuidGenerator'
+import { getDownloadURL, ref, uploadBytes } from "firebase/storage"
+import { fileStorage } from '../../../server/configs/firebase'
 const EditModal = () => {
   const { t } = useTranslation("common");
   const queryClient = useQueryClient();
