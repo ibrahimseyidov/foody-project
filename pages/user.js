@@ -6,8 +6,8 @@ import UserProfile from '../components/ClientUser/UserProfile/UserProfile'
 import UserBasket from '../components/ClientUser/UserBasket/UserBasket'
 import UserOrders from '../components/ClientUser/UserOrders/UserOrders'
 import UserCheckout from '../components/ClientUser/UserCheckout/UserCheckout'
-import { useMutation, useQuery } from '@tanstack/react-query'
 import axios from 'axios'
+import { useMutation, useQuery } from '@tanstack/react-query'
 
 const user = () => {
     const router = useRouter()
@@ -15,6 +15,33 @@ const user = () => {
     const [isShowBasket, setIsShowBasket] = useState(false)
     const [isShowOrders, setIsShowOrders] = useState(false)
     const [isShowCheckout, setIsShowCheckout] = useState(false)
+
+    // const { data, isLoading, isError } = useQuery({
+    //     queryKey: ['user'],
+    //     queryFn: async () => {
+    //         const { data } = await axios.get('/api/auth/user',{
+    //             headers: {
+    //                 Authorization: `Bearer ${localStorage.getItem('access_token')}`
+    //             }
+    //         })
+    //         return data
+    //     },
+    // })
+    const { mutate: singInUser } = useMutation({
+        mutationFn: async () => await axios.post('/api/auth/signin',{
+            "email": "test@gmail.com",
+            "password": "test123"
+        }),
+        onSuccess: (data) => {
+            console.log(data);
+            // localStorage.setItem('access_token', data.data.user.access_token)
+            alert('success')
+        },
+        onError: () => {
+            alert('error')
+        }
+    })
+
 
     useEffect(() => {
         if (router.asPath === '/user?page=profile') {
@@ -53,7 +80,7 @@ const user = () => {
             <ProfileLayout>
                 {
                     isShowProfile ?
-                        <UserProfile />
+                        <UserProfile  singInUser={singInUser}/>
                         : isShowBasket ?
                             <UserBasket />
                             : isShowOrders ?

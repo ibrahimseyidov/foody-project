@@ -4,9 +4,13 @@ import React from 'react'
 import uploadImg from '../../../assets/images/uploadImg.svg'
 import { useTranslation } from 'next-i18next'
 
-const UserProfile = ({addUser}) => {
+const UserProfile = ({ singInUser }) => {
     const { t } = useTranslation('common')
 
+    const signIn = (e) => {
+        e.preventDefault()
+        singInUser()
+    }
     return (
         <>
             <div className={styles['profile-bg']}>
@@ -43,7 +47,7 @@ const UserProfile = ({addUser}) => {
                                     <label className={styles['label']} htmlFor="contact">{t('Address')}</label>
                                     <input className={styles['profile-inp']} placeholder='Enter Address' type="text" />
                                 </div>
-                                <button className={styles['save-btn']}>{t('Save')}</button>
+                                <button onClick={(e) => signIn(e)} className={styles['save-btn']}>{t('Save')}</button>
                             </div>
                         </div>
 
@@ -55,3 +59,4 @@ const UserProfile = ({addUser}) => {
 }
 
 export default UserProfile
+
