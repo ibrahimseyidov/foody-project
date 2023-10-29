@@ -1,7 +1,7 @@
 import React from 'react'
 import AdminDashboard from '../index'
 import ProductContainer from '../../../components/Products/ProductsContainer'
-import CategoryType from '../../../components/Products/CategoryType/CategoryType'
+import CategoryType from '../../../components/common/Category/CategoryType'
 import AdminCategory from '../../../components/AdminCategory/AdminCategory'
 import EditModal from '../../../components/common/EditModal/EditModal'
 import DelModal from '../../../components/common/DelModal/DelModal'
@@ -15,7 +15,7 @@ const index = () => {
         <>
             <AdminDashboard>
                 <ProductContainer>
-                    <CategoryType pageName={t('Category')} />
+                  <CategoryType pageName={t('Category')} />
                     <AdminCategory />
                     <DelModal />
                     <EditModal />
