@@ -1,19 +1,24 @@
 'use client'
 import React, { useEffect } from 'react'
-import Image from 'next/image'
-import editIcon from '../../assets/icons/editIcon.svg'
-import trashIcon from '../../assets/icons/trashIcon.svg'
-import littleFood from '../../assets/images/foodImages/littleFood.svg'
+
 import AOS from 'aos';
 import 'aos/dist/aos.css';
 import styles from '../AdminCategory/admincategory.module.css'
-import { useDispatch } from 'react-redux'
-import { openOfferModalEdit } from '../../redux/features/editModalSlice'
-import { openDelModal } from '../../redux/features/delModalSlice'
+import axios from 'axios'
+import OfferItem from './OfferItem'
+import { useQuery } from '@tanstack/react-query';
 
 const AdminOffers = () => {
+  // get offers
+ 
+  const { data, isLoading, error } = useQuery({
+    queryKey: ['offer'],
+    queryFn: async () => {
+        const { data } = await axios.get('/api/offer')
+        return data
+    },
+})
 
-    const dispatch = useDispatch()
 
     useEffect(() => {
         AOS.init()
@@ -34,48 +39,7 @@ const AdminOffers = () => {
                         </thead>
 
                         <tbody className={styles['tbody']}>
-                            <tr className={styles['table-row']}>
-                                <td><span className={styles['table-id']}>9177</span></td>
-                                <td className='flex justify-center'><Image src={littleFood} alt='food' /></td>
-                                <td>Do you like Pizza at Pap...</td>
-                                <td>Yummy this pizza but...</td>
-                                <td>
-                                    <button onClick={() => dispatch(openOfferModalEdit())} className='mr-4'>
-                                        <Image src={editIcon} alt='edit-icon' />
-                                    </button>
-                                    <button onClick={() => dispatch(openDelModal())}>
-                                        <Image src={trashIcon} alt='trash-icon' />
-                                    </button>
-                                </td>
-                            </tr>
-                            <tr className={styles['table-row']}>
-                                <td><span className={styles['table-id']}>9177</span></td>
-                                <td className='flex justify-center'><Image src={littleFood} alt='food' /></td>
-                                <td>Do you like Pizza at Pap...</td>
-                                <td>Yummy this pizza but...</td>
-                                <td>
-                                    <button onClick={() => dispatch(openOfferModalEdit())} className='mr-4'>
-                                        <Image src={editIcon} alt='edit-icon' />
-                                    </button>
-                                    <button onClick={() => dispatch(openDelModal())}>
-                                        <Image src={trashIcon} alt='trash-icon' />
-                                    </button>
-                                </td>
-                            </tr>
-                            <tr className={styles['table-row']}>
-                                <td><span className={styles['table-id']}>9177</span></td>
-                                <td className='flex justify-center'><Image src={littleFood} alt='food' /></td>
-                                <td>Do you like Pizza at Pap...</td>
-                                <td>Yummy this pizza but...</td>
-                                <td>
-                                    <button onClick={() => dispatch(openOfferModalEdit())} className='mr-4'>
-                                        <Image src={editIcon} alt='edit-icon' />
-                                    </button>
-                                    <button onClick={() => dispatch(openDelModal())}>
-                                        <Image src={trashIcon} alt='trash-icon' />
-                                    </button>
-                                </td>
-                            </tr>
+                          <OfferItem offerData={...data}/>
                         </tbody>
                     </table>
                 </div>

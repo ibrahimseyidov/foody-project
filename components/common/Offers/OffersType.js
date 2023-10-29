@@ -1,18 +1,13 @@
 'use client'
 import React from 'react'
-import styles from '../CategoryType/categorytype.module.css'
-import SelectBox from '../../common/Selectbox/Selectbox'
-import { useQuery } from '@tanstack/react-query';
-import axios from 'axios';
-const CategoryType = ({pageName}) => {
+import styles from './offertype.module.css'
 
-    const { data } = useQuery({
-        queryKey: ['products'],
-        queryFn: async () => {
-            const { data } = await axios.get('/api/products')
-            return data
-        },
-    })
+import { useDispatch } from 'react-redux';
+import {  openAddOfferModal } from '../../../redux/features/editModalSlice';
+
+const OffersType = ({pageName}) => {
+
+    const dispatch=useDispatch();
     return (
 
         <>
@@ -22,7 +17,7 @@ const CategoryType = ({pageName}) => {
                         <h2 className={styles['products-head-text']}>{pageName}</h2>
                     </div>
                     <div className='flex gap-10 items-center'>
-                        <SelectBox categories={...data} />
+                        <button onClick={()=>dispatch(openAddOfferModal())} className={styles['add-category-btn']}>+Add offer</button>
                     </div>
                 </div>
             </div>
@@ -31,4 +26,4 @@ const CategoryType = ({pageName}) => {
     )
 }
 
-export default CategoryType
+export default OffersType
