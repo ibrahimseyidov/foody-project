@@ -1,6 +1,6 @@
-"use client";
-import React, { useEffect } from "react";
+import React ,{ useState } from "react";
 import styles from "../AdminCategory/admincategory.module.css";
+import style from "./modal.module.css"; // Modal için CSS modülünü içe aktarın
 import Image from "next/image";
 import trashIcon from "../../assets/icons/trashIcon.svg";
 import AOS from "aos";
@@ -12,49 +12,42 @@ import axios from "axios";
 import { BounceLoader } from "react-spinners";
 
 const AdminHistory = () => {
-  const dispatch = useDispatch();
+  const dispatch = useDispatch()
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [categoryIdToDelete, setCategoryIdToDelete] = useState(null);
 
   const { data, isLoading, isError } = useQuery({
     queryKey: ["category"],
     queryFn: async () => {
-      const { response } = await axios.get("/api/category");
-      return response.data ;
+      const response = await axios.get("/api/category");
+      return response.data;
     },
   });
-  console.log(data)
-
-  // const { mutate: addOffer } = useMutation({
-  //     mutationFn: async () => await axios.post('/api/offer', {
-  //         "name": "string",
-  //         "description": "string",
-  //         "img_url": "string"
-  //       }),
-
-  //     onSuccess: () => {
-  //         setAddOfferImg(null)
-  //         alert('success')
-  //         queryClient.invalidateQueries(['offer'])
-  //     },
-  //     onError: () => {
-  //         alert('error')
-  //     }
-  // })
 
   const { mutate: deleteCategory } = useMutation({
-    mutationFn: async (categoryId) => await axios.delete("/api/category/${category.id}"),
-
-    onSuccess: () => {
-      alert("success");
+    mutationFn: async (categoryId) => {
+      const response = await axios.delete(`/api/category/${categoryId}`);
+      return response.data;
     },
+    
+      onSuccess: () => {
+        alert("Success!!");
+      },
+      onError: () => {
+        alert("Error!!");
+      },
+    });
 
-    onError: () => {
-      alert("error");
-    },
-  });
   const handleDelete = (categoryId) => {
-    dispatch(openDelModal());
-    deleteCategory(categoryId);
+    setCategoryIdToDelete(categoryId);
+    openDelModal(false);
+    
   };
+  
+  // const handleConfirmDelete = () => {
+  //   deleteCategory.mutate(categoryIdToDelete);
+  // };
+
   if (isLoading) {
     return (
       <div className="flex justify-center items-center mx-0 my-auto">
@@ -70,16 +63,12 @@ const AdminHistory = () => {
   }
   if (isError) return <div className="text-white">error...</div>;
 
-  // useEffect(() => {
-  //     AOS.init()
-  // }, [])
-
   return (
     <>
-      <section className="h-full" data-aos="zoom-in">
+      <section className="h-full">
         <div className={styles["table-container"]}>
           <table className={styles["table"]}>
-            <thead className={styles["thead"]}>
+          <thead className={styles["thead"]}>
               <tr className={styles["thead-row"]}>
                 <th>ID</th>
                 <th>Customer ID</th>
@@ -90,13 +79,10 @@ const AdminHistory = () => {
                 <th>Contact</th>
               </tr>
             </thead>
-
             <tbody className={styles["tbody"]}>
-             
-              {
-                data?.result.data.map((history)=>(
-                  <tr className={styles["table-row"]} key={history.id}>
-                  <td>
+              {data?.result.data.map((history) => (
+                <tr className={styles["table-row"]} key={history.id}>
+                   <td>
                     <span className={styles["table-id"]}>{history.id}</span>
                   </td>
                   <td>
@@ -110,17 +96,26 @@ const AdminHistory = () => {
                   <td>{history.name}</td>
                   <td>{history.slug}</td>
                   <td className="mt-2 pr-3">
-                    <button onClick={() => handleDelete(history.id)}>
+                    <button onClick={() => dispatch(openDelModal(history?.id))}>
                       <Image src={trashIcon} alt="trash-icon" />
                     </button>
                   </td>
                 </tr>
-                ))
-              }
+              ))}
             </tbody>
           </table>
         </div>
       </section>
+      {/* {isModalOpen && (
+        <div className={style.modal}>
+          <div className={style["modal-content"]}>
+            <p>Sure?</p>
+            <button onClick={() => setIsModalOpen(false)}>No!</button>
+            <button onClick={handleConfirmDelete}>Yes!</button>
+          </div>
+        </div>
+      )} */}
+      
     </>
   );
 };
