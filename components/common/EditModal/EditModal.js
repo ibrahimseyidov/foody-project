@@ -132,7 +132,7 @@ const EditModal = () => {
       queryClient.invalidateQueries(["products"]);
     },
     onError: () => {
-      alert("error");
+      alert("error1");
     },
   });
 
@@ -153,7 +153,7 @@ const EditModal = () => {
       queryClient.invalidateQueries(["products"]);
     },
     onError: () => {
-      alert("error");
+      alert("error2");
     },
   });
 
@@ -178,7 +178,7 @@ const EditModal = () => {
       queryClient.invalidateQueries(["restaurants"]);
     },
     onError: () => {
-      alert("error");
+      alert("error3");
     },
   });
 
@@ -202,28 +202,28 @@ const EditModal = () => {
       queryClient.invalidateQueries(["restaurants"]);
     },
     onError: () => {
-      alert("error");
+      alert("error4");
     },
   });
 
   // *Category Data Handling
 
-  const { mutate: addCategory } = useMutation({
-    mutationFn: async () =>
-      await axios.post("/api/category", {
-        name: catNameRef.value,
-        img_url: lastProductImg,
-      }),
+  // const { mutate: addCategory } = useMutation({
+  //   mutationFn: async () =>
+  //     await axios.post("/api/category", {
+  //       name: catNameRef.value,
+  //       img_url: lastProductImg,
+  //     }),
 
-    onSuccess: () => {
-      setAddProductImg(null);
-      alert("succes");
-      queryClient.invalidateQueries(["category"]);
-    },
-    onError: () => {
-      alert("error");
-    },
-  });
+  //   onSuccess: () => {
+  //     setAddProductImg(null);
+  //     alert("succes");
+  //     queryClient.invalidateQueries(["category"]);
+  //   },
+  //   onError: () => {
+  //     alert("error5");
+  //   },
+  // });
 
   const { mutate: updateCategory } = useMutation({
     mutationFn: async () =>
@@ -238,7 +238,7 @@ const EditModal = () => {
       queryClient.invalidateQueries(["category"]);
     },
     onError: () => {
-      alert("error");
+      alert("error6");
     },
   });
   // *offer Data Handling
@@ -257,7 +257,7 @@ const EditModal = () => {
       queryClient.invalidateQueries(["offer"]);
     },
     onError: () => {
-      alert("error");
+      alert("error7");
     },
   });
 
@@ -275,7 +275,7 @@ const EditModal = () => {
       queryClient.invalidateQueries(["offer"]);
     },
     onError: () => {
-      alert("error");
+      alert("error8");
     },
   });
 
@@ -315,7 +315,7 @@ const EditModal = () => {
   };
 
   const handleAddProduct = () => {
-    addCategory();
+    // addCategory();
     addProduct();
   };
 
