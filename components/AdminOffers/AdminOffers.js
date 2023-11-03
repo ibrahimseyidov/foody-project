@@ -7,6 +7,7 @@ import styles from '../AdminCategory/admincategory.module.css'
 import axios from 'axios'
 import OfferItem from './OfferItem'
 import { useQuery } from '@tanstack/react-query';
+import { BounceLoader } from 'react-spinners';
 
 const AdminOffers = () => {
   // get offers
@@ -23,7 +24,20 @@ const AdminOffers = () => {
     useEffect(() => {
         AOS.init()
     }, [])
-
+    if (isLoading) {
+        return (
+          <div className="flex justify-center items-center mx-0 my-auto">
+            <BounceLoader
+              color="#C74FEB"
+              loading={true}
+              size={70}
+              aria-label="Loading Spinner"
+              data-testid="loader"
+            />
+          </div>
+        );
+      }
+      if (error) return <div className="text-white">error...</div>;
     return (
         <>
             <section className='h-full' data-aos="zoom-in">

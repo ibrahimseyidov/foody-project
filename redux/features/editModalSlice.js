@@ -9,6 +9,7 @@ const initialState = {
   isActiveAddCategoryModal: false,
   isActiveOfferModal: "",
   isActiveAddOfferModal: false,
+  isActiveAddOrderModal:false,
 };
 
 export const editModalSlice = createSlice({
@@ -64,6 +65,12 @@ export const editModalSlice = createSlice({
     closeOfferModalEdit: (state) => {
       state.isActiveOfferModal = false;
     },
+    openAddOrderModal: (state) => {
+      state.isActiveAddOrderModal = true;
+    },
+    closeAddOrderModal: (state) => {
+      state.isActiveAddOrderModal = false;
+    },
   },
 });
 
@@ -84,6 +91,8 @@ export const {
   closeAddOfferModal,
   openOfferModalEdit,
   closeOfferModalEdit,
+  openAddOrderModal,
+  closeAddOrderModal
 } = editModalSlice.actions;
 
 export default editModalSlice.reducer;

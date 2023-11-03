@@ -10,7 +10,8 @@ const CategoryItem = ({ categoryData }) => {
 
   const dispatch = useDispatch();
   const categoryResult = categoryData?.result;
-  console.log(categoryResult)
+
+ 
   return categoryResult?.data?.map((category, i) => (
     <tr className={styles["table-row"]} key={i}>
       <td>

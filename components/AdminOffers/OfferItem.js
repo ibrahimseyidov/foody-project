@@ -3,8 +3,8 @@ import editIcon from '../../assets/icons/editIcon.svg'
 import trashIcon from '../../assets/icons/trashIcon.svg'
 import { openOfferModalEdit } from '../../redux/features/editModalSlice'
 import styles from '../AdminCategory/admincategory.module.css'
-import { openDelModal, openDelOfferModal } from '../../redux/features/delModalSlice'
 import { useDispatch } from 'react-redux'
+import { openDelOfferModal } from '../../redux/features/delModalSlice'
 const OfferItem = ({offerData}) => {
     const dispatch = useDispatch()
    const offerResult=offerData?.result;
