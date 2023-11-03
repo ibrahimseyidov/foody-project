@@ -14,7 +14,6 @@ import {
   closeResModalEdit,
   closeCategoryModalEdit,
   closeAddOfferModal,
-  closeAddOrderModal,
 } from "../../../redux/features/editModalSlice";
 import Image from "next/image";
 import AOS from "aos";
@@ -72,11 +71,6 @@ const EditModal = () => {
   const offerName = useRef();
   const offerDesc = useRef();
 
-  const orderBasketId=useRef();
-  const orderContact=useRef();
-  const orderAddress=useRef();
-  const orderPayment=useRef();
-
   const productNameRef = productName.current;
   const productDescRef = productDesc.current;
   const productPriceRef = productPrice.current;
@@ -91,12 +85,6 @@ const EditModal = () => {
 
   const offerNameRef = offerName.current;
   const offerDescRef = offerDesc.current;
-
-
-  const orderBasketIdRef=orderBasketId.current;
-  const orderContactRef=orderContact.current;
-  const orderAddressRef=orderAddress.current;
-  const orderPaymentRef=orderPayment.current;
 
   const selEditModal = useSelector((state) => state.modal.isActiveModal);
   const selAddProductModal = useSelector(
@@ -117,9 +105,6 @@ const EditModal = () => {
   );
   const selOfferEditModal = useSelector(
     (state) => state.modal.isActiveOfferModal
-  );
-  const selOrderAddModal = useSelector(
-    (state) => state.modal.isActiveAddOrderModal
   );
   const selProductRestID = useSelector(
     (state) => state.restaurant.isActiveRestID
@@ -147,7 +132,7 @@ const EditModal = () => {
       queryClient.invalidateQueries(["products"]);
     },
     onError: () => {
-      alert("error");
+      alert("error1");
     },
   });
 
@@ -168,7 +153,7 @@ const EditModal = () => {
       queryClient.invalidateQueries(["products"]);
     },
     onError: () => {
-      alert("error");
+      alert("error2");
     },
   });
 
@@ -193,7 +178,7 @@ const EditModal = () => {
       queryClient.invalidateQueries(["restaurants"]);
     },
     onError: () => {
-      alert("error");
+      alert("error3");
     },
   });
 
@@ -217,29 +202,28 @@ const EditModal = () => {
       queryClient.invalidateQueries(["restaurants"]);
     },
     onError: () => {
-      alert("error");
+      alert("error4");
     },
   });
 
   // *Category Data Handling
 
-  const { mutate: addCategory } = useMutation({
-    mutationFn: async () =>
-      await axios.post("/api/category", {
-        name: catNameRef.value,
-        img_url: lastProductImg,
-      }),
+  // const { mutate: addCategory } = useMutation({
+  //   mutationFn: async () =>
+  //     await axios.post("/api/category", {
+  //       name: catNameRef.value,
+  //       img_url: lastProductImg,
+  //     }),
 
-    onSuccess: () => {
-      setAddProductImg(null);
-      dispatch(closeAddCategoryModal());
-      alert("succes");
-      queryClient.invalidateQueries(["category"]);
-    },
-    onError: () => {
-      alert("error");
-    },
-  });
+  //   onSuccess: () => {
+  //     setAddProductImg(null);
+  //     alert("succes");
+  //     queryClient.invalidateQueries(["category"]);
+  //   },
+  //   onError: () => {
+  //     alert("error5");
+  //   },
+  // });
 
   const { mutate: updateCategory } = useMutation({
     mutationFn: async () =>
@@ -254,7 +238,7 @@ const EditModal = () => {
       queryClient.invalidateQueries(["category"]);
     },
     onError: () => {
-      alert("error");
+      alert("error6");
     },
   });
   // *offer Data Handling
@@ -269,15 +253,13 @@ const EditModal = () => {
 
     onSuccess: () => {
       setAddProductImg(null);
-      dispatch(closeAddOfferModal());
       alert("succes");
       queryClient.invalidateQueries(["offer"]);
     },
     onError: () => {
-      alert("error");
+      alert("error7");
     },
   });
- 
 
   const { mutate: updateOffer } = useMutation({
     mutationFn: async () =>
@@ -293,43 +275,10 @@ const EditModal = () => {
       queryClient.invalidateQueries(["offer"]);
     },
     onError: () => {
-      alert("error");
+      alert("error8");
     },
   });
 
-
- 
-  const { mutate: addUserOrder } = useMutation({
-    mutationFn: async () => {
-      const accessToken = localStorage.getItem('access_token'); 
-  
-      const headers = {
-        'Authorization': `Bearer ${accessToken}`, 
-        'Content-Type': 'application/json',
-      };
-  
-      const orderData = {
-        "basket_id": orderBasketIdRef.value,
-        "delivery_address": orderAddressRef.value,
-        "contact": orderContactRef.value,
-        "payment_method":orderBasketIdRef.value,
-      };
-  
-      const response = await axios.post("/api/order", orderData, { headers });
-      console.log(orderData);
-      return response.data;
-    },
-    onSuccess: () => {
-      setAddProductImg(null);
-    
-      alert("Success");
-      queryClient.invalidateQueries(["order"]);
-    },
-    onError: () => {
-      console.log(response);
-      alert("Error");
-    },
-  });
   useEffect(() => {
     AOS.init();
     setCurrentProductData(selEditModal);
@@ -366,7 +315,7 @@ const EditModal = () => {
   };
 
   const handleAddProduct = () => {
-    addCategory();
+    // addCategory();
     addProduct();
   };
 
@@ -384,9 +333,6 @@ const EditModal = () => {
   };
   const handleUpdateOffer = () => {
     updateOffer();
-  };
-  const handleAddOrder = () => {
-    addUserOrder();
   };
   const handleChangeProductName = (e) => {
     const updatedProductData = { ...currentProductData };
@@ -1406,126 +1352,9 @@ const EditModal = () => {
             </button>
           </div>
         </div>
-      ) :selOrderAddModal?(
-        <div className={styles.overlay}>
-          <div
-            className={styles["show-editmodal"]}
-            data-aos="fade-left"
-            data-aos-duration="500"
-          >
-            <div className={styles["editmodal-head"]}>
-              <h3>{t("Add order")}</h3>
-            </div>
-            <div className={styles["editmodal-top"]}>
-              <div className={styles["editmodal-left-contain"]}>
-                <div className={styles["editmodal-left-top"]}>
-                  <h3>{t("Add Offer")}</h3>
-                  <span>{t("Upload image")}</span>
-                  {addProductImg && (
-                    <Image
-                      src={addProductImg}
-                      width={200}
-                      height={200}
-                      alt="product"
-                    />
-                  )}
-                </div>
-                <div
-                  className={`${styles["editmodal-left-bot"]} mt-52 w-[260px]`}
-                >
-                  <span>{t("Add your order information")}</span>
-                </div>
-              </div>
-              <div className={styles["editmodal-right-contain"]}>
-                <div className={styles["mob-upload-text"]}>
-                  <span>{t("Upload your offer image")}</span>
-                </div>
-                <div className={styles["editmodal-right-top"]}>
-                  <button className="flex flex-col items-center relative">
-                    <Image src={uploadImg} alt="upload" />
-                    {t("upload")}
-                    <input
-                      onChange={(e) => handleNewProductImg(e)}
-                      className="absolute -top-4 w-[100px] h-[120px]"
-                      type="file"
-                      style={{ opacity: 0, cursor: "pointer" }}
-                    />
-                  </button>
-                </div>
-                <div className={styles["editmodal-right-bot"]}>
-                  <div className={styles["mob-restaurant-info"]}>
-                    <span>
-                      {t(
-                        "Add your order description and necessary information"
-                      )}
-                    </span>
-                  </div>
-                  <form>
-                    <div className={styles["product-name"]}>
-                      <label htmlFor="name">{t("basket id")}</label>
-                      <input
-                        ref={orderBasketId}
-                        type="text"
-                        id="price"
-                     
-                      />
-                    </div>
-                    <div className={styles["product-name"]}>
-                      <label htmlFor="name">{t("order address")}</label>
-                      <input
-                        ref={orderAddress}
-                        type="text"
-                        id="price"
-                      />
-                    </div>
-                    <div className={styles["product-name"]}>
-                      <label htmlFor="name">{t("cntact")}</label>
-                      <input
-                        ref={orderContact}
-                        type="text"
-                        id="price"
-                      />
-                    </div>
-                    <div className={styles["product-name"]}>
-                      <label htmlFor="name">{t("payment")}</label>
-                      <input
-                        ref={orderPayment}
-                        type="text"
-                        id="price"
-                      />
-                    </div>
-                 
-                  </form>
-                </div>
-              </div>
-            </div>
-            <div className={`${styles["editmodal-bot"]} pt-16`}>
-              <button
-                onClick={() => dispatch(closeAddOrderModal())}
-                className={styles["edit-cancel"]}
-              >
-                {t("Cancel")}
-              </button>
-              <button
-                className={styles["edit-update"]}
-                onClick={() => handleAddOrder()}
-              >
-                {t("Create Offer")}
-              </button>
-            </div>
-          </div>
-          <div className={styles["close-contain"]}>
-            <button
-              onClick={() => dispatch(closeAddOrderModal())}
-              className={styles["close-btn"]}
-            >
-              <Image src={closeBtn} alt="close-button" />
-            </button>
-          </div>
-        </div>
-      ) :
+      ) : (
         ""
-      }
+      )}
     </>
   );
 };

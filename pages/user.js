@@ -16,17 +16,6 @@ const user = () => {
     const [isShowOrders, setIsShowOrders] = useState(false)
     const [isShowCheckout, setIsShowCheckout] = useState(false)
 
-    // const { data, isLoading, isError } = useQuery({
-    //     queryKey: ['user'],
-    //     queryFn: async () => {
-    //         const { data } = await axios.get('/api/auth/user',{
-    //             headers: {
-    //                 Authorization: `Bearer ${localStorage.getItem('access_token')}`
-    //             }
-    //         })
-    //         return data
-    //     },
-    // })
     const { mutate: singInUser } = useMutation({
         mutationFn: async () => await axios.post('/api/auth/signin',{
             "email": "test@gmail.com",
@@ -34,7 +23,7 @@ const user = () => {
         }),
         onSuccess: (data) => {
             console.log(data);
-            // localStorage.setItem('access_token', data.data.user.access_token)
+            localStorage.setItem('access_token', data.data.user.access_token)
             alert('success')
         },
         onError: () => {
@@ -42,7 +31,7 @@ const user = () => {
         }
     })
 
-
+    
     useEffect(() => {
         if (router.asPath === '/user?page=profile') {
             setIsShowProfile(true)
@@ -80,7 +69,7 @@ const user = () => {
              <ProfileLayout>
                 {
                     isShowProfile ?
-                        <UserProfile  singInUser={singInUser}/>
+                        <UserProfile singInUser={singInUser}/>
                         : isShowBasket ?
                             <UserBasket />
                             : isShowOrders ?
