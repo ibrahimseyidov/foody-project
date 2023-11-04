@@ -6,6 +6,22 @@
     padding: 41px 0px 33px 0px;
 }
 
+.clear-btn {
+    font-size: 16px !important;
+    border: 1px solid red;
+    width: 120px;
+    height: 35px;
+    font-weight: 600;
+    color: red !important;
+    border-radius: 20px;
+    transition: 0.5s all ease;
+}
+
+.clear-btn:hover {
+    transform: scale(1.05);
+    opacity: 0.8;
+}
+
 .basket-head {
     margin: 0 65px 0 34px;
     border-bottom: 1px solid #E0E0E0;
@@ -58,6 +74,7 @@
     font-weight: 600;
     line-height: 70px;
     letter-spacing: 0.48px;
+    margin-bottom: 6px;
 }
 
 .food-head :nth-child(1) {
