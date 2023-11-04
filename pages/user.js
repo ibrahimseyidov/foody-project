@@ -71,7 +71,7 @@ const user = () => {
                     isShowProfile ?
                         <UserProfile singInUser={singInUser}/>
                         : isShowBasket ?
-                            <UserBasket />
+                            <UserBasket singInUser={singInUser} />
                             : isShowOrders ?
                                 <UserOrders />
                                 : isShowCheckout ?

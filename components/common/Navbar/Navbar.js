@@ -10,13 +10,22 @@ import history from '../../../assets/icons/navIcons/history.png'
 import logout from '../../../assets/icons/navIcons/logout.svg'
 import Image from 'next/image'
 import Link from 'next/link'
-import { usePathname } from 'next/navigation'
+import { usePathname, useRouter } from 'next/navigation'
 import { useTranslation } from 'next-i18next'
+import Cookies from 'js-cookie';
+import Router from 'next/router';
 
 const Navbar = () => {
+    const router = useRouter()
     const pathname = usePathname()
 
     const { t } = useTranslation('common')
+
+    const handleLogout = () => {
+        Cookies.remove('accessJWT')
+        router.push("/admin/login")
+    }
+
     return (
         <>
 
@@ -75,10 +84,10 @@ const Navbar = () => {
                         </li>
 
                         <li>
-                            <Link href='/' id={styles['navbar']} className={styles['navbar-last']}>
+                            <button onClick={() => handleLogout()} id={styles['navbar']} className={styles['navbar-last']}>
                                 <Image src={logout} alt='logout' />
                                 {t('Logout')}
-                            </Link>
+                            </button>
                         </li>
 
                     </ul>

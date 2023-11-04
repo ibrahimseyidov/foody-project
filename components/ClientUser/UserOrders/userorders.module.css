@@ -19,6 +19,25 @@
     letter-spacing: 0.9px;
 }
 
+.table-container {
+    height: 460px;
+    overflow-y: auto;
+    overflow-x: hidden;
+}
+
+.table-container::-webkit-scrollbar {
+    width: 4px;
+}
+
+.table-container::-webkit-scrollbar-thumb {
+    background: #D63626;
+    border-radius: 6px;
+}
+
+.table-container::-webkit-scrollbar-track {
+    background: #f1f1f1;
+}
+
 .table {
     width: 100%;
     background-color: #fff;
@@ -47,6 +66,7 @@
 }
 
 .orders-tr {
+    position: relative;
     height: 60px;
     text-align: center;
     border-bottom: 1px solid #DFE2E9;

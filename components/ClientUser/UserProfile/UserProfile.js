@@ -53,6 +53,23 @@ const UserProfile = ({ singInUser }) => {
         },
     })
 
+    // const { data:userBasket } = useQuery({
+    //     queryKey: ['basket'],
+    //     queryFn: async () => {
+    //         const { data } = await axios.get('/api/basket', {
+    //             headers: {
+    //                 Authorization: `Bearer ${localStorage.getItem('access_token')}`
+    //             }
+    //         }, {
+    //             onSuccess: (data) => {
+    //                 console.log(data);
+    //             }
+    //         })
+    //         return data
+    //     },
+    // })
+
+
     useEffect(() => {
         setCurrentUserInfo({
             email: userData?.user?.email,
@@ -85,42 +102,42 @@ const UserProfile = ({ singInUser }) => {
     //     }
     // })
 
-    //    const { mutate: updateUser } = useMutation({
-    //     mutationFn: async () => await axios.post('/api/basket/add', {
-    //         product_id: "KQ1QMiMzdXOUe8s1odtM"
-    //     }, {
-    //         headers: {
-    //             Authorization: `Bearer ${localStorage.getItem('access_token')}`
-    //         }
-    //     }),
-    //     onSuccess: (data) => {
-    //         console.log(data);
-    //         alert('success')
-    //     },
-    //     onError: (error) => {
-    //         alert('error', error)
-    //     }
-    // })
-
     const { mutate: updateUser } = useMutation({
-        mutationFn: async () => await axios.post('/api/order/add', {
-            "basket_id": "uz478K4zToeZnC513UsA",
-            "delivery_address": "123 Main St, City",
-            "payment_method": "1",
-            "contact": "John Doe"
+        mutationFn: async () => await axios.post('/api/basket/add', {
+            product_id: "KQ1QMiMzdXOUe8s1odtM"
         }, {
             headers: {
                 Authorization: `Bearer ${localStorage.getItem('access_token')}`
             }
         }),
-        onSuccess: () => {
+        onSuccess: (data) => {
+            console.log(data);
             alert('success')
         },
         onError: (error) => {
-            console.log(error);
             alert('error', error)
         }
     })
+
+    // const { mutate: updateUser } = useMutation({
+    //     mutationFn: async () => await axios.post('/api/order/add', {
+    //         "basket_id": "uz478K4zToeZnC513UsA",
+    //         "delivery_address": "123 Main St, City",
+    //         "payment_method": "1",
+    //         "contact": "John Doe"
+    //     }, {
+    //         headers: {
+    //             Authorization: `Bearer ${localStorage.getItem('access_token')}`
+    //         }
+    //     }),
+    //     onSuccess: () => {
+    //         alert('success')
+    //     },
+    //     onError: (error) => {
+    //         console.log(error);
+    //         alert('error', error)
+    //     }
+    // })
 
 
     const handleSaveUserInfo = (e) => {
@@ -180,7 +197,6 @@ const UserProfile = ({ singInUser }) => {
                                         currentUserInfo?.img_url ? <Image src={currentUserInfo?.img_url} alt="upload" width={200} height={200} className='rounded' />
                                             :
                                             <Image src={uploadImg} alt="upload" width={200} height={200} className='rounded' />
-
                                 }
                                 <input
                                     onChange={(e) => handleNewProductImg(e)}
