@@ -125,8 +125,8 @@ const UserProfile = ({ singInUser }) => {
 
     const handleSaveUserInfo = (e) => {
         e.preventDefault()
-        // singInUser()
-        updateUser()
+        singInUser()
+        // updateUser()
     }
 
     const handleNewProductImg = (e) => {

@@ -14,6 +14,7 @@ import {
   closeResModalEdit,
   closeCategoryModalEdit,
   closeAddOfferModal,
+  closeAddOrderModal,
 } from "../../../redux/features/editModalSlice";
 import Image from "next/image";
 import AOS from "aos";
@@ -71,6 +72,7 @@ const EditModal = () => {
   const offerName = useRef();
   const offerDesc = useRef();
 
+
   const productNameRef = productName.current;
   const productDescRef = productDesc.current;
   const productPriceRef = productPrice.current;
@@ -85,7 +87,6 @@ const EditModal = () => {
 
   const offerNameRef = offerName.current;
   const offerDescRef = offerDesc.current;
-
   const selEditModal = useSelector((state) => state.modal.isActiveModal);
   const selAddProductModal = useSelector(
     (state) => state.modal.isActiveAddProductModal
@@ -106,6 +107,8 @@ const EditModal = () => {
   const selOfferEditModal = useSelector(
     (state) => state.modal.isActiveOfferModal
   );
+
+
   const selProductRestID = useSelector(
     (state) => state.restaurant.isActiveRestID
   );
@@ -208,22 +211,22 @@ const EditModal = () => {
 
   // *Category Data Handling
 
-  // const { mutate: addCategory } = useMutation({
-  //   mutationFn: async () =>
-  //     await axios.post("/api/category", {
-  //       name: catNameRef.value,
-  //       img_url: lastProductImg,
-  //     }),
+  const { mutate: addCategory } = useMutation({
+    mutationFn: async () =>
+      await axios.post("/api/category", {
+        name: catNameRef.value,
+        img_url: lastProductImg,
+      }),
 
-  //   onSuccess: () => {
-  //     setAddProductImg(null);
-  //     alert("succes");
-  //     queryClient.invalidateQueries(["category"]);
-  //   },
-  //   onError: () => {
-  //     alert("error5");
-  //   },
-  // });
+    onSuccess: () => {
+      setAddProductImg(null);
+      alert("succes");
+      queryClient.invalidateQueries(["category"]);
+    },
+    onError: () => {
+      alert("error");
+    },
+  });
 
   const { mutate: updateCategory } = useMutation({
     mutationFn: async () =>
@@ -278,6 +281,7 @@ const EditModal = () => {
       alert("error8");
     },
   });
+
 
   useEffect(() => {
     AOS.init();
@@ -334,6 +338,11 @@ const EditModal = () => {
   const handleUpdateOffer = () => {
     updateOffer();
   };
+
+  const handleAddBasket = () => {
+    addBasket();
+  };
+
   const handleChangeProductName = (e) => {
     const updatedProductData = { ...currentProductData };
     updatedProductData.name = e.target.value;
@@ -1352,8 +1361,8 @@ const EditModal = () => {
             </button>
           </div>
         </div>
-      ) : (
-        ""
+      ) :
+       ( ""
       )}
     </>
   );

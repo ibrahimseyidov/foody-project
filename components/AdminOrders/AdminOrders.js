@@ -12,7 +12,13 @@ const AdminOrders = () => {
   const { data, isLoading, error } = useQuery({
     queryKey: ["order"],
     queryFn: async () => {
-      const { data } = await axios.get("/api/order/user");
+      const accessToken = localStorage.getItem("access_token");
+
+      const headers = {
+        Authorization: `Bearer ${accessToken}`,
+        "Content-Type": "application/json",
+      };
+      const { data } = await axios.get("/api/order",{headers});
       return data;
     },
   });
@@ -34,7 +40,7 @@ const AdminOrders = () => {
       </div>
     );
   }
-  if (error) return <div className="text-white">error...</div>;
+  if (error) return <div className="text-white">{error}</div>;
   return (
     <>
       <section className="h-full" data-aos="zoom-in">

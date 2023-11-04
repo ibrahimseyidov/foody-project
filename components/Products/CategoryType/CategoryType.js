@@ -4,10 +4,7 @@ import styles from '../CategoryType/categorytype.module.css'
 import SelectBox from '../../common/Selectbox/Selectbox'
 import { useQuery } from '@tanstack/react-query';
 import axios from 'axios';
-import { openAddOrderModal } from '../../../redux/features/editModalSlice';
-import { useDispatch } from 'react-redux';
 const CategoryType = ({pageName}) => {
-const dispatch=useDispatch();
     const { data } = useQuery({
         queryKey: ['products'],
         queryFn: async () => {
@@ -25,7 +22,8 @@ const dispatch=useDispatch();
                     </div>
                     <div className='flex gap-10 items-center'>
                         <SelectBox categories={...data} />
-                        <button onClick={()=>dispatch(openAddOrderModal())}>add order</button>
+
+                        
                     </div>
                 </div>
             </div>

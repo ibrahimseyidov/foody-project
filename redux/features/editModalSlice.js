@@ -58,18 +58,11 @@ export const editModalSlice = createSlice({
     closeAddOfferModal: (state) => {
       state.isActiveAddOfferModal = false;
     },
- 
     openOfferModalEdit: (state,action) => {
       state.isActiveOfferModal = action.payload;
     },
     closeOfferModalEdit: (state) => {
       state.isActiveOfferModal = false;
-    },
-    openAddOrderModal: (state) => {
-      state.isActiveAddOrderModal = true;
-    },
-    closeAddOrderModal: (state) => {
-      state.isActiveAddOrderModal = false;
     },
   },
 });
@@ -92,7 +85,9 @@ export const {
   openOfferModalEdit,
   closeOfferModalEdit,
   openAddOrderModal,
-  closeAddOrderModal
+  closeAddOrderModal,
+  openOrderModalEdit,
+  closeOrderModalEdit
 } = editModalSlice.actions;
 
 export default editModalSlice.reducer;

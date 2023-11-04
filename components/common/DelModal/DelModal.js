@@ -9,6 +9,7 @@ import {
   closeDelModal,
   closeResDelModal,
   closeHisDelModal,
+  closeOrderDelModal,
 } from "../../../redux/features/delModalSlice";
 import AOS from "aos";
 import "aos/dist/aos.css";
@@ -22,7 +23,7 @@ const DelModal = () => {
   const selDelCategoryModal = useSelector(
     (state) => state.delModal.catDelModalActive
   );
-  const selOrderDelModal = useSelector(
+  const selOrderShowModal = useSelector(
     (state) => state.delModal.showOrderActive
   );
   const selOfferDelModal = useSelector(
@@ -33,6 +34,9 @@ const DelModal = () => {
     (state) => state.delModal.resDelModalActive
   );
   const selHisModal = useSelector((state) => state.delModal.delhistoryActive);
+  const selOrderDelModal = useSelector(
+    (state) => state.delModal.orderDelModalActive
+  );
 
   const dispatch = useDispatch();
 
@@ -89,19 +93,7 @@ const DelModal = () => {
       alert("error");
     },
   });
-  // delete order
-  const { mutate: handleDelOrder } = useMutation({
-    mutationFn: async () =>
-      await axios.delete(`/api/order/${selOrderDelModal}`),
-    onSuccess: () => {
-      alert("success");
-      dispatch(closeOrderModal());
-      queryClient.invalidateQueries(["order"]);
-    },
-    onError: () => {
-      alert("error");
-    },
-  });
+
   // delete offer
   const { mutate: handleDelOffer } = useMutation({
     mutationFn: async () =>
@@ -115,6 +107,31 @@ const DelModal = () => {
       alert("error");
     },
   });
+
+  // delete order
+  const { mutate: handleDelOrder } = useMutation({
+    mutationFn: async () => {
+      const accessToken = localStorage.getItem("access_token");
+
+      const headers = {
+        Authorization: `Bearer ${accessToken}`,
+     
+      };
+      await axios.delete(
+        "/api/order",
+        { data: { order_id: selOrderDelModal } , headers }
+      );
+    },
+    onSuccess: () => {
+      alert("success");
+      dispatch(closeOrderDelModal());
+      queryClient.invalidateQueries(["order"]);
+    },
+    onError: (error) => {
+      console.log(error);
+    },
+  });
+
   useEffect(() => {
     AOS.init();
   }, []);
@@ -309,13 +326,13 @@ const DelModal = () => {
               </span>
               <div className="max-md:flex max-md:flex-col-reverse">
                 <button
-                  onClick={() => dispatch(closeOrderModal())}
+                  onClick={() => dispatch(closeOrderDelModal())}
                   className={styles["cancel-btn"]}
                 >
                   {t("Cancel")}
                 </button>
                 <button
-                  onClick={() => handleDelOrd()}
+                  onClick={handleDelOrd}
                   className={styles["delete-btn"]}
                 >
                   {t("delete")}
