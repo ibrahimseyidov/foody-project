@@ -3,20 +3,35 @@ import axios from 'axios';
 import React from 'react';
 
 const index = () => {
+  // const { mutate: singInUser } = useMutation({
+  //   mutationFn: async () => await axios.post('/api/auth/signin', {
+  //     "email": "test@gmail.com",
+  //     "password": "test123"
+  //   }),
+  //   onSuccess: (data) => {
+  //     console.log(data);
+  //     alert('success')
+  //   },
+  //   onError: () => {
+  //     alert('error')
+  //   }
+  // })
   const { mutate: singInUser } = useMutation({
     mutationFn: async () => await axios.post('/api/auth/signin', {
       "email": "test@gmail.com",
       "password": "test123"
     }),
     onSuccess: (data) => {
-      console.log(data);
-      alert('success')
+    
+      const accessToken = data.data.user.access_token;
+      localStorage.setItem('access_token', accessToken);
+      alert('Success');
+      console.log(accessToken);
     },
     onError: () => {
-      alert('error')
+      alert('Error');
     }
-  })
-
+  });
   const signIn = () => {
     singInUser()
   }
