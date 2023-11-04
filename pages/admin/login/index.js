@@ -38,9 +38,6 @@ const index = () => {
     notifyError()
   });
 
-
-
-
   const signIn = () => {
     signAdmin()
   }

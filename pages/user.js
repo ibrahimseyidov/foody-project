@@ -66,7 +66,7 @@ const user = () => {
     return (
         <>
 
-            <ProfileLayout>
+             <ProfileLayout>
                 {
                     isShowProfile ?
                         <UserProfile singInUser={singInUser}/>

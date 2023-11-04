@@ -1,12 +1,14 @@
 import React from 'react'
 import AdminDashboard from '../index'
 import ProductContainer from '../../../components/Products/ProductsContainer'
-import CategoryType from '../../../components/Products/CategoryType/CategoryType'
+
 import AdminOrders from '../../../components/AdminOrders/AdminOrders'
 import DelModal from '../../../components/common/DelModal/DelModal'
 import ShowOrderModal from '../../../components/ShowOrderModal/ShowOrderModal'
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
 import { useTranslation } from 'next-i18next'
+import EditModal from '../../../components/common/EditModal/EditModal'
+import OrderType from '../../../components/common/Order/OrderType'
 
 const index = () => {
     const { t } = useTranslation('common')
@@ -15,7 +17,7 @@ const index = () => {
         <>
             <AdminDashboard>
                 <ProductContainer>
-                    <CategoryType pageName={t('Orders')} />
+                   <OrderType pageName={"Orders"}/>
                     <AdminOrders />
                     <ShowOrderModal />
                     <DelModal />

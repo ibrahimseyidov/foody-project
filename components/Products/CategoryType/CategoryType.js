@@ -5,7 +5,6 @@ import SelectBox from '../../common/Selectbox/Selectbox'
 import { useQuery } from '@tanstack/react-query';
 import axios from 'axios';
 const CategoryType = ({pageName}) => {
-
     const { data } = useQuery({
         queryKey: ['products'],
         queryFn: async () => {
@@ -23,6 +22,8 @@ const CategoryType = ({pageName}) => {
                     </div>
                     <div className='flex gap-10 items-center'>
                         <SelectBox categories={...data} />
+
+                        
                     </div>
                 </div>
             </div>
