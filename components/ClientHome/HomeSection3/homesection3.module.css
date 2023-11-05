@@ -6,6 +6,7 @@
     line-height: 70px;
     letter-spacing: 1.5px;
     margin-bottom: 30px;
+    margin: 50px;
 }
 
 .menu-para {
@@ -16,4 +17,27 @@
     line-height: 30px;
     letter-spacing: 0.66px;
     width: 80%;
+}
+
+.offer-card{
+    display: flex;
+    align-items: flex-start;
+    width: 83%; 
+    margin: auto;
+    margin-bottom: 150px;
+    
+}
+
+.offer-card:nth-child(even){
+    margin: 170px;
+    display: flex;
+    flex-direction: row-reverse;
+    
+}
+
+.menu-para:nth-child(even){
+    margin: 50px;
+}
+.imagination{
+    padding-top: 185px;
 }

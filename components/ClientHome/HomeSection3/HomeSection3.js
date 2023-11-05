@@ -1,33 +1,62 @@
-import React, { useEffect } from 'react'
-import Image from 'next/image'
-import foodImg1 from '../../../assets/images/foodImages/foodImg1.svg'
-import styles from './homesection3.module.css'
-import AOS from 'aos';
-import 'aos/dist/aos.css';
+import React, { useEffect } from "react";
+import Image from "next/image";
+import foodImg1 from "../../../assets/images/foodImages/foodImg1.svg";
+import styles from "./homesection3.module.css";
+import AOS from "aos";
+import "aos/dist/aos.css";
+import { useQuery } from "@tanstack/react-query";
+import axios from "axios";
+import { BounceLoader } from "react-spinners";
 
 const HomeSection3 = () => {
+  const { data, isLoading, isError } = useQuery({
+    queryKey: ["offer"],
+    queryFn: async () => {
+      const response = await axios.get("/api/offer");
+      return response.data;
+    },
+  });
+  console.log(data);
 
-    useEffect(() => {
-        AOS.init()
-    }, [])
-
+  if (isLoading) {
     return (
-        <>
-            <section className='mb-36' data-aos="fade-left">
-                <div className='flex items-start w-5/6 m-auto'>
-                    <div className='w-3/4'>
-                        <h3 className={styles.menu}>Menu That Always Make You Fall In Love</h3>
-                            <p className={styles['menu-para']}>
-                                Lorem ipsum is placeholder text commonly used in the graphic, print, and publishing industries for previewing layouts and visual mockups.Lorem ipsum is placeholder text commonly used in the graphic, print, and publishing industries for previewing layouts and visual mockups.
-                            </p>
-                    </div>
-                    <div className='ml-20'>
-                        <Image src={foodImg1} alt='food-image' />
-                    </div>
-                </div>
-            </section>
-        </>
-    )
-}
+      <div className="flex justify-center items-center mx-0 my-auto">
+        <BounceLoader
+          color="#C74FEB"
+          loading={true}
+          size={70}
+          aria-label="Loading Spinner"
+          data-testid="loader"
+        />
+      </div>
+    );
+  }
+  if (isError) return <div className="text-white">error...</div>;
 
-export default HomeSection3
+  // useEffect(() => {
+  //     AOS.init()
+  // }, [])
+
+  return (
+    <>
+      <section className="mb-36" data-aos="fade-left">
+        {data?.result.data.map((main) =>(
+           <div className={styles['offer-card']}>
+            <div className="w-3/4">
+                <h3 className={styles.menu}>{main?.name}</h3>
+              <p className={styles["menu-para"]}>
+                {main?.description}
+              </p>           
+            </div>
+            <div>
+              <Image className={styles.imagination} src={main?.img_url} width={300} height={300} alt="food-image" />
+            </div>
+           </div>
+        ))}
+       
+      </section>
+    </>
+  );
+};
+
+export default HomeSection3;
