@@ -12,6 +12,8 @@ import { useTranslation } from 'next-i18next'
 import { useRouter } from 'next/router'
 import { useDispatch } from 'react-redux';
 import { handleLangData } from '../../../redux/features/langSlice';
+import { useQuery } from '@tanstack/react-query';
+import axios from 'axios';
 
 const ClientHeader = () => {
     const pathname = usePathname()
@@ -21,7 +23,18 @@ const ClientHeader = () => {
     const currentLocale = router.locale
     const [isShowLangContain, setIsShowLangContain] = useState(false)
     const [isCurrentLang, setIsCurrentLang] = useState('en')
-console.log(currentQueryLocale);
+    const [searchRest, setSearchRest] = useState(false)
+    const [isInputActive, setIsInputActive] = useState(false)
+
+    const { data: restData, isLoading, isError } = useQuery({
+        queryKey: ['restaurants'],
+        queryFn: async () => {
+            const { data } = await axios.get('/api/restuarants')
+            return data
+        },
+    })
+    console.log(restData?.result.data);
+
     useEffect(() => {
         // dispatch(handleLangData(currentLocale))
         if (currentLocale) {
@@ -30,6 +43,7 @@ console.log(currentQueryLocale);
             setIsCurrentLang(currentQueryLocale)
         }
     }, [currentLocale, currentQueryLocale])
+
 
     const handlelangDropDown = () => {
         setIsShowLangContain(!isShowLangContain)
@@ -40,6 +54,29 @@ console.log(currentQueryLocale);
         setIsShowLangContain(false)
         setIsCurrentLang(lang)
     }
+
+    const handleSearchRes = (e) => {
+        console.log(e.target.value);
+        let newData = restData?.result.data.filter((rest) => (
+            (rest.name).toLowerCase().includes((e.target.value).toLowerCase())
+        ))
+        setIsInputActive(e.target.value)
+        setSearchRest(newData)
+    }
+
+    const className = `
+  ${styles.searchArea} 
+  absolute 
+  top-24 
+  bg-white 
+  w-[450px] 
+  h-[350px] 
+  overflow-auto 
+  z-50 
+  rounded-xl 
+  right-80 
+  py-6
+`;
 
     return (
         <>
@@ -68,7 +105,21 @@ console.log(currentQueryLocale);
 
                     <div className={styles['header-right-container']}>
                         <div className={styles['search-inp']}>
-                            <input type="text" placeholder={t('Search')} />
+                            <input type="text" className={styles['search']} onChange={(e) => handleSearchRes(e)} placeholder={t('Search')} />
+                            {searchRest && isInputActive ?
+                                <ul className={className}>
+                                    {searchRest?.map((rest) => (
+                                        <li className='flex items-center mb-4 border-b border-gray-100 px-8 pb-4'>
+                                            <Image src={rest?.img_url} width={50} height={50} alt='restaurant-image' />
+                                            <div className='ml-8'>
+                                                <h3 className='font-semibold'>{rest?.name}</h3>
+                                                <p>{rest?.cuisine}</p>
+                                            </div>
+                                        </li>
+                                    ))}
+                                </ul> :''
+                            }
+
                         </div>
                         <div className='relative'>
                             <button onClick={() => handlelangDropDown()} className='w-10 mr-6' >

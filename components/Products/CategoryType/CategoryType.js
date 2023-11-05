@@ -4,7 +4,7 @@ import styles from '../CategoryType/categorytype.module.css'
 import SelectBox from '../../common/Selectbox/Selectbox'
 import { useQuery } from '@tanstack/react-query';
 import axios from 'axios';
-const CategoryType = ({pageName}) => {
+const CategoryType = ({ pageName }) => {
     const { data } = useQuery({
         queryKey: ['products'],
         queryFn: async () => {
@@ -21,9 +21,7 @@ const CategoryType = ({pageName}) => {
                         <h2 className={styles['products-head-text']}>{pageName}</h2>
                     </div>
                     <div className='flex gap-10 items-center'>
-                        <SelectBox categories={...data} />
-
-                        
+                        {pageName !== 'History' &&                         <SelectBox categories={...data} />}
                     </div>
                 </div>
             </div>
