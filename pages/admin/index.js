@@ -10,22 +10,26 @@ import TanstackProvider from '../../providers/TanstackProvider'
 import Cookies from 'js-cookie'
 import { BounceLoader } from 'react-spinners'
 const AdminDashboard = ({ children }) => {
-  const [cookie,setCookie] = useState(null)
-  useEffect(()=>{
-    setCookie(Cookies.get('accessJWT'))
-  },[Cookies.get('accessJWT')])
+  const [cookie, setCookie] = useState(false)
+  useEffect(() => {
+    if (Cookies.get('accessJWT')) {
+      setCookie(Cookies.get('accessJWT'))
+    } else {
+      setCookie('notfound')
+    }
+  }, [Cookies.get('accessJWT')])
 
-//   {!cookie?<div className='px-4' style={{ backgroundColor: '#1E1E30', 'min-height': '100vh' }}>
-//   <div className='absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2'>
-// <BounceLoader
-//   color="#C74FEB"
-//   loading={true}
-//   size={70}
-//   aria-label="Loading Spinner"
-//   data-testid="loader"
-// />
-// </div>
-// </div>:
+  //   {!cookie?<div className='px-4' style={{ backgroundColor: '#1E1E30', 'min-height': '100vh' }}>
+  //   <div className='absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2'>
+  // <BounceLoader
+  //   color="#C74FEB"
+  //   loading={true}
+  //   size={70}
+  //   aria-label="Loading Spinner"
+  //   data-testid="loader"
+  // />
+  // </div>
+  // </div>:
   return (
     <div>
       <Head>
@@ -33,13 +37,23 @@ const AdminDashboard = ({ children }) => {
         <meta name="description" content="Foody" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-        {cookie?<TanstackProvider>
+      {!cookie ? <div className='px-4' style={{ backgroundColor: '#1E1E30', 'min-height': '100vh' }}>
+        <div className='absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2'>
+          <BounceLoader
+            color="#C74FEB"
+            loading={true}
+            size={70}
+            aria-label="Loading Spinner"
+            data-testid="loader"
+          />
+        </div>
+      </div> : cookie === 'notfound' ? <Image className='h-screen w-screen' src={NotFound404} /> : <TanstackProvider>
         <Provider store={store}>
           <Layout>
             {children}
           </Layout>
         </Provider >
-      </TanstackProvider>:<Image className='h-screen w-screen' src={NotFound404} />}
+      </TanstackProvider>}
     </div >
   );
 };
