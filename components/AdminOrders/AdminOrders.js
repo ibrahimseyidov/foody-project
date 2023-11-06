@@ -3,27 +3,11 @@ import React, { useEffect } from "react";
 import styles from "../AdminCategory/admincategory.module.css";
 import AOS from "aos";
 import "aos/dist/aos.css";
-import { BounceLoader } from 'react-spinners';  
-import axios from "axios";
+import { BounceLoader } from "react-spinners";
 import OrderItem from "./OrderItem";
-import { useQuery } from "@tanstack/react-query";
 
-const AdminOrders = () => {
-  const { data, isLoading, error } = useQuery({
-    queryKey: ["order"],
-    queryFn: async () => {
-      const accessToken = localStorage.getItem("access_token");
-
-      const headers = {
-        Authorization: `Bearer ${accessToken}`,
-        "Content-Type": "application/json",
-      };
-      const { data } = await axios.get("/api/order",{headers});
-      return data;
-    },
-  });
-
-
+const AdminOrders = ({ orderData,isLoading,error }) => {
+  console.log(orderData)
   useEffect(() => {
     AOS.init();
   }, []);
@@ -58,7 +42,7 @@ const AdminOrders = () => {
               </tr>
             </thead>
             <tbody className={styles["tbody"]}>
-             <OrderItem orderData={...data}/>
+              <OrderItem orderData={orderData} />
             </tbody>
           </table>
         </div>

@@ -23,7 +23,7 @@ const OrderItem = ({ orderData }) => {
       <td>{order?.payment_method}</td>
       <td>{order?.contact}</td>
       <td className="flex items-center mt-2">
-        <button className="mr-4" onClick={()=>dispatch(showOrderModal())}>
+        <button className="mr-4" onClick={()=>dispatch(showOrderModal(order.id))}>
           <Image src={eye} alt="edit-icon" />
         </button>
         <button onClick={() => dispatch(openOrderDelModal(order?.id))}>
