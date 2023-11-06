@@ -15,7 +15,7 @@ const CategoryItem = ({ categoryData }) => {
   return categoryResult?.data?.map((category, i) => (
     <tr className={styles["table-row"]} key={i}>
       <td>
-        <span className={styles["table-id"]}>{i}</span>
+        <span className={styles["table-id"]}>{i+1}</span>
       </td>
       <td className="flex justify-center">
         <Image width="100" height="100" src={category.img_url} alt="food" />

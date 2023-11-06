@@ -12,7 +12,7 @@ const OrderItem = ({ orderData }) => {
   return orderResult?.data.map((order, i) => (
     <tr key={order?.id} className={styles["table-row"]}>
       <td>
-        <span className={styles["table-id"]}>{i}</span>
+        <span className={styles["table-id"]}>{i+1}</span>
       </td>
       <td>
         <span className={styles["table-id"]}>{order?.customer_id}</span>
