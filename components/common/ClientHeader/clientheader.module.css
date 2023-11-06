@@ -25,7 +25,7 @@
     display: flex;
 }
 
-.search-inp :nth-child(1) {
+.search {
     width: 304px;
     height: 45px;
     border-radius: 10px;
@@ -69,4 +69,13 @@
 
 .home-link:hover {
     color: #D63626 !important;
+}
+
+.searchArea::-webkit-scrollbar {
+    width: 4px;
+}
+
+.searchArea::-webkit-scrollbar-thumb {
+    border-radius: 4px;
+    background-color: #D63626 !important;
 }

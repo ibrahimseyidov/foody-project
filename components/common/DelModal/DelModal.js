@@ -16,6 +16,7 @@ import "aos/dist/aos.css";
 import { useTranslation } from "next-i18next";
 import axios from "axios";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
+import Cookies from "js-cookie";
 
 const DelModal = () => {
   const { t } = useTranslation("common");
@@ -65,21 +66,26 @@ const DelModal = () => {
     },
   });
 
-  const { mutate: handleDeleteHis } = useMutation({
-    mutationFn: async () => {
-      const response = await axios.delete(`/api/offer/${selHisModal}`);
-      return response.data;
-    },
-
+  const { mutate: delUserOrder } = useMutation({
+    mutationFn: async (orderId) => await axios.delete('/api/order', {
+      data: {
+        order_id: orderId
+      },
+      headers: {
+        Authorization: `Bearer ${Cookies.get('accessJWT')}`
+      }
+    }),
     onSuccess: () => {
-      alert("Success!!");
-      dispatch(closeHisDelModal());
-      queryClient.invalidateQueries(["offer"]);
+      alert('success')
+      dispatch(closeHisDelModal())
+      queryClient.invalidateQueries(["order"]);
     },
-    onError: () => {
-      alert("Error!!");
-    },
+    onError: (error) => {
+      console.log(error);
+      alert('error', error)
+    }
   });
+
   // delete category
   const { mutate: handleDelCategory } = useMutation({
     mutationFn: async () =>
@@ -115,11 +121,11 @@ const DelModal = () => {
 
       const headers = {
         Authorization: `Bearer ${accessToken}`,
-     
+
       };
       await axios.delete(
         "/api/order",
-        { data: { order_id: selOrderDelModal } , headers }
+        { data: { order_id: selOrderDelModal }, headers }
       );
     },
     onSuccess: () => {
@@ -143,7 +149,7 @@ const DelModal = () => {
     handleDelRest();
   };
   const handleDelete = () => {
-    handleDeleteHis();
+    delUserOrder(selHisModal);
   };
   const handleDelCat = () => {
     handleDelCategory();

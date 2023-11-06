@@ -1,4 +1,4 @@
-import React ,{ useState } from "react";
+import React from "react";
 import styles from "../AdminCategory/admincategory.module.css";
 import Image from "next/image";
 import trashIcon from "../../assets/icons/trashIcon.svg";
@@ -9,20 +9,30 @@ import { openHisDelModal } from "../../redux/features/delModalSlice";
 import { useQuery } from "@tanstack/react-query";
 import axios from "axios";
 import { BounceLoader } from "react-spinners";
+import Cookies from "js-cookie";
 
 const AdminHistory = () => {
   const dispatch = useDispatch()
 
-  const { data, isLoading, isError } = useQuery({
-    queryKey: ["offer"],
+  const { data: userOrder, isLoading, isError } = useQuery({
+    queryKey: ['order'],
     queryFn: async () => {
-      const response = await axios.get("/api/offer");
-      return response.data;
+      const { data } = await axios.get('/api/order', {
+        headers: {
+          Authorization: `Bearer ${Cookies.get('accessJWT')}`
+        }
+      })
+      return data
     },
-  });
+  })
 
- 
-  
+
+  const handleDate = (orderCreatedTime) => {
+    const monthNames = ["Jan", "Feb", "March", "Apr", "May", "June", "July", "Aug", "Sep", "Oct", "Nov", "Dec"];
+    let [month, date, year] = new Date(orderCreatedTime).toLocaleDateString("en-US").split("/");
+    return `${date > 9 && date !== 0 ? date : 0 + date} ${monthNames[month - 1]}  ${year}`
+  }
+
 
   if (isLoading) {
     return (
@@ -38,13 +48,13 @@ const AdminHistory = () => {
     );
   }
   if (isError) return <div className="text-white">error...</div>;
-
+console.log(userOrder?.result.data);
   return (
     <>
       <section className="h-full">
         <div className={styles["table-container"]}>
           <table className={styles["table"]}>
-          <thead className={styles["thead"]}>
+            <thead className={styles["thead"]}>
               <tr className={styles["thead-row"]}>
                 <th>ID</th>
                 <th>Customer ID</th>
@@ -56,21 +66,21 @@ const AdminHistory = () => {
               </tr>
             </thead>
             <tbody className={styles["tbody"]}>
-              {data?.result.data.map((history) => (
-                <tr className={styles["table-row"]} key={history.id}>
-                   <td>
-                    <span className={styles["table-id"]}>{history.id}</span>
+              {userOrder?.result.data.map((history,i) => (
+                <tr className={styles["table-row"]} key={history?.id}>
+                  <td>
+                    <span className={styles["table-id"]}>{(i+1)}</span>
                   </td>
                   <td>
-                    <span className={styles["table-id"]}>{history.created}</span>
+                    <span className={styles["table-id"]}>{(history?.id).length > 6 && (history?.id).slice(0, 6)}</span>
                   </td>
-                  <td>{history.name}</td>
-                  <td className="w-48 text-left">
-                    {history.name}
+                  <td>{handleDate(history?.created)}</td>
+                  <td className="w-48 text-center">
+                    {history?.delivery_address}
                   </td>
-                  <td>{history.slug}</td>
-                  <td>{history.name}</td>
-                  <td>{history.slug}</td>
+                  <td>{history?.amount}</td>
+                  <td>{history?.payment_method === 1 ? "pay at the door by credit card" : "pay at the door"}</td>
+                  <td>{history?.contact}</td>
                   <td className="mt-2 pr-3">
                     <button onClick={() => dispatch(openHisDelModal(history?.id))}>
                       <Image src={trashIcon} alt="trash-icon" />
@@ -81,7 +91,7 @@ const AdminHistory = () => {
             </tbody>
           </table>
         </div>
-      </section>     
+      </section>
     </>
   );
 };

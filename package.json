@@ -35,6 +35,7 @@
     "react-router-dom": "^6.17.0",
     "react-spinners": "^0.13.8",
     "react-text-typing": "^0.2.0",
+    "react-toastify": "^9.1.3",
     "swagger-jsdoc": "^6.2.8",
     "swagger-ui-react": "^5.3.1"
   },
