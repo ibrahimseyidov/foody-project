@@ -15,7 +15,7 @@ import axios from 'axios'
 import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query'
 import { current } from '@reduxjs/toolkit'
 
-const UserProfile = ({ singInUser }) => {
+const UserProfile = () => {
     const { t } = useTranslation('common')
     const contact = useRef()
     const username = useRef()
@@ -80,31 +80,13 @@ const UserProfile = ({ singInUser }) => {
         })
     }, [userData, userData?.user?.img_url])
 
-    // const { mutate: updateUser } = useMutation({
-    //     mutationFn: async () => await axios.put('/api/auth/user', {
-    //         "email": currentUserInfo?.email,
-    //         "username": currentUserInfo?.username,
-    //         "fullname": currentUserInfo?.fullname,
-    //         "img_url": currentUserInfo?.img_url,
-    //         "phone": currentUserInfo?.contact,
-    //     }, {
-    //         headers: {
-    //             Authorization: `Bearer ${localStorage.getItem('access_token')}`
-    //         }
-    //     }),
-    //     onSuccess: (data) => {
-
-    //         alert('success')
-    //         queryClient.invalidateQueries(["user"]);
-    //     },
-    //     onError: (error) => {
-    //         alert('error', error)
-    //     }
-    // })
-
     const { mutate: updateUser } = useMutation({
-        mutationFn: async () => await axios.post('/api/basket/add', {
-            product_id: "KQ1QMiMzdXOUe8s1odtM"
+        mutationFn: async () => await axios.put('/api/auth/user', {
+            "email": currentUserInfo?.email,
+            "username": currentUserInfo?.username,
+            "fullname": currentUserInfo?.fullname,
+            "img_url": currentUserInfo?.img_url,
+            "phone": currentUserInfo?.contact,
         }, {
             headers: {
                 Authorization: `Bearer ${localStorage.getItem('access_token')}`
@@ -113,11 +95,29 @@ const UserProfile = ({ singInUser }) => {
         onSuccess: (data) => {
             console.log(data);
             alert('success')
+            queryClient.invalidateQueries(["user"]);
         },
         onError: (error) => {
             alert('error', error)
         }
     })
+
+    // const { mutate: updateUser } = useMutation({
+    //     mutationFn: async () => await axios.post('/api/basket/add', {
+    //         product_id: "KQ1QMiMzdXOUe8s1odtM"
+    //     }, {
+    //         headers: {
+    //             Authorization: `Bearer ${localStorage.getItem('access_token')}`
+    //         }
+    //     }),
+    //     onSuccess: (data) => {
+    //         console.log(data);
+    //         alert('success')
+    //     },
+    //     onError: (error) => {
+    //         alert('error', error)
+    //     }
+    // })
 
     // const { mutate: updateUser } = useMutation({
     //     mutationFn: async () => await axios.post('/api/order/add', {
@@ -142,8 +142,8 @@ const UserProfile = ({ singInUser }) => {
 
     const handleSaveUserInfo = (e) => {
         e.preventDefault()
-        singInUser()
-        // updateUser()
+        // singInUser()
+        updateUser()
     }
 
     const handleNewProductImg = (e) => {

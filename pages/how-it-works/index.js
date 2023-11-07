@@ -18,6 +18,7 @@ const index = () => {
 
     return (
         <>
+            <title>Foody | How-It-Works</title>
             <ClientContainer>
                 <section className='mt-16 mx-48' data-aos='zoom-in'>
                     <div className={styles['works-head']}>

@@ -128,6 +128,16 @@
     animation: float 6s ease-in-out infinite;
 }
 
+.register-btn {
+    transition: 0.5s all ease;
+    cursor: pointer;
+}
+
+.register-btn:hover {
+    opacity: 0.8;
+    transform: scale(1.03);
+}
+
 @keyframes float {
 	0% {
 		box-shadow: 0 5px 15px 0px rgba(0,0,0,0.6);

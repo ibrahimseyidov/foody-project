@@ -7,7 +7,7 @@ import delIcon from '../../../assets/icons/delIcon.svg'
 import axios from 'axios'
 import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query'
 
-const UserBasket = ({ singInUser }) => {
+const UserBasket = () => {
 
     const queryClient = useQueryClient()
 
@@ -99,7 +99,6 @@ const UserBasket = ({ singInUser }) => {
 
     const handleUserBasket = () => {
         const basketItems = userBasket?.result.data.items
-        console.log(basketItems);
         return basketItems?.map((basket) => (
             <div key={basket?.id} className={styles['basket-card']}>
                 <div className='flex items-center'>

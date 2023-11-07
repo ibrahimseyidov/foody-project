@@ -25,6 +25,7 @@ const index = () => {
 
     return (
         <>
+            <title>Foody | FAQs</title>
             <ClientContainer>
                 <section className='mt-20 mx-48 mb-72' data-aos='fade-up'>
                     <div className='flex justify-center'>
@@ -88,7 +89,7 @@ const index = () => {
                             </div>
                             {isOpenedMenu === 'improve' &&
                                 <div className={styles['faq-para']}>
-                                     <p>
+                                    <p>
                                         {t('Our Customer Experience Team is available 7 days a week and we offer 2 ways to get in contact.Email and Chat . We try to reply quickly, so you need not to wait too long for a response!.')}
                                     </p>
                                 </div>
@@ -130,7 +131,7 @@ const index = () => {
                             </div>
                             {isOpenedMenu === 'website' &&
                                 <div className={styles['faq-para']}>
-                                     <p>
+                                    <p>
                                         {t('Our Customer Experience Team is available 7 days a week and we offer 2 ways to get in contact.Email and Chat . We try to reply quickly, so you need not to wait too long for a response!.')}
                                     </p>
                                 </div>
