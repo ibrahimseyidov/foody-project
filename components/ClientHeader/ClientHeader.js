@@ -1,7 +1,9 @@
 import React from "react";
+import { ToastContainer } from "react-toastify";
 
 const ClientHeader=()=>{
     return(
+      <>
         <nav className="items-center rounded-4 mb-20px sm:mt-30  flex bg-clientRed justify-between">
           <div className="text-white ml-3 font-mukta text-25 sm:text-35 font-extrabold my-13px sm:ml-9 sm:my-9">
             Foody.
@@ -12,6 +14,8 @@ const ClientHeader=()=>{
             alt=""
           />
         </nav>
+      </>
+     
     )
 }
 export default ClientHeader;

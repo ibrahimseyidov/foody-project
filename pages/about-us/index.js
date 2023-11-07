@@ -22,6 +22,7 @@ const index = () => {
 
     return (
         <>
+            <title>Foody | About-us</title>
             <ClientContainer>
                 <section className='mt-28 mx-24 flex justify-between'>
                     <div className='w-2/4 mr-20' data-aos='fade-right'>
@@ -83,6 +84,6 @@ export default index
 
 export const getServerSideProps = async ({ locale }) => ({
     props: {
-      ...(await serverSideTranslations(locale, ['common']))
+        ...(await serverSideTranslations(locale, ['common']))
     }
-  });
+});
