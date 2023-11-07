@@ -13,6 +13,10 @@ const ProfileLayout = ({ children }) => {
 
     const router = useRouter()
 
+    const handleLogout = () => {
+        localStorage.removeItem('access_token')
+    }
+
     return (
         <ClientContainer>
             <section className='mt-4 mb-44'>
@@ -45,7 +49,7 @@ const ProfileLayout = ({ children }) => {
                                     </Link>
                                 </li>
                                 <li className='mb-3'>
-                                    <Link className={`${styles['nav-link']}`} href='/'>
+                                    <Link onClick={() => handleLogout()} className={`${styles['nav-link']}`} href='/'>
                                         <Image className='mr-3' src={basketIcon} alt='logout' />
                                         Logout
                                     </Link>

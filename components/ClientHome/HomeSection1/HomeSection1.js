@@ -8,9 +8,11 @@ import burger from '../../../assets/images/foodImages/burger.svg'
 import AOS from 'aos';
 import 'aos/dist/aos.css';
 import { useTranslation } from 'next-i18next'
+import { useRouter } from 'next/navigation'
 
 const HomeSection1 = () => {
     const { t } = useTranslation('common')
+    const router = useRouter()
 
     useEffect(() => {
         AOS.init()
@@ -24,7 +26,7 @@ const HomeSection1 = () => {
                         <h2>{t('Our Food site makes it easy to find local food')}</h2>
                         <p>Lorem ipsum is placeholder text commonly used in the graphic, print, and publishing industries for previewing layouts and visual mockups.</p>
                         <div className={styles['hamburger-btn']}>
-                            <button>{t('Register')}</button>
+                            <button className={styles['register-btn']} onClick={() => router.push('/register')}>{t('Register')}</button>
                             <button>{t('Order now')}</button>
                         </div>
                     </div>
