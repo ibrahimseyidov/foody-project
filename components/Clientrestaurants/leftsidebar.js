@@ -15,6 +15,7 @@ function Leftres({ handleCategoryClick }) {
       return data;
     },
   });
+
   useEffect(() => {
     AOS.init();
   }, []);
