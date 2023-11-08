@@ -1,7 +1,7 @@
 import React from 'react'
 import styles from "./rightsidebar.module.css";
 
-function rightdetail() {
+function Rightdetail() {
   return (
     <div>
       <div className="w-wxl shadow-shadoww">
@@ -23,4 +23,4 @@ function rightdetail() {
   )
 }
 
-export default rightdetail
+export default Rightdetail
