@@ -52,9 +52,9 @@ const AdminDashboard = ({ children }) => {
           <Layout>
             {children}
           </Layout>
-        </Provider >
+        </Provider>
       </TanstackProvider>}
-    </div >
+    </div>
   );
 };
 

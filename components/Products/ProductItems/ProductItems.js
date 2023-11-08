@@ -15,6 +15,7 @@ const ProductItems = () => {
             return data
         },
     })
+ 
 
     if (isLoading) {
         return <div className='flex justify-center items-center mx-0 my-auto'>
