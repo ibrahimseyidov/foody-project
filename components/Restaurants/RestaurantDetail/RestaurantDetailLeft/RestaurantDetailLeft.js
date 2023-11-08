@@ -6,6 +6,7 @@ import axios from "axios";
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import { ToastContainer, toast } from "react-toastify";
 import 'react-toastify/dist/ReactToastify.css';
+import { useRouter } from "next/router";
 const RestaurantDetailLeft = ({id }) => {
   const { t } = useTranslation("common");
   const queryClient = useQueryClient();
@@ -32,8 +33,13 @@ const RestaurantDetailLeft = ({id }) => {
       console.log("erro")
     }
 })
+const router=useRouter();
 const increaseProductCount = (productId) => {
-    addProductToBasket(productId)
+  if (localStorage.getItem('access_token')) {
+    addProductToBasket(productId);
+  } else {
+    router.push("/login")
+  }
 }
 
   const productData = data?.result?.data;

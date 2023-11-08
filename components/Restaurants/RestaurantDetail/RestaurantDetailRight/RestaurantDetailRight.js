@@ -112,7 +112,7 @@ const RestaurantDetailRight = () => {
       <div className={styles["basket-bg"]}>
         {basketItems?.length === 0 ? (
           <div className="-mt-10">
-            <Image src={emptyBasket} alt="empty-basket" />
+            <Image className="mx-auto" src={emptyBasket} alt="empty-basket" />
           </div>
         ) : (
           <>
@@ -124,13 +124,13 @@ const RestaurantDetailRight = () => {
                 </span>
               </div>
               <button
-                className="-mt-2"
+                className={styles["clear-btn"]}
                 onClick={() => handleClearBasket(userBasket?.result?.data?.id)}
               >
-                <Image src={delIcon} alt="delete" />
+                Clear all
               </button>
             </div>
-            <div className="flex flex-col justify-between">
+            <div className="flex flex-col justify-between ">
               <div className={styles["basket-middle"]}>
                 {basketItems?.map((basket) => (
                   <div key={basket?.id} className={styles["basket-card"]}>
@@ -171,15 +171,19 @@ const RestaurantDetailRight = () => {
                   </div>
                 ))}
               </div>
-              <Link
-                href="/user?page=user-checkout"
-                className={styles["basket-checkout"]}
-              >
-                <span className={styles["checkout-text"]}>{t("Checkout")}</span>
-                <div className={styles["checkout-bg"]}>
-                  $ {userBasket?.result.data.total_amount}
-                </div>
-              </Link>
+              <div className="absolute bottom-5 left-5 w-[90%]">
+                <Link
+                  href="/user?page=user-checkout"
+                  className={styles["basket-checkout"]}
+                >
+                  <span className={styles["checkout-text"]}>
+                    {t("Checkout")}
+                  </span>
+                  <div className={styles["checkout-bg"]}>
+                    $ {userBasket?.result.data.total_amount}
+                  </div>
+                </Link>
+              </div>
             </div>
           </>
         )}
