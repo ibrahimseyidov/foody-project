@@ -34,7 +34,7 @@ const UserOrders = () => {
     const { data: userOrder } = useQuery({
         queryKey: ['order'],
         queryFn: async () => {
-            const { data } = await axios.get('/api/order', {
+            const { data } = await axios.get('/api/order/user', {
                 headers: {
                     Authorization: `Bearer ${localStorage.getItem('access_token')}`
                 }

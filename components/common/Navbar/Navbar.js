@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useRef } from 'react'
 import styles from '../Navbar/navbar.module.css'
 import dashboard from '../../../assets/icons/navIcons/dashIcon.svg';
 import products from '../../../assets/icons/navIcons/storeIcon.svg';
@@ -13,11 +13,12 @@ import Link from 'next/link'
 import { usePathname, useRouter } from 'next/navigation'
 import { useTranslation } from 'next-i18next'
 import Cookies from 'js-cookie';
-import Router from 'next/router';
+import LoadingBar from "react-top-loading-bar";
 
 const Navbar = () => {
     const router = useRouter()
     const pathname = usePathname()
+    const ref = useRef(null);
 
     const { t } = useTranslation('common')
 
@@ -35,42 +36,42 @@ const Navbar = () => {
                     <ul>
 
                         <li>
-                            <Link href='/admin/dashboard' id={styles['navbar']} className={pathname === '/admin/dashboard' ? `${styles['active']}` : ''}>
+                            <Link onClick={() => ref.current.complete()} href='/admin/dashboard' id={styles['navbar']} className={pathname === '/admin/dashboard' ? `${styles['active']}` : ''}>
                                 <Image src={dashboard} alt='dashboard' />
                                 {t('Dashboard')}
                             </Link>
                         </li>
 
                         <li>
-                            <Link href='/admin/products' id={styles['navbar']} className={pathname === '/admin/products' ? `${styles['active']}` : ''}>
+                            <Link onClick={() => ref.current.complete()} href='/admin/products' id={styles['navbar']} className={pathname === '/admin/products' ? `${styles['active']}` : ''}>
                                 <Image src={products} alt='products' />
                                 {t('Products')}
                             </Link>
                         </li>
 
                         <li>
-                            <Link href='/admin/restaurants' id={styles['navbar']} className={pathname === '/admin/restaurants' ? `${styles['active']}` : ''}>
+                            <Link onClick={() => ref.current.complete()} href='/admin/restaurants' id={styles['navbar']} className={pathname === '/admin/restaurants' ? `${styles['active']}` : ''}>
                                 <Image src={restaurants} alt='restaurants' />
                                 {t('Restaurants')}
                             </Link>
                         </li>
 
                         <li>
-                            <Link href='/admin/category' id={styles['navbar']} className={pathname === '/admin/category' ? `${styles['active']}` : ''}>
+                            <Link onClick={() => ref.current.complete()} href='/admin/category' id={styles['navbar']} className={pathname === '/admin/category' ? `${styles['active']}` : ''}>
                                 <Image src={category} alt='category' />
                                 {t('Category')}
                             </Link>
                         </li>
 
                         <li>
-                            <Link href='/admin/orders' id={styles['navbar']} className={pathname === '/admin/orders' ? `${styles['active']}` : ''}>
+                            <Link onClick={() => ref.current.complete()} href='/admin/orders' id={styles['navbar']} className={pathname === '/admin/orders' ? `${styles['active']}` : ''}>
                                 <Image src={orders} alt='orders' />
                                 {t('Orders')}
                             </Link>
                         </li>
 
                         <li>
-                            <Link href='/admin/order-history' id={styles['navbar']} className={pathname === '/admin/order-history' ? `${styles['active']}` : ''}>
+                            <Link onClick={() => ref.current.complete()} href='/admin/order-history' id={styles['navbar']} className={pathname === '/admin/order-history' ? `${styles['active']}` : ''}>
                                 <Image src={history} alt='offer' />
                                 {t('History')}
                             </Link>
@@ -95,7 +96,7 @@ const Navbar = () => {
                 </div>
 
             </nav>
-
+            <LoadingBar color={"#C74FEB"} ref={ref} />
         </>
     )
 }

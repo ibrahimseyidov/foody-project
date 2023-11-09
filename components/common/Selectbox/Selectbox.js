@@ -16,9 +16,9 @@ export default function SelectBox({ categories }) {
     const [isCurrentCategory, setCurrentCategory] = useState()
 
     const { data } = useQuery({
-        queryKey: ['category'],
+        queryKey: ['restaurants'],
         queryFn: async () => {
-            const { data } = await axios.get('/api/category')
+            const { data } = await axios.get('/api/restuarants')
             return data
         },
     })
@@ -33,11 +33,11 @@ export default function SelectBox({ categories }) {
     }
 
     const handleChangeCategory = (category) => {
-        router.push(`/admin/products?category=${category.slug}`)
+        router.push(`/admin/products?category=${category.name}`)
         setCurrentCategory(category.name)
         dispatch(handleCategoryData(category))
     }
-
+console.log(handleCategoryList());
     return (
         <Menu as="div" className="relative inline-block text-left">
             <div>

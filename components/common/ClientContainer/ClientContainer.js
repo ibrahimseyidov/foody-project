@@ -3,6 +3,7 @@ import ClientFooter from '../ClientFooter/ClientFooter'
 import ClientHeader from '../ClientHeader/ClientHeader'
 
 const ClientContainer = ({ children }) => {
+
   return (
     <>
       <div className='mx-6'>
