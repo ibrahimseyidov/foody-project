@@ -48,7 +48,6 @@ const AdminHistory = () => {
     );
   }
   if (isError) return <div className="text-white">error...</div>;
-console.log(userOrder?.result.data);
   return (
     <>
       <section className="h-full">

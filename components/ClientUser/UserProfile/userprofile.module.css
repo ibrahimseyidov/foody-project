@@ -62,3 +62,9 @@
     background-color: #fff;
     border: 1px solid #6FCF97;
 }
+
+.rounded {
+    width: 180px;
+    height: 160px;
+    border-radius: 50%!important;
+}

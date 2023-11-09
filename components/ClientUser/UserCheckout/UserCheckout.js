@@ -9,6 +9,7 @@ import { useMutation, useQuery } from '@tanstack/react-query'
 import axios from 'axios'
 import { BounceLoader } from 'react-spinners';
 import { useRef } from 'react'
+import { toast } from 'react-toastify'
 
 const index = () => {
     const [isChecked1, setIsChecked1] = useState(false)
@@ -48,12 +49,11 @@ const index = () => {
         }),
         onSuccess: () => {
             setIsSuccessOrder(true)
-            alert('success')
+            toast.success('Products Received Successfully!')
         },
         onError: (error) => {
             setIsSuccessOrder(false)
-            console.log(error);
-            alert('error', error)
+            toast.success("Products Couldn't Received!")
         }
     })
 
@@ -99,7 +99,6 @@ const index = () => {
 
     const handleCheckout = (e) => {
         e.preventDefault()
-        // console.log(payDoorRef.checked);
         checkoutOrder()
     }
 

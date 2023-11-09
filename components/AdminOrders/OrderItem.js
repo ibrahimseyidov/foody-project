@@ -19,7 +19,7 @@ const OrderItem = ({ orderData }) => {
   return orderResult?.data?.map((order, i) => (
     <tr key={order?.id} className={styles["table-row"]}>
       <td>
-        <span className={styles["table-id"]}>{i + 1}</span>
+        <span className={styles["table-id"]}>{(order?.id).length > 4 && (order?.id).slice(0,4)}</span>
       </td>
       <td>
         <span className={styles["table-id"]}>
@@ -29,9 +29,9 @@ const OrderItem = ({ orderData }) => {
       <td>
         <span className={styles["table-id"]}>{formattedDates[i]}</span>
       </td>
-      <td className="w-48 text-left">{order?.delivery_address}</td>
+      <td className="w-48 text-center">{order?.delivery_address}</td>
       <td>${order?.amount}</td>
-      <td>{order?.payment_method}</td>
+      <td>{order?.payment_method === 0 ? "pay at the door" : "pay at the door by credit card"}</td>
       <td>{order?.contact}</td>
       <td className="flex items-center mt-2">
         <button
