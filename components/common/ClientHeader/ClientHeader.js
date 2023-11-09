@@ -1,5 +1,5 @@
 'use client'
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 import foodyLogo from '../../../assets/images/foodyClientLogo.svg'
 import ukFlag from '../../../assets/icons/countryFlags/uk.svg';
 import azeFlag from '../../../assets/icons/countryFlags/azeFlag.png';
@@ -16,6 +16,7 @@ import { useDispatch } from 'react-redux';
 import { handleLangData } from '../../../redux/features/langSlice';
 import { useQuery } from '@tanstack/react-query';
 import axios from 'axios';
+import LoadingBar from "react-top-loading-bar";
 
 const ClientHeader = () => {
     const pathname = usePathname()
@@ -23,6 +24,7 @@ const ClientHeader = () => {
     const router = useRouter()
     const currentQueryLocale = router.asPath
     const currentLocale = router.locale
+    const ref = useRef(null);
     const [isShowLangContain, setIsShowLangContain] = useState(false)
     const [isCurrentLang, setIsCurrentLang] = useState('en')
     const [searchRest, setSearchRest] = useState(false)
@@ -103,7 +105,7 @@ const ClientHeader = () => {
         localStorage.removeItem('access_token')
         router.reload()
     }
-    
+
 
     const className = `
   ${styles.searchArea} 
@@ -128,19 +130,19 @@ const ClientHeader = () => {
                     </Link>
                     <nav className={styles['nav-container']}>
                         <li>
-                            <Link href='/' className={pathname === '/' ? `${styles['link-bg']}` : `${styles['home-link']}`}>{t('Home')}</Link>
+                            <Link href='/' onClick={() => ref.current.complete()} className={pathname === '/' ? `${styles['link-bg']}` : `${styles['home-link']}`}>{t('Home')}</Link>
                         </li>
                         <li>
-                            <Link href='/restaurants' className={pathname === '/restaurants' ? `${styles['link-bg']}` : `${styles['home-link']}`}>{t('Restaurants')}</Link>
+                            <Link href='/restaurants' onClick={() => ref.current.complete()} className={pathname === '/restaurants' ? `${styles['link-bg']}` : `${styles['home-link']}`}>{t('Restaurants')}</Link>
                         </li>
                         <li>
-                            <Link href='/about-us' className={pathname === '/about-us' ? `${styles['link-bg']}` : `${styles['home-link']}`}>{t('About us')}</Link>
+                            <Link href='/about-us' onClick={() => ref.current.complete()} className={pathname === '/about-us' ? `${styles['link-bg']}` : `${styles['home-link']}`}>{t('About us')}</Link>
                         </li>
                         <li>
-                            <Link href='/how-it-works' className={pathname === '/how-it-works' ? `${styles['link-bg']}` : `${styles['home-link']}`}>{t('How it works')}</Link>
+                            <Link href='/how-it-works' onClick={() => ref.current.complete()} className={pathname === '/how-it-works' ? `${styles['link-bg']}` : `${styles['home-link']}`}>{t('How it works')}</Link>
                         </li>
                         <li>
-                            <Link href='/faqs' className={pathname === '/faqs' ? `${styles['link-bg']}` : `${styles['home-link']}`}>{t('FAQs')}</Link>
+                            <Link href='/faqs' onClick={() => ref.current.complete()} className={pathname === '/faqs' ? `${styles['link-bg']}` : `${styles['home-link']}`}>{t('FAQs')}</Link>
                         </li>
                     </nav>
 
@@ -212,8 +214,8 @@ const ClientHeader = () => {
                         {
                             (isSignUser && !loading) &&
                             <>
-                            <Link href='/user?page=basket' className='relative'><Image src={userBasket} className='rounded-full mr-4' />
-                            <span className='absolute -top-2 text-red-500 font-semibold text-md right-1 bg-white rounded-xl px-2'>{userBasketData?.result.data.total_item}</span></Link>
+                                <Link href='/user?page=basket' className='relative'><Image src={userBasket} className='rounded-full mr-4' />
+                                    <span className='absolute -top-2 text-red-500 font-semibold text-md right-1 bg-white rounded-xl px-2'>{userBasketData?.result.data.total_item}</span></Link>
                                 <div onClick={() => openUserModal()} className='flex items-center'>
                                     <Image className='rounded-full mr-3' width={50} height={50} src={userData?.user.img_url ? userData?.user.img_url : userIcon} />
                                     <p className='font-bold cursor-pointer'>{userData?.user.fullname}</p>
@@ -239,6 +241,7 @@ const ClientHeader = () => {
 
                 </div>
             </header>
+            <LoadingBar color={"#D63626"} ref={ref} />
         </>
     )
 }

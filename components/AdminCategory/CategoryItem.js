@@ -15,10 +15,10 @@ const CategoryItem = ({ categoryData }) => {
   return categoryResult?.data?.map((category, i) => (
     <tr className={styles["table-row"]} key={i}>
       <td>
-        <span className={styles["table-id"]}>{i+1}</span>
+        <span className={styles["table-id"]}>{(category?.id).length > 4 && (category?.id).slice(0,4)}</span>
       </td>
       <td className="flex justify-center">
-        <Image width="100" height="100" src={category.img_url} alt="food" />
+        <Image width="60" height="60" src={category.img_url} alt="food" />
       </td>
       <td>{category.name}</td>
       <td>{category.slug}</td>

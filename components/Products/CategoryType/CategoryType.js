@@ -6,9 +6,9 @@ import { useQuery } from '@tanstack/react-query';
 import axios from 'axios';
 const CategoryType = ({ pageName }) => {
     const { data } = useQuery({
-        queryKey: ['products'],
+        queryKey: ['restaurants'],
         queryFn: async () => {
-            const { data } = await axios.get('/api/products')
+            const { data } = await axios.get('/api/restuarants')
             return data
         },
     })
@@ -21,7 +21,7 @@ const CategoryType = ({ pageName }) => {
                         <h2 className={styles['products-head-text']}>{pageName}</h2>
                     </div>
                     <div className='flex gap-10 items-center'>
-                        {pageName !== 'History' &&                         <SelectBox categories={...data} />}
+                        {pageName !== 'History' && <SelectBox categories={...data} />}
                     </div>
                 </div>
             </div>

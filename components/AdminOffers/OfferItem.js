@@ -10,8 +10,8 @@ const OfferItem = ({ offerData }) => {
     const offerResult = offerData?.result;
     return offerResult?.data.map((offer, i) => (
         <tr className={styles['table-row']} key={i}>
-            <td><span className={styles['table-id']}>{i+1}</span></td>
-            <td className='flex justify-center items-center'><Image width={100} height={100} src={offer.img_url} alt='offer' /></td>
+            <td><span className={styles['table-id']}>{(offer?.id).length > 4 && (offer?.id).slice(0,4)}</span></td>
+            <td className='flex justify-center items-center'><Image width={60} height={60} src={offer.img_url} alt='offer' /></td>
             <td>{offer?.name}</td>
             <td>{(offer?.description).length > 60 ? (offer?.description).slice(0, 60) + '...' : ''}</td>
             <td>

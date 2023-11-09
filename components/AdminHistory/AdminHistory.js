@@ -69,10 +69,10 @@ console.log(userOrder?.result.data);
               {userOrder?.result.data.map((history,i) => (
                 <tr className={styles["table-row"]} key={history?.id}>
                   <td>
-                    <span className={styles["table-id"]}>{(i+1)}</span>
+                    <span className={styles["table-id"]}>{(history?.id).length > 4 && (history?.id).slice(0,4)}</span>
                   </td>
                   <td>
-                    <span className={styles["table-id"]}>{(history?.id).length > 6 && (history?.id).slice(0, 6)}</span>
+                    <span className={styles["table-id"]}>{(history?.id).length > 6 && (history?.customer_id).slice(0, 6)}</span>
                   </td>
                   <td>{handleDate(history?.created)}</td>
                   <td className="w-48 text-center">

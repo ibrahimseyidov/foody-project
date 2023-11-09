@@ -45,7 +45,7 @@ const ProductItem = ({ productsData }) => {
 
     const handleProdutData = () => {
         if (selActiveProductCategory) {
-            const filteredProducts = data?.filter((product) => product.description === selActiveProductCategory.name)
+            const filteredProducts = data?.filter((product) => product.rest_id === selActiveProductCategory.id)
             return filteredProducts?.map((product) => (
                 <motion.div
                     key={product?.id}
@@ -63,10 +63,10 @@ const ProductItem = ({ productsData }) => {
                                 <span>${product?.price}</span>
                             </div>
                             <div className={styles['product-edit']}>
-                                <button onClick={() => dispatch(openModalEdit())}>
+                                <button onClick={() => dispatch(openModalEdit(product))}>
                                     <Image src={editImg} alt='edit' />
                                 </button>
-                                <button onClick={() => dispatch(openDelModal())}>
+                                <button onClick={() => dispatch(openDelModal(product?.id))}>
                                     <Image src={trashImg} alt='trash' />
                                 </button>
                             </div>

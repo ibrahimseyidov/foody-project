@@ -16,22 +16,6 @@ const user = () => {
     const [isShowOrders, setIsShowOrders] = useState(false)
     const [isShowCheckout, setIsShowCheckout] = useState(false)
 
-    // const { mutate: singInUser } = useMutation({
-    //     mutationFn: async () => await axios.post('/api/auth/signin',{
-    //         "email": "test@gmail.com",
-    //         "password": "test123"
-    //     }),
-    //     onSuccess: (data) => {
-    //         console.log(data);
-    //         localStorage.setItem('access_token', data.data.user.access_token)
-    //         alert('success')
-    //     },
-    //     onError: () => {
-    //         alert('error')
-    //     }
-    // })
-
-    
     useEffect(() => {
         if (router.asPath === '/user?page=profile') {
             setIsShowProfile(true)
