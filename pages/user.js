@@ -6,8 +6,8 @@ import UserProfile from '../components/ClientUser/UserProfile/UserProfile'
 import UserBasket from '../components/ClientUser/UserBasket/UserBasket'
 import UserOrders from '../components/ClientUser/UserOrders/UserOrders'
 import UserCheckout from '../components/ClientUser/UserCheckout/UserCheckout'
-import axios from 'axios'
-import { useMutation, useQuery } from '@tanstack/react-query'
+import { ToastContainer } from 'react-toastify'
+import 'react-toastify/dist/ReactToastify.css';
 
 const user = () => {
     const router = useRouter()
@@ -50,7 +50,7 @@ const user = () => {
     return (
         <>
 
-             <ProfileLayout>
+            <ProfileLayout>
                 {
                     isShowProfile ?
                         <UserProfile />
@@ -62,6 +62,18 @@ const user = () => {
                                     <UserCheckout />
                                     : ''
                 }
+                <ToastContainer
+                    position="top-right"
+                    autoClose={5000}
+                    hideProgressBar={false}
+                    newestOnTop={false}
+                    closeOnClick
+                    rtl={false}
+                    pauseOnFocusLoss
+                    draggable
+                    pauseOnHover
+                    theme="light"
+                />
             </ProfileLayout>
         </>
 

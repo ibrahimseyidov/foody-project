@@ -5,6 +5,8 @@ import Navbar from '../common/Navbar/Navbar'
 import EditModal from './EditModal/EditModal'
 import Dashboard from '../Dashboard/Dashboard'
 import { usePathname } from 'next/navigation'
+import { ToastContainer } from 'react-toastify'
+import 'react-toastify/dist/ReactToastify.css';
 
 const Layout = ({ children }) => {
     const pathname = usePathname()
@@ -19,6 +21,18 @@ const Layout = ({ children }) => {
                     }
                     <EditModal />
                     {children}
+                    <ToastContainer
+                        position="top-right"
+                        autoClose={5000}
+                        hideProgressBar={false}
+                        newestOnTop={false}
+                        closeOnClick
+                        rtl={false}
+                        pauseOnFocusLoss
+                        draggable
+                        pauseOnHover
+                        theme="light"
+                    />
                 </main>
             </div>
         </>

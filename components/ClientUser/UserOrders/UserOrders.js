@@ -5,6 +5,7 @@ import styles from './userorders.module.css'
 import dots from '../../../assets/icons/dots.svg'
 import axios from 'axios'
 import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query'
+import { toast } from 'react-toastify'
 
 const UserOrders = () => {
     const [isActiveModal, setIsActiveModal] = useState(false)
@@ -22,12 +23,11 @@ const UserOrders = () => {
             }
         }),
         onSuccess: () => {
-            alert('success')
+            toast.success('Deleted Order Successfully!')
             queryClient.invalidateQueries(["order"]);
         },
         onError: (error) => {
-            console.log(error);
-            alert('error', error)
+            toast.error("Order Couldn't Delete!")
         }
     });
 

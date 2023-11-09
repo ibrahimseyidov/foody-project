@@ -45,7 +45,7 @@ const ShowOrderModal = ({ orderData }) => {
                 </div>
               ))}
 
-              <div className="max-md:flex max-md:flex-col-reverse mt-4z">
+              <div className="max-md:flex max-md:flex-col-reverse mt-4">
                 <button
                   onClick={() => dispatch(closeOrderModal())}
                   className={styles["delete-btn"]}

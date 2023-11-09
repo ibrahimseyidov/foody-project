@@ -27,6 +27,7 @@ import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { uuidGenerator } from "../../../utils/uuidGenerator";
 import { getDownloadURL, ref, uploadBytes } from "firebase/storage";
 import { fileStorage } from "../../../server/configs/firebase";
+import { toast } from "react-toastify";
 
 const EditModal = () => {
   const { t } = useTranslation("common");
@@ -71,7 +72,6 @@ const EditModal = () => {
 
   const offerName = useRef();
   const offerDesc = useRef();
-
 
   const productNameRef = productName.current;
   const productDescRef = productDesc.current;
@@ -130,12 +130,12 @@ const EditModal = () => {
       }),
 
     onSuccess: () => {
+      toast.success("Added Product with Successfully!")
       setAddProductImg(null);
-      alert("success");
       queryClient.invalidateQueries(["products"]);
     },
     onError: () => {
-      alert("error1");
+      toast.error("Couldn't Add Product!")
     },
   });
 
@@ -149,14 +149,14 @@ const EditModal = () => {
         price: currentProductData.price,
       }),
     onSuccess: () => {
+      toast.success("Updated Product with Successfully!")
       dispatch(closeModalEdit());
       setLastProductImg(null);
       setAddProductImg(null);
-      alert("success");
       queryClient.invalidateQueries(["products"]);
     },
     onError: () => {
-      alert("error2");
+      toast.error("Couldn't Update Product!")
     },
   });
 
@@ -174,14 +174,14 @@ const EditModal = () => {
         img_url: lastProductImg,
       }),
     onSuccess: () => {
+      toast.success("Added Restaurant with Successfully!")
       dispatch(closeAddResModal());
       setLastProductImg(null);
       setAddProductImg(null);
-      alert("success");
       queryClient.invalidateQueries(["restaurants"]);
     },
     onError: () => {
-      alert("error3");
+      toast.error("Couldn't Add Restaurant!")
     },
   });
 
@@ -199,13 +199,13 @@ const EditModal = () => {
         delivery_price: +currentRestData.delivery_price,
       }),
     onSuccess: () => {
+      toast.success("Updated Restaurant with Successfully!")
       dispatch(closeResModalEdit());
       setAddProductImg(null);
-      alert("success");
       queryClient.invalidateQueries(["restaurants"]);
     },
     onError: () => {
-      alert("error4");
+      toast.error("Couldn't Update Restaurant!")
     },
   });
 
@@ -219,12 +219,13 @@ const EditModal = () => {
       }),
 
     onSuccess: () => {
+      toast.success("Added Category with Successfully!")
+      dispatch(closeAddCategoryModal())
       setAddProductImg(null);
-      alert("succes");
       queryClient.invalidateQueries(["category"]);
     },
     onError: () => {
-      alert("error");
+      toast.success("Couldn't Add Category!")
     },
   });
 
@@ -235,13 +236,13 @@ const EditModal = () => {
         img_url: lastProductImg ? lastProductImg : selCategoryEditModal.img_url,
       }),
     onSuccess: () => {
+      toast.success("Updated Category with Successfully!")
       dispatch(closeCategoryModalEdit());
       setAddProductImg(null);
-      alert("success");
       queryClient.invalidateQueries(["category"]);
     },
     onError: () => {
-      alert("error6");
+      toast.error("Couldn't Update Category!")
     },
   });
   // *offer Data Handling
@@ -255,12 +256,13 @@ const EditModal = () => {
       }),
 
     onSuccess: () => {
+      toast.success("Added Offer with Successfully!")
+      dispatch(closeAddOfferModal())
       setAddProductImg(null);
-      alert("succes");
       queryClient.invalidateQueries(["offer"]);
     },
     onError: () => {
-      alert("error7");
+      toast.error("Couldn't Added Offer!")
     },
   });
 
@@ -272,13 +274,13 @@ const EditModal = () => {
         img_url: lastProductImg ? lastProductImg : selOfferEditModal.img_url,
       }),
     onSuccess: () => {
+      toast.success("Updated Offer with Successfully!")
       dispatch(closeOfferModalEdit());
       setAddProductImg(null);
-      alert("success");
       queryClient.invalidateQueries(["offer"]);
     },
     onError: () => {
-      alert("error8");
+      toast.error("Couldn't Update Offer!")
     },
   });
 
@@ -1362,8 +1364,8 @@ const EditModal = () => {
           </div>
         </div>
       ) :
-       ( ""
-      )}
+        (""
+        )}
     </>
   );
 };

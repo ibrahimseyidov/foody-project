@@ -17,6 +17,7 @@ import { useTranslation } from "next-i18next";
 import axios from "axios";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 import Cookies from "js-cookie";
+import { toast } from "react-toastify";
 
 const DelModal = () => {
   const { t } = useTranslation("common");
@@ -44,12 +45,12 @@ const DelModal = () => {
   const { mutate: deleteProduct } = useMutation({
     mutationFn: async () => await axios.delete(`/api/products/${selDelModal}`),
     onSuccess: () => {
-      alert("success");
+      toast.success("Deleted Product with Successfully!")
       dispatch(closeDelModal());
       queryClient.invalidateQueries(["products"]);
     },
     onError: () => {
-      alert("error");
+      toast.error("Couldn't Delete Product!")
     },
   });
 
@@ -57,12 +58,12 @@ const DelModal = () => {
     mutationFn: async () =>
       await axios.delete(`/api/restuarants/${selResDelModal}`),
     onSuccess: () => {
-      alert("success");
       dispatch(closeResDelModal());
+      toast.success("Deleted Restaurant with Successfully!")
       queryClient.invalidateQueries(["restuarants"]);
     },
     onError: () => {
-      alert("error");
+      toast.error("Couldn't Delete Restaurant!")
     },
   });
 
@@ -76,13 +77,12 @@ const DelModal = () => {
       }
     }),
     onSuccess: () => {
-      alert('success')
+      toast.success("Deleted Order with Successfully!")
       dispatch(closeHisDelModal())
       queryClient.invalidateQueries(["order"]);
     },
-    onError: (error) => {
-      console.log(error);
-      alert('error', error)
+    onError: () => {
+      toast.error("Couldn't Delete Order!")
     }
   });
 
@@ -91,12 +91,13 @@ const DelModal = () => {
     mutationFn: async () =>
       await axios.delete(`/api/category/${selDelCategoryModal}`),
     onSuccess: () => {
-      alert("success");
+      toast.success("Deleted Category with Successfully!")
       dispatch(closeDelCatModal());
       queryClient.invalidateQueries(["category"]);
     },
     onError: () => {
-      alert("error");
+      toast.error("Couldn't Delete Category!")
+
     },
   });
 
@@ -105,12 +106,12 @@ const DelModal = () => {
     mutationFn: async () =>
       await axios.delete(`/api/offer/${selOfferDelModal}`),
     onSuccess: () => {
-      alert("success");
+      toast.success("Deleted Category with Successfully!")
       dispatch(closeDelOfferModal());
       queryClient.invalidateQueries(["offer"]);
     },
     onError: () => {
-      alert("error");
+      toast.error("Couldn't Delete Category!")
     },
   });
 
@@ -129,12 +130,12 @@ const DelModal = () => {
       );
     },
     onSuccess: () => {
-      alert("success");
+      toast.success("Deleted Order with Successfully!")
       dispatch(closeOrderDelModal());
       queryClient.invalidateQueries(["order"]);
     },
-    onError: (error) => {
-      console.log(error);
+    onError: () => {
+      toast.error("Couldn't Delete Order!")
     },
   });
 

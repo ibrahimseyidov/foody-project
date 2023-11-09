@@ -15,6 +15,8 @@ import { useRouter } from 'next/router'
 import { useQuery } from '@tanstack/react-query';
 import axios from 'axios';
 import LoadingBar from 'react-top-loading-bar';
+import Skeleton from 'react-loading-skeleton'
+import 'react-loading-skeleton/dist/skeleton.css'
 
 const ClientHeader = () => {
   const pathname = usePathname()
@@ -55,7 +57,7 @@ const ClientHeader = () => {
     },
   });
 
-  const { data: userData } = useQuery({
+  const { data: userData, isLoading: userDataLoading } = useQuery({
     queryKey: ["user"],
     queryFn: async () => {
       const { data } = await axios.get("/api/auth/user", {
@@ -213,30 +215,43 @@ const ClientHeader = () => {
               </>
             }
             {
-              (isSignUser && !loading) &&
-              <>
-                <Link href='/user?page=basket' className='relative'><Image src={userBasket} className='rounded-full mr-4' />
-                  <span className='absolute -top-2 text-red-500 font-semibold text-md right-1 bg-white rounded-xl px-2'>{userBasketData?.result.data.total_item}</span></Link>
-                <div onClick={() => openUserModal()} className='flex items-center'>
-                  <Image className='rounded-full mr-3' width={50} height={50} src={userData?.user.img_url ? userData?.user.img_url : userIcon} />
-                  <p className='font-bold cursor-pointer'>{userData?.user.fullname}</p>
-                </div>
-                {
-                  isOpenedUserModal &&
-                  <>
-                    <div className='bg-white absolute top-24 right-[98px] z-50 h-[264px] shadow-lg rounded px-5 py-3 w-[178px]'>
-                      <ul className='flex flex-col'>
-                        <Link onClick={() => setIsOpenedUserModal(false)} className='font-thin mb-2 pl-2 px-20 pt-2 pb-2 hover:bg-[#D63626] hover:text-white cursor-pointer ease-in-out duration-500 rounded border-b border-gray-100' href="/user?page=profile">{t("Profile")}</Link>
-                        <Link onClick={() => setIsOpenedUserModal(false)} className='font-thin mb-2  pl-2 px-22 pt-2 pb-2 hover:bg-[#D63626] hover:text-white cursor-pointer ease-in-out duration-500 rounded border-b border-gray-100' href="/user?page=basket">{t("Your Basket")}</Link>
-                        <Link onClick={() => setIsOpenedUserModal(false)} className='font-thin mb-2  pl-2 px-22 pt-2 pb-2 hover:bg-[#D63626] hover:text-white cursor-pointer ease-in-out duration-500 rounded border-b border-gray-100' href="/user?page=user-orders">{t("Your Orders")}</Link>
-                        <Link onClick={() => setIsOpenedUserModal(false)} className='font-thin mb-2  pl-2 px-20 pt-2 pb-2 hover:bg-[#D63626] hover:text-white cursor-pointer ease-in-out duration-500 rounded border-b border-gray-100' href="/user?page=user-checkout">{t("Checkout")}</Link>
-                        <Link onClick={() => handleLogout()} className='font-thin mb-2  pl-2 px-20 pt-2 pb-2 hover:bg-[#D63626] hover:text-white cursor-pointer ease-in-out duration-500 rounded border-b border-gray-100' href="/">{t("Logout")}</Link>
-                      </ul>
-                    </div>
-                  </>
-                }
+              userDataLoading && isSignUser ?
+                <>
+                  <Skeleton
+                    circle
+                    width={50}
+                    style={{"margin-right": "20px"}}
+                    height={50}
+                    containerClassName="avatar-skeleton"
+                  /> 
+                  <Skeleton width={140} height={30} />
+                </> :
+                (isSignUser && !loading) &&
+                <>
+                  <Link href='/user?page=basket' className='relative'><Image src={userBasket} className='rounded-full mr-4' />
+                    <span className='absolute -top-2 text-red-500 font-semibold text-md right-1 bg-white rounded-xl px-2'>{userBasketData?.result.data.total_item}</span></Link>
+                  <div onClick={() => openUserModal()} className='flex items-center'>
+                    {
+                      userData?.user.img_url && <Image className='rounded-full mr-3' width={50} height={50} src={userData?.user.img_url ? userData?.user.img_url : userIcon} />
+                    }
+                    <p className='font-bold cursor-pointer'>{userData?.user.fullname}</p>
+                  </div>
+                  {
+                    isOpenedUserModal &&
+                    <>
+                      <div className='bg-white absolute top-24 right-[98px] z-50 h-[264px] shadow-lg rounded px-5 py-3 w-[178px]'>
+                        <ul className='flex flex-col'>
+                          <Link onClick={() => setIsOpenedUserModal(false)} className='font-thin mb-2 pl-2 px-20 pt-2 pb-2 hover:bg-[#D63626] hover:text-white cursor-pointer ease-in-out duration-500 rounded border-b border-gray-100' href="/user?page=profile">{t("Profile")}</Link>
+                          <Link onClick={() => setIsOpenedUserModal(false)} className='font-thin mb-2  pl-2 px-22 pt-2 pb-2 hover:bg-[#D63626] hover:text-white cursor-pointer ease-in-out duration-500 rounded border-b border-gray-100' href="/user?page=basket">{t("Your Basket")}</Link>
+                          <Link onClick={() => setIsOpenedUserModal(false)} className='font-thin mb-2  pl-2 px-22 pt-2 pb-2 hover:bg-[#D63626] hover:text-white cursor-pointer ease-in-out duration-500 rounded border-b border-gray-100' href="/user?page=user-orders">{t("Your Orders")}</Link>
+                          <Link onClick={() => setIsOpenedUserModal(false)} className='font-thin mb-2  pl-2 px-20 pt-2 pb-2 hover:bg-[#D63626] hover:text-white cursor-pointer ease-in-out duration-500 rounded border-b border-gray-100' href="/user?page=user-checkout">{t("Checkout")}</Link>
+                          <Link onClick={() => handleLogout()} className='font-thin mb-2  pl-2 px-20 pt-2 pb-2 hover:bg-[#D63626] hover:text-white cursor-pointer ease-in-out duration-500 rounded border-b border-gray-100' href="/">{t("Logout")}</Link>
+                        </ul>
+                      </div>
+                    </>
+                  }
 
-              </>
+                </>
             }
           </div>
 

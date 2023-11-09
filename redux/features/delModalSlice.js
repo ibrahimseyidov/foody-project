@@ -47,7 +47,6 @@ export const delModalSlice = createSlice({
     },
     openOrderDelModal: (state, action) => {
       state.orderDelModalActive = action.payload;
-      console.log(action.payload);
     },
     closeOrderDelModal: (state) => {
       state.orderDelModalActive = false;

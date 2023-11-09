@@ -8,12 +8,13 @@ import { useState } from 'react'
 import { uuidGenerator } from '../../../utils/uuidGenerator'
 import { getDownloadURL, ref, uploadBytes } from "firebase/storage";
 import { fileStorage } from "../../../server/configs/firebase";
-import { data } from 'autoprefixer'
 import { useEffect } from 'react'
 import { useRef } from 'react'
 import axios from 'axios'
 import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query'
-import { current } from '@reduxjs/toolkit'
+import Skeleton from 'react-loading-skeleton'
+import 'react-loading-skeleton/dist/skeleton.css'
+import { toast } from 'react-toastify'
 
 const UserProfile = () => {
     const { t } = useTranslation('common')
@@ -93,12 +94,11 @@ const UserProfile = () => {
             }
         }),
         onSuccess: (data) => {
-            console.log(data);
-            alert('success')
+            toast.success("Updated User Info with Successfully!")
             queryClient.invalidateQueries(["user"]);
         },
-        onError: (error) => {
-            alert('error', error)
+        onError: () => {
+            toast.error("Please, Fill Empty Area!")
         }
     })
 
@@ -142,7 +142,6 @@ const UserProfile = () => {
 
     const handleSaveUserInfo = (e) => {
         e.preventDefault()
-        // singInUser()
         updateUser()
     }
 
@@ -191,12 +190,18 @@ const UserProfile = () => {
                     <form>
                         <div className={styles['upload-img']}>
                             <button className="flex flex-col items-center relative mb-8 hover:opacity-80">
-                                {isLoading ? <div>Loading...</div> :
+                                {isLoading ? <Skeleton
+                                    circle
+                                    width={200}
+                                    style={{ "margin-right": "20px" }}
+                                    height={200}
+                                    containerClassName="avatar-skeleton"
+                                /> :
 
-                                    localUserImg ? <Image src={localUserImg} alt="upload" width={200} height={200} className='rounded' /> :
-                                        currentUserInfo?.img_url ? <Image src={currentUserInfo?.img_url} alt="upload" width={200} height={200} className='rounded' />
+                                    localUserImg ? <Image src={localUserImg} alt="upload" width={150} height={150} className={styles['rounded']} /> :
+                                        currentUserInfo?.img_url ? <Image src={currentUserInfo?.img_url} alt="upload" width={150} height={150} className={styles['rounded']} />
                                             :
-                                            <Image src={uploadImg} alt="upload" width={200} height={200} className='rounded' />
+                                            <Image src={uploadImg} alt="upload" width={150} height={150} className={styles['rounded']}/>
                                 }
                                 <input
                                     onChange={(e) => handleNewProductImg(e)}

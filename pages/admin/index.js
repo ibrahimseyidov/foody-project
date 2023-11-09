@@ -9,6 +9,7 @@ import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
 import TanstackProvider from '../../providers/TanstackProvider'
 import Cookies from 'js-cookie'
 import { BounceLoader } from 'react-spinners'
+
 const AdminDashboard = ({ children }) => {
   const [cookie, setCookie] = useState(false)
   useEffect(() => {
