@@ -138,6 +138,21 @@
     transform: scale(1.03);
 }
 
+.order-btn {
+    transition: 0.5s all ease;
+}
+
+.order-btn:hover {
+    background-color: #828282;
+    border: none;
+    color: #fff;
+    font-weight: 700;
+}
+
+.order-btn:active {
+    transform: scale(0.95);
+}
+
 @keyframes float {
 	0% {
 		box-shadow: 0 5px 15px 0px rgba(0,0,0,0.6);

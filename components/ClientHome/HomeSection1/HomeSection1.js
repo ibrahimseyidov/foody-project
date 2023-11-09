@@ -36,7 +36,7 @@ const HomeSection1 = () => {
               >
                 {t("Register")}
               </button>
-              <button onClick={() => router.push("/restaurants")}>
+              <button className={styles['order-btn']} onClick={() => router.push("/restaurants")}>
                 {t("Order now")}
               </button>
             </div>
