@@ -20,8 +20,8 @@ export const delModalSlice = createSlice({
     closeDelModal: (state) => {
       state.deLModalActive = false;
     },
-    showOrderModal: (state) => {
-      state.showOrderActive = true;
+    showOrderModal: (state,action) => {
+      state.showOrderActive = action.payload;
     },
     closeOrderModal: (state) => {
       state.showOrderActive = false;

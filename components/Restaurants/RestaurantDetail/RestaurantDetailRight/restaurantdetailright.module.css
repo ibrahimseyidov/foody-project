@@ -4,6 +4,7 @@
     width: 32%;
     height: 547px;
     overflow-y: auto;
+    position: relative;
     border-radius: 4px;
     background: #F3F4F6;
     box-shadow: 0px 3px 8px -2px rgba(0, 0, 0, 0.20);
@@ -30,11 +31,13 @@
     align-items: center;
     border-bottom: 1px solid #E0E0E0;
     padding-bottom: 14px;
+    justify-content: space-between;
     margin-bottom: 20px;
 }
 
 .basket-card {
     display: flex;
+    gap: 20px;
     padding-bottom: 24.52px;
     margin-bottom: 24.52px;
     border-bottom: 1px solid #E0E0E0;
@@ -75,6 +78,7 @@
     padding-left: 24px;
     padding-right: 2px;
     height: 47px;
+    width: 100%;
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -101,4 +105,15 @@
     font-style: normal;
     font-weight: 500;
     letter-spacing: 0.48px;
+}
+
+.clear-btn {
+    font-size: 16px !important;
+    border: 1px solid red;
+    width: 120px;
+    height: 35px;
+    font-weight: 600;
+    color: red !important;
+    border-radius: 20px;
+    transition: 0.5s all ease;
 }
