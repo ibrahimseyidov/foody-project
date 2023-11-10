@@ -11,6 +11,6 @@ export const store = configureStore({
         delModal: delModalReducer,
         product: productReducer,
         restaurant: restaurantReducer,
-        language: langReducer
+        language: langReducer,
     },
 })

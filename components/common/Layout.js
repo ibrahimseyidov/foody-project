@@ -12,29 +12,29 @@ const Layout = ({ children }) => {
     const pathname = usePathname()
     return (
         <>
-            <div className='px-4' style={{ backgroundColor: '#1E1E30', 'min-height': '100vh' }}>
-                <Header />
-                <main className='flex'>
-                    <Navbar />
-                    {pathname === '/admin' &&
-                        <Dashboard />
-                    }
-                    <EditModal />
-                    {children}
-                    <ToastContainer
-                        position="top-right"
-                        autoClose={5000}
-                        hideProgressBar={false}
-                        newestOnTop={false}
-                        closeOnClick
-                        rtl={false}
-                        pauseOnFocusLoss
-                        draggable
-                        pauseOnHover
-                        theme="light"
-                    />
-                </main>
-            </div>
+                <div className='px-4' style={{ backgroundColor: '#1E1E30', 'min-height': '100vh' }}>
+                    <Header />
+                    <main className='flex'>
+                        <Navbar />
+                        {pathname === '/admin' &&
+                            <Dashboard />
+                        }
+                        <EditModal />
+                        {children}
+                        <ToastContainer
+                            position="top-right"
+                            autoClose={5000}
+                            hideProgressBar={false}
+                            newestOnTop={false}
+                            closeOnClick
+                            rtl={false}
+                            pauseOnFocusLoss
+                            draggable
+                            pauseOnHover
+                            theme="light"
+                        />
+                    </main>
+                </div>
         </>
     )
 }
