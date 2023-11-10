@@ -5,13 +5,13 @@ import ClientHeader from '../ClientHeader/ClientHeader'
 const ClientContainer = ({ children }) => {
 
   return (
-    <>
+    <div className='layout-client'>
       <div className='mx-6'>
         <ClientHeader />
         {children}
       </div>
       <ClientFooter />
-    </>
+    </div>
   )
 }
 

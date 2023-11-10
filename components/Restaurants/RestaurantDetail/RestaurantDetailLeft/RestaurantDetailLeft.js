@@ -37,7 +37,7 @@ const router=useRouter();
 const increaseProductCount = (productId) => {
   if (localStorage.getItem('access_token')) {
     addProductToBasket(productId);
-    console.log("Salam")
+   
   } else {
     router.push("/login")
   }
@@ -65,7 +65,7 @@ const increaseProductCount = (productId) => {
                   />
                 </div>
                 <div className={styles["detail-title"]}>
-                  <h3>Papa John's Pizza {t("Restaurant")}</h3>
+                  <h3>{item?.name}</h3>
                   <span>{item?.description}</span>
                 </div>
               </div>
