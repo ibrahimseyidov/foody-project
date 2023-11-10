@@ -16,36 +16,12 @@ export default function LoginPage() {
   const [userEmail, setUserEmail] = useState('')
   const [userPass, setUserPass] = useState('')
 
-
   useEffect(() => {
     AOS.init()
   }, [])
 
-  // useEffect(()=>{
-  //   setCookie(Cookies.get('userAccessJWT'))
-  // },[Cookies.get('accessJWT')])
   const { t } = useTranslation('common')
   const router = useRouter()
-  // const notifySuccess = () => toast.success("Signin successfully!");
-  // const notifyError = () => toast.error("Access Denied!");
-  // const signClient = async ()=> await axios.post('/api/auth/signin', {
-  //   "email": email,
-  //   "password": password
-  // })
-  // .then(response => {
-  //   console.log('Post request successful:', response);
-  //   notifySuccess()
-  //   const accessTkn = response.data.user.access_token
-  //   Cookies.set('clientAccessJWT',accessTkn)
-  //   setTimeout(() => {
-  //     push('/')
-  //   },5000);
-  // })
-  // .catch(error => {
-  //   console.error('Error making post request:', error);
-  //   notifyError()
-  // });
-
 
   const { mutate: signinUser } = useMutation({
     mutationFn: async () => await axios.post('/api/auth/signin', {
@@ -56,7 +32,8 @@ export default function LoginPage() {
       setTimeout(() => {
         toast.success('Signin successfully!', { autoClose: 2000 })
       })
-      localStorage.setItem('access_token', data.data.user.access_token)
+      localStorage.setItem('refresh_token',data?.data.user.refresh_token)
+      localStorage.setItem('access_token', data?.data.user.access_token)
       setTimeout(() => {
         router.push('/')
       }, 2000)
@@ -75,7 +52,6 @@ export default function LoginPage() {
   const handlePass = (e) => {
     setUserPass(e.target.value)
   }
-
 
   const signClient = () => {
     signinUser()
