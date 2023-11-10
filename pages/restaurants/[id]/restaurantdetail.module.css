@@ -56,7 +56,10 @@
     padding-left: 10px;
     margin-right: 28px;
 }
-
+.restaurant-buttons :nth-child(2):hover{
+    background-color: #fff;
+    color: #D63626;
+}
 .restaurant-buttons :nth-child(2) {
     border-radius: 5px;
     width: 72px;

@@ -6,6 +6,7 @@ import "aos/dist/aos.css";
 import axios from "axios";
 import { useQuery } from "@tanstack/react-query";
 import { useRouter } from "next/router";
+import { BounceLoader } from "react-spinners";
 
 function Foodydetail(categoryId) {
   const router = useRouter();
@@ -21,9 +22,8 @@ function Foodydetail(categoryId) {
     },
   });
 
-  useEffect(() => {
-    AOS.init();
-  }, []);
+
+
 
   const resultData = data?.result?.data;
   const [filteredRestaurants, setFilteredRestaurants] = useState(resultData);
@@ -41,9 +41,22 @@ function Foodydetail(categoryId) {
   useEffect(() => {
     setFilteredRestaurants(resultData);
   }, [resultData]);
-
+  if (isLoading) {
+    return (
+      <div className="flex justify-center items-center mx-0 my-auto  w-full h-full">
+        <BounceLoader
+          color="#D63626"
+          loading={true}
+          size={70}
+          aria-label="Loading Spinner"
+          data-testid="loader"
+        />
+ </div>
+    );
+  }
+  if (isError) return <div className="text-white">error...</div>;
   return (
-    <div className={`${styles["res-card-container"]}`} data-aos="fade-left">
+    <div className={`${styles["res-card-container"]}`} >
       {filteredRestaurants?.map((item) => {
         return (
           <div
@@ -60,8 +73,8 @@ function Foodydetail(categoryId) {
             <div>
               <h1 className={styles.coffdiv}>{item?.name.length>12?item?.name.slice(0,12)+"...":item?.name}</h1>
               <span className={styles.spn_div}>{item?.cuisine}</span>
-              <div className="flex justify-between items-center pr-2 gap-2">
-                <p className={styles.pdiv}>${item?.delivery_price} Delivery</p>
+              <div className="flex justify-between items-center">
+                <p className={styles.pdiv}>${item?.delivery_price}Delivery</p>
                 <span className={styles.btndiv}> {item?.delivery_min} min</span>
               </div>
             </div>

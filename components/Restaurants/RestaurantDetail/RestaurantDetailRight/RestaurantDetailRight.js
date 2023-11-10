@@ -106,11 +106,10 @@ const RestaurantDetailRight = () => {
   };
   const { t } = useTranslation("common");
   const basketItems = userBasket?.result.data.items;
-
   return (
     <>
       <div className={styles["basket-bg"]}>
-        {basketItems?.length === 0 ? (
+        { typeof basketItems==='undefined'||basketItems?.length===0  ? (
           <div className="-mt-10">
             <Image className="mx-auto" src={emptyBasket} alt="empty-basket" />
           </div>
