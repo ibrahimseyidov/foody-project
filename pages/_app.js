@@ -1,3 +1,4 @@
+'use client'
 import React from 'react'
 import { appWithTranslation } from 'next-i18next';
 import '../styles/globals.css'
@@ -25,7 +26,7 @@ axios.interceptors.response.use(
     console.log(error);
     if (error.response && error.response.status === 401) {
       const isAvaibleToken = localStorage.getItem('refresh_token')
-      try {
+      
         if (isAvaibleToken) {
           return axios.post('/api/auth/refresh', { "refresh_token": isAvaibleToken })
             .then(response => {
@@ -36,16 +37,16 @@ axios.interceptors.response.use(
               error.config.headers['Authorization'] = 'Bearer ' + response?.data.access_token;
               return axios.request(error.config);
             })
+            .catch (err => {
+              console.log(err);
+              window.location.href = "/login";
+              localStorage.removeItem("access_token");
+              localStorage.removeItem("refresh_token");
+              return Promise.reject();
+            })
         }
-      } catch (err) {
-        console.log(err);
-        window.location.href = "/login";
-        localStorage.removeItem("access_token");
-        localStorage.removeItem("refresh_token");
-        return Promise.reject();
-      }
+      } 
     }
-  }
 );
 
 const roboto = Roboto({

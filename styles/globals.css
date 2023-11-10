@@ -7,13 +7,15 @@ body {
 }
 
 body::-webkit-scrollbar {
-    width: 0;
+    display: none;
 }
-.layout-admin{
+
+.layout-admin {
     overflow-y: scroll;
 }
+
 .layout-admin::-webkit-scrollbar {
-    width:4px;
+    width: 4px;
 }
 
 .layout-admin::-webkit-scrollbar-track {
@@ -24,11 +26,13 @@ body::-webkit-scrollbar {
     background: transparent;
     box-shadow: 0px 0px 0px 100000vh black;
 }
-.layout-client{
+
+.layout-client {
     overflow-y: scroll;
 }
+
 .layout-client::-webkit-scrollbar {
-    width:4px;
+    width: 4px;
 }
 
 .layout-client::-webkit-scrollbar-track {
@@ -36,6 +40,7 @@ body::-webkit-scrollbar {
 }
 
 .layout-client::-webkit-scrollbar-thumb {
+    height: auto;
     background: transparent;
     box-shadow: 0px 0px 0px 100000vh black;
 }
