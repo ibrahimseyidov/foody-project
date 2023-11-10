@@ -37,6 +37,7 @@ const router=useRouter();
 const increaseProductCount = (productId) => {
   if (localStorage.getItem('access_token')) {
     addProductToBasket(productId);
+    console.log("Salam")
   } else {
     router.push("/login")
   }
@@ -70,7 +71,7 @@ const increaseProductCount = (productId) => {
               </div>
               <div className="flex items-center">
                 <span className={styles.from}>
-                  From <span className={styles.price}>$ {item?.price}</span>
+                  From <span className={styles.price}>${item?.price}</span>
                 </span>
                 <button className={styles["plus-btn"]} onClick={()=>increaseProductCount(item?.id)}>+</button>
               </div>
