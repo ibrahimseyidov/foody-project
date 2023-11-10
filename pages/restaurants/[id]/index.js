@@ -73,7 +73,7 @@ const index = () => {
             );
           })}
 
-          <div className="flex justify-between">
+          <div className="flex justify-between gap-5">
           
             <RestaurantDetailLeft id={id} singleRestItem={singleRestItem} />
             <RestaurantDetailRight singleRestItem={singleRestItem} />

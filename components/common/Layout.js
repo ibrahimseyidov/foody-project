@@ -12,7 +12,7 @@ const Layout = ({ children }) => {
     const pathname = usePathname()
     return (
         <>
-            <div className='px-4' style={{ backgroundColor: '#1E1E30', 'min-height': '100vh' }}>
+            <div className='px-4 layout-admin' style={{ backgroundColor: '#1E1E30', 'min-height': '100vh' }}>
                 <Header />
                 <main className='flex'>
                     <Navbar />
