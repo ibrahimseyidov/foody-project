@@ -6,41 +6,38 @@ body {
     overflow-x: hidden;
 }
 
-body::-webkit-scrollbar {
-    display: none;
+.my-custom-admin-body {
+    overflow-y: auto !important;
 }
 
-.layout-admin {
-    overflow-y: scroll;
-}
-
-.layout-admin::-webkit-scrollbar {
+.my-custom-admin-body::-webkit-scrollbar {
     width: 4px;
 }
 
-.layout-admin::-webkit-scrollbar-track {
+.my-custom-admin-body::-webkit-scrollbar-track {
     background: linear-gradient(0deg, rgba(192, 53, 162, 1) 0%, rgba(122, 32, 192, 1) 100%);
 }
 
-.layout-admin::-webkit-scrollbar-thumb {
+.my-custom-admin-body::-webkit-scrollbar-thumb {
+    border-radius: 12px;
     background: transparent;
     box-shadow: 0px 0px 0px 100000vh black;
 }
 
-.layout-client {
-    overflow-y: scroll;
+.my-custom-body {
+    overflow-y: auto !important;
 }
 
-.layout-client::-webkit-scrollbar {
+.my-custom-body::-webkit-scrollbar {
     width: 4px;
 }
 
-.layout-client::-webkit-scrollbar-track {
+.my-custom-body::-webkit-scrollbar-track {
     background: #D63626;
 }
 
-.layout-client::-webkit-scrollbar-thumb {
-    height: auto;
+.my-custom-body::-webkit-scrollbar-thumb {
+    border-radius: 12px;
     background: transparent;
-    box-shadow: 0px 0px 0px 100000vh black;
+    box-shadow: 0px 0px 0px 100000vh #fff;
 }
