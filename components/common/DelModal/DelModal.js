@@ -77,6 +77,7 @@ const DelModal = () => {
       }
     }),
     onSuccess: () => {
+      
       toast.success("Deleted Order with Successfully!")
       dispatch(closeHisDelModal())
       queryClient.invalidateQueries(["order"]);
