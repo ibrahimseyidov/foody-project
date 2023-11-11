@@ -3,11 +3,12 @@
 @tailwind utilities;
 
 body {
-    overflow-x: hidden;
+    overflow-x: hidden !important;
 }
 
 .my-custom-admin-body {
     overflow-y: auto !important;
+    overflow-x: hidden !important;
 }
 
 .my-custom-admin-body::-webkit-scrollbar {
@@ -26,6 +27,7 @@ body {
 
 .my-custom-body {
     overflow-y: auto !important;
+    overflow-x: hidden !important;
 }
 
 .my-custom-body::-webkit-scrollbar {
