@@ -17,7 +17,7 @@ const AdminHistory = () => {
   const { data: userOrder, isLoading, isError } = useQuery({
     queryKey: ['order'],
     queryFn: async () => {
-      const { data } = await axios.get('/api/order', {
+      const { data } = await axios.get('/api/order/history', {
         headers: {
           Authorization: `Bearer ${Cookies.get('accessJWT')}`
         }
@@ -25,7 +25,7 @@ const AdminHistory = () => {
       return data
     },
   })
-
+console.log(userOrder);
   isError?isError:""
   const handleDate = (orderCreatedTime) => {
     const monthNames = ["Jan", "Feb", "March", "Apr", "May", "June", "July", "Aug", "Sep", "Oct", "Nov", "Dec"];
@@ -71,7 +71,7 @@ const AdminHistory = () => {
                     <span className={styles["table-id"]}>{(history?.id).length > 4 && (history?.id).slice(0,4)}</span>
                   </td>
                   <td>
-                    <span className={styles["table-id"]}>{(history?.id).length > 6 && (history?.customer_id).slice(0, 6)}</span>
+                    <span className={styles["table-id"]}>{(history?.customer_id)?.length > 6 && (history?.customer_id).slice(0, 6)}</span>
                   </td>
                   <td>{handleDate(history?.created)}</td>
                   <td className="w-48 text-center">
@@ -80,11 +80,11 @@ const AdminHistory = () => {
                   <td>{history?.amount}</td>
                   <td>{history?.payment_method === 1 ? "pay at the door by credit card" : "pay at the door"}</td>
                   <td>{history?.contact}</td>
-                  <td className="mt-2 pr-3">
+                  {/* <td className="mt-2 pr-3">
                     <button onClick={() => dispatch(openHisDelModal(history?.id))}>
                       <Image src={trashIcon} alt="trash-icon" />
                     </button>
-                  </td>
+                  </td> */}
                 </tr>
               ))}
             </tbody>

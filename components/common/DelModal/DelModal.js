@@ -18,10 +18,12 @@ import axios from "axios";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 import Cookies from "js-cookie";
 import { toast } from "react-toastify";
+import { useRouter } from "next/router";
 
 const DelModal = () => {
   const { t } = useTranslation("common");
   const queryClient = useQueryClient();
+  const router = useRouter()
   const selDelCategoryModal = useSelector(
     (state) => state.delModal.catDelModalActive
   );
@@ -68,12 +70,12 @@ const DelModal = () => {
   });
 
   const { mutate: delUserOrder } = useMutation({
-    mutationFn: async (orderId) => await axios.delete('/api/order', {
+    mutationFn: async () => await axios.delete('/api/order', {
       data: {
-        order_id: orderId
+        order_id: selHisModal
       },
       headers: {
-        Authorization: `Bearer ${Cookies.get('accessJWT')}`
+        Authorization: `Bearer ${localStorage.getItem('access_token')}`
       }
     }),
     onSuccess: () => {
@@ -118,22 +120,22 @@ const DelModal = () => {
 
   // delete order
   const { mutate: handleDelOrder } = useMutation({
-    mutationFn: async () => {
-      const accessToken = localStorage.getItem("access_token");
-
-      const headers = {
-        Authorization: `Bearer ${accessToken}`,
-
-      };
-      await axios.delete(
-        "/api/order",
-        { data: { order_id: selOrderDelModal }, headers }
-      );
-    },
+    mutationFn: async () => await axios.delete('/api/order', {
+      data: {
+        order_id: selOrderDelModal
+      }
+    }, {
+      headers: {
+        Authorization: `Bearer ${Cookies.get('accessJWT')}`
+      }
+    }),
     onSuccess: () => {
       toast.success("Deleted Order with Successfully!")
       dispatch(closeOrderDelModal());
       queryClient.invalidateQueries(["order"]);
+      setTimeout(() => {
+        router.reload()
+      }, [2500])
     },
     onError: () => {
       toast.error("Couldn't Delete Order!")
@@ -340,7 +342,7 @@ const DelModal = () => {
                   {t("Cancel")}
                 </button>
                 <button
-                  onClick={handleDelOrd}
+                  onClick={() => handleDelOrd()}
                   className={styles["delete-btn"]}
                 >
                   {t("delete")}
