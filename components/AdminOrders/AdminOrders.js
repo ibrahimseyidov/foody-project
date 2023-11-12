@@ -6,7 +6,7 @@ import "aos/dist/aos.css";
 import { BounceLoader } from "react-spinners";
 import OrderItem from "./OrderItem";
 
-const AdminOrders = ({ orderData,isLoading,error }) => {
+const AdminOrders = ({ orderData, isLoading, error }) => {
   console.log(orderData)
   useEffect(() => {
     AOS.init();
