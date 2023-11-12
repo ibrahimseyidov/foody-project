@@ -21,7 +21,7 @@ const CategoryType = ({ pageName }) => {
                         <h2 className={styles['products-head-text']}>{pageName}</h2>
                     </div>
                     <div className='flex gap-10 items-center'>
-                        {pageName !== 'History' && <SelectBox categories={...data} />}
+                        {(pageName !== 'History' && pageName !== 'Geçmiş' && pageName !== 'Tarixçə') && <SelectBox categories={...data} />}
                     </div>
                 </div>
             </div>

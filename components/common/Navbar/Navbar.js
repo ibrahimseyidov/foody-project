@@ -14,6 +14,7 @@ import { usePathname, useRouter } from 'next/navigation'
 import { useTranslation } from 'next-i18next'
 import Cookies from 'js-cookie';
 import LoadingBar from "react-top-loading-bar";
+import eaImage from '../../../assets/images/ea-image.svg'
 
 const Navbar = () => {
     const router = useRouter()
@@ -29,10 +30,8 @@ const Navbar = () => {
 
     return (
         <>
-
-            <nav>
+            <nav className='w-[320px] flex flex-col justify-between'>
                 <div className={styles['navbar-container']}>
-
                     <ul>
 
                         <li>
@@ -92,9 +91,7 @@ const Navbar = () => {
                         </li>
 
                     </ul>
-
                 </div>
-
             </nav>
             <LoadingBar color={"#C74FEB"} ref={ref} />
         </>

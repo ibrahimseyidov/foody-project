@@ -4,6 +4,7 @@ import Header from '../common/Header/Header'
 import Navbar from '../common/Navbar/Navbar'
 import EditModal from './EditModal/EditModal'
 import Dashboard from '../Dashboard/Dashboard'
+import Image from 'next/image'
 import { usePathname } from 'next/navigation'
 import { ToastContainer } from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css';

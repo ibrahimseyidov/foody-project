@@ -25,8 +25,8 @@ const AdminHistory = () => {
       return data
     },
   })
-console.log(userOrder);
-  isError?isError:""
+  console.log(userOrder);
+  isError ? isError : ""
   const handleDate = (orderCreatedTime) => {
     const monthNames = ["Jan", "Feb", "March", "Apr", "May", "June", "July", "Aug", "Sep", "Oct", "Nov", "Dec"];
     let [month, date, year] = new Date(orderCreatedTime).toLocaleDateString("en-US").split("/");
@@ -65,10 +65,10 @@ console.log(userOrder);
               </tr>
             </thead>
             <tbody className={styles["tbody"]}>
-              {userOrder?.result.data.map((history,i) => (
+              {userOrder?.result.data.map((history, i) => (
                 <tr className={styles["table-row"]} key={history?.id}>
                   <td>
-                    <span className={styles["table-id"]}>{(history?.id).length > 4 && (history?.id).slice(0,4)}</span>
+                    <span className={styles["table-id"]}>{(history?.id).length > 4 && (history?.id).slice(0, 4)}</span>
                   </td>
                   <td>
                     <span className={styles["table-id"]}>{(history?.customer_id)?.length > 6 && (history?.customer_id).slice(0, 6)}</span>
