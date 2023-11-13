@@ -10,14 +10,14 @@ import { BounceLoader } from "react-spinners";
 
 const AdminCategory = () => {
   // get category
- 
+
   const { data, isLoading, error } = useQuery({
     queryKey: ['category'],
     queryFn: async () => {
-        const { data } = await axios.get('/api/category')
-        return data
+      const { data } = await axios.get('/api/category')
+      return data
     },
-})
+  })
 
   useEffect(() => {
     AOS.init();
@@ -51,7 +51,7 @@ const AdminCategory = () => {
             </thead>
 
             <tbody className={styles["tbody"]}>
-             <CategoryItem categoryData={...data}/>
+              <CategoryItem categoryData={...data} />
             </tbody>
           </table>
         </div>

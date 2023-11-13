@@ -17,7 +17,7 @@ const Dashboard = () => {
                     <Emptycelltwo />
                 </div>
             </div>
-        </>
+         </>
     )
 }
 

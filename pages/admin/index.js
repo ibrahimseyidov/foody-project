@@ -9,6 +9,7 @@ import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
 import TanstackProvider from '../../providers/TanstackProvider'
 import Cookies from 'js-cookie'
 import { BounceLoader } from 'react-spinners'
+import eaImage from '../../assets/images/ea-image.svg'
 
 const AdminDashboard = ({ children }) => {
   const [cookie, setCookie] = useState(false)
@@ -53,6 +54,9 @@ const AdminDashboard = ({ children }) => {
           <Layout>
             {children}
           </Layout>
+          <div className='fixed left-4 bottom-8'>
+            <Image src={eaImage} />
+          </div>
         </Provider>
       </TanstackProvider>}
     </div>
