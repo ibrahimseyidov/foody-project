@@ -258,6 +258,7 @@ const ClientHeader = () => {
         </div>
       </header>
       <LoadingBar color="#D63626" ref={ref} />
+
     </>
   )
 }
