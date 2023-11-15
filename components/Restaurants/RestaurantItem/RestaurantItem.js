@@ -43,7 +43,7 @@ const RestaurantItem = ({ restaurantsData }) => {
             <Image src={rest?.img_url} width={50} height={50} alt="papa-johns" />
           </div>
           <div className={styles['restaurant-detail']}>
-            <h3>{rest?.name}</h3>
+            <h3>{(rest?.name).length > 14 ? (rest?.name).slice(0,14) + "..." : rest?.name}</h3>
             <span>{rest?.cuisine}</span>
           </div>
           <div className='flex flex-col'>
@@ -68,7 +68,7 @@ const RestaurantItem = ({ restaurantsData }) => {
             <Image src={rest?.img_url} width={50} height={50} alt="papa-johns" />
           </div>
           <div className={styles['restaurant-detail']}>
-            <h3>{rest?.name}</h3>
+            <h3>{(rest?.name).length > 14 ? (rest?.name).slice(0,14) + "..." : rest?.name}</h3>
             <span>{rest?.cuisine}</span>
           </div>
           <div className='flex flex-col'>

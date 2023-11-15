@@ -68,7 +68,7 @@ const ClientHeader = () => {
       return data;
     },
   });
-  console.log(userData);
+
   useEffect(() => {
     setIsSignUser(localStorage.getItem("access_token"));
     // dispatch(handleLangData(currentLocale))
@@ -158,7 +158,7 @@ const ClientHeader = () => {
                   {searchRest && isInputActive ?
                     <ul className={className}>
                       {searchRest?.map((rest) => (
-                        <li className='flex items-center mb-4 border-b border-gray-100 px-8 pb-4'>
+                        <li onClick={() => router.push(`/restaurants/${rest?.id}`)} className='flex items-center mb-4 border-b border-gray-100 px-8 pb-4 cursor-pointer ease-linear duration-200 hover:opacity-50'>
                           <Image src={rest?.img_url} width={50} height={50} alt='restaurant-image' />
                           <div className='ml-8'>
                             <h3 className='font-semibold'>{rest?.name}</h3>
@@ -220,10 +220,10 @@ const ClientHeader = () => {
                   <Skeleton
                     circle
                     width={50}
-                    style={{"margin-right": "20px"}}
+                    style={{ "margin-right": "20px" }}
                     height={50}
                     containerClassName="avatar-skeleton"
-                  /> 
+                  />
                   <Skeleton width={140} height={30} />
                 </> :
                 (isSignUser && !loading) &&
