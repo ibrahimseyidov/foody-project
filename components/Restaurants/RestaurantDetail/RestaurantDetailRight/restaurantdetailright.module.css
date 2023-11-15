@@ -3,7 +3,6 @@
     padding: 20px 30px 30px 30px;
     width: 28%;
     height: 547px;
-    
     position: relative;
     border-radius: 4px;
     background: #F3F4F6;
@@ -23,6 +22,7 @@
 }
 
 .basket-middle {
+    overflow-x: hidden;
     overflow-y: auto;
     height: 370px;
     margin-bottom: 100px;
@@ -39,7 +39,8 @@
 
 .basket-card {
     display: flex;
-    gap: 20px;
+    justify-content: space-between;
+    width: 100%;
     padding-bottom: 24.52px;
     margin-bottom: 24.52px;
     border-bottom: 1px solid #E0E0E0;
@@ -122,4 +123,8 @@
 .clear-btn:hover {
     background-color: #D63626;
     color: #fff;
+}
+
+.food-head {
+    margin-left: 20px;
 }

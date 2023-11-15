@@ -26,8 +26,7 @@ const RestaurantDetailRight = () => {
           },
         }
       ),
-    onSuccess: (data) => {
-      toast.success("Product add to cart", { autoClose: 8000 });
+    onSuccess: () => {
       queryClient.invalidateQueries(["basket"]);
     },
     onError: (error) => {
@@ -110,8 +109,8 @@ const RestaurantDetailRight = () => {
     <>
       <div className={styles["basket-bg"]}>
         { typeof basketItems==='undefined'||basketItems?.length===0  ? (
-          <div className="-mt-10">
-            <Image className="mx-auto" src={emptyBasket} alt="empty-basket" />
+          <div className="-mt-10 w-[345px]">
+            <Image width={800} height={1200} className='h-[610px] w-[700px] object-cover' src={emptyBasket} alt="empty-basket" />
           </div>
         ) : (
           <>
@@ -134,11 +133,11 @@ const RestaurantDetailRight = () => {
                 {basketItems?.map((basket) => (
                   <div key={basket?.id} className={styles["basket-card"]}>
                     <div className="flex items-center">
-                      <div className="mr-7">
+                      <div className="w-14">
                         <Image
                           src={basket?.img_url}
-                          width={50}
-                          height={50}
+                          width={200}
+                          height={200}
                           alt="food"
                         />
                       </div>
@@ -151,7 +150,7 @@ const RestaurantDetailRight = () => {
                         </span>
                       </div>
                     </div>
-                    <div className="flex">
+                    <div className="flex -ml-5">
                       <div className="flex flex-col mr-5 bg-white px-3 rounded-2xl">
                         <button
                           onClick={() => increaseProductCount(basket?.id)}
