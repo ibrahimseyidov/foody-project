@@ -41,7 +41,7 @@ const HomeSection1 = () => {
               </button>
             </div>
           </div>
-          <div>
+          <div className="h-[600px]">
             <div className={styles["hamburger-bg"]}></div>
             <Image
               src={hamburgerImg}
