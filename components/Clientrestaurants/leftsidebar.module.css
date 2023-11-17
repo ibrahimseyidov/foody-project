@@ -46,3 +46,64 @@
 .leftresdiv::-webkit-scrollbar-thumb {
     background: #D63626;
 }
+
+.mobile-filter ,.overlay{
+    display: none;
+}
+
+@media(max-width:1024px) {
+    .leftresdiv{
+        display: none;
+    }
+    .overlay {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100vh;
+        display: block;
+        background-color: rgba(0, 0, 0, 0.25);
+        z-index: 999;
+    }
+
+    .mobile-filter {
+        display: block;
+        position: fixed;
+        bottom: 0;
+        padding-bottom:56px;
+        left: 0;
+        z-index: 9999;
+        background-color: #fff;
+        width: 100%;
+
+        border-radius: 20px 20px 0 0;
+    }
+
+    .mobile-filter .close-filter {
+        width: 35px;
+        height: 35px;
+        margin: 30px auto;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 50%;
+        border: 1px solid #eee;
+
+    }
+
+    .mobile-filter li {
+        color: #000;
+        font-size: 18px;
+        font-style: normal;
+        font-weight: 500;
+        line-height: normal;
+        padding: 10px 0;
+        margin:0 20px;
+        text-transform: capitalize;
+        letter-spacing: 0.54px;
+        border-bottom: 1px solid #E0E0E0;
+    }
+    .mobile-filter li:last-child{
+        border: none;
+    }
+}

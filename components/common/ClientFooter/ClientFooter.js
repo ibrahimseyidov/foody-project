@@ -17,7 +17,7 @@ const ClientFooter = () => {
                     <div>
                         <div className={styles['footer-top']}>
                             <div className={styles['footer-left']}>
-                                <h2>
+                                <h2 className={styles.logo}>
                                     <Image src={foodyLogo} alt='foody-logo' />
                                 </h2>
                                 <span>
@@ -36,8 +36,8 @@ const ClientFooter = () => {
                                 </div>
                             </div>
                             <div className={styles['footer-right']}>
-                                <nav className='flex'>
-                                    <ul className='flex flex-col mr-24'>
+                                <nav className='flex lg:flex-row flex-col mt-3'>
+                                    <ul className='flex flex-col lg:mr-24'>
                                         <li className='font-black text-lg'>
                                             <Link href='/'>Popular</Link>
                                         </li>
@@ -54,7 +54,7 @@ const ClientFooter = () => {
                                             <Link href='/'>Business</Link>
                                         </li>
                                     </ul>
-                                    <ul className='flex flex-col mr-24'>
+                                    <ul className='flex flex-col lg:mr-24'>
                                         <li className='font-black text-lg'>
                                             <Link href='/'>Cash</Link>
                                         </li>
@@ -68,7 +68,7 @@ const ClientFooter = () => {
                                             <Link href='/'>About the store</Link>
                                         </li>
                                     </ul>
-                                    <ul className='flex flex-col mr-24'>
+                                    <ul className='flex flex-col lg:mr-24'>
                                         <li className='font-black text-lg'>
                                             <Link href='/'>Help</Link>
                                         </li>
@@ -87,7 +87,7 @@ const ClientFooter = () => {
                         </div>
 
                         <div className='flex justify-center text-white mt-14'>
-                            <span>All rights reserved © 2003-2023 Foody TERMS OF USE | Privacy Policy</span>
+                            <span className={styles.copyright}>All rights reserved © 2003-2023 Foody TERMS OF USE | Privacy Policy</span>
                         </div>
 
                     </div>

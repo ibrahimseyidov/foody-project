@@ -38,10 +38,10 @@ const HomeSection3 = () => {
 
   return (
     <>
-      <section className="mb-36" data-aos="fade-left">
+      <section className="lg:mb-36 mx-3" data-aos="zoom-in-down">
         {data?.result.data.map((main) =>(
            <div className={styles['offer-card']}>
-            <div className="w-3/4">
+            <div className="lg:w-3/4">
                 <h3 className={styles.menu}>{main?.name}</h3>
               <p className={styles["menu-para"]}>
                 {main?.description}

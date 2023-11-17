@@ -20,7 +20,7 @@ const index = () => {
         <>
             <title>Foody | How-It-Works</title>
             <ClientContainer>
-                <section className='mt-16 mx-48' data-aos='zoom-in'>
+                <section className='lg:mt-16 lg:mx-48 m-10' data-aos='zoom-in'>
                     <div className={styles['works-head']}>
                         <h2>{t('How it works')}</h2>
                         <p>
@@ -28,8 +28,8 @@ const index = () => {
                         </p>
                     </div>
                     <div className={styles['works-image-container']}>
-                        <Image src={worksBg} alt='background' />
-                        <Image className='absolute -top-10 left-48' src={worksImg} alt='works-image' />
+                        <Image className={styles.bg} src={worksBg} alt='background' />
+                        <Image className={styles.img} src={worksImg} alt='works-image' />
                     </div>
                 </section>
             </ClientContainer>

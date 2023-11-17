@@ -43,3 +43,34 @@
     line-height: 24px;
     letter-spacing: 0.6px;
 }
+@media(max-width:1200px){
+    .section7-middle :nth-child(1) {
+        font-size: 30px;
+        line-height: 40px;
+    }
+    .section7-middle :nth-child(2) {
+        border-radius: 30px;
+        background: #FB9300;
+        width: 200px;
+      font-size: 16px;
+    }
+}
+@media(max-width:992px){
+    .section7-bg {
+        position: relative;
+        height: auto;
+        width: 100%;
+       flex-direction: column;
+        padding: 42px 26px;
+        top: 40px;
+        left: auto;
+    }
+    .section7-bg img{
+        display: none;
+    }
+    .section7-middle :nth-child(1) {
+        font-size: 25px;
+        line-height: 31px;
+        margin-bottom: 20px;
+    }
+}

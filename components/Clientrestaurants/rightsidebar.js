@@ -26,8 +26,8 @@ function Foodydetail(categoryId) {
 
 
   const resultData = data?.result?.data;
-  const [filteredRestaurants, setFilteredRestaurants] = useState(resultData);
-
+  const [filteredRestaurants, setFilteredRestaurants] = useState(resultData || []);
+  console.log(resultData)
   useEffect(() => {
     setFilteredRestaurants(resultData);
     if (categoryId) {
@@ -73,7 +73,7 @@ function Foodydetail(categoryId) {
             <div>
               <h1 className={styles.coffdiv}>{item?.name.length>12?item?.name.slice(0,12)+"...":item?.name}</h1>
               <span className={styles.spn_div}>{item?.cuisine}</span>
-              <div className="flex justify-between items-center">
+              <div className="flex sm:flex-row flex-col justify-between items-center">
                 <p className={styles.pdiv}>${item?.delivery_price}Delivery</p>
                 <span className={styles.btndiv}> {item?.delivery_min} min</span>
               </div>

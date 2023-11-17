@@ -24,18 +24,18 @@ const index = () => {
         <>
             <title>Foody | About-us</title>
             <ClientContainer>
-                <section className='mt-28 mx-24 flex justify-between'>
-                    <div className='w-2/4 mr-20' data-aos='fade-right'>
+                <section className='lg:mt-28 lg:mx-24 m-10 flex lg:flex-row flex-col justify-between'>
+                    <div className='lg:w-2/4 w-full lg:mr-20 mb-4' data-aos='fade-right'>
                         <h2 className={styles['about-head']}>{t('About Us')}</h2>
                         <p className={styles['about-para']}>
                             Lorem ipsum is placeholder text commonly used in the graphic, print, and publishing industries for previewing layouts and visual mockups.Lorem ipsum is placeholder text commonly used in the graphic, print, and publishing industries for previewing layouts and visual mockups.Lorem ipsum is placeholder text commonly used in the graphic, print, and publishing industries for previewing layouts and visual mockups.
                         </p>
                     </div>
                     <div className={styles['about-bg']} data-aos='fade-left'>
-                        <Image src={aboutBg} />
+                        <Image className='lg:block hidden ' src={aboutBg} />
                         <div className={styles['about-card']}>
                             <div className='relative'>
-                                <Image className='absolute -top-14 right-4' src={littleHam} alt='hamburger' />
+                                <Image className='absolute -top-14 right-4  xl:w-auto w-20' src={littleHam} alt='hamburger' />
                             </div>
                             <div className={styles['about-card-text']}>
                                 <h3>Hamburger</h3>

@@ -6,7 +6,7 @@ const ClientContainer = ({ children }) => {
 
   return (
     <div className='layout-client'>
-      <div className='mx-6'>
+      <div className='lg:mx-6 md:mx-4 mx-0'>
         <ClientHeader />
         {children}
       </div>

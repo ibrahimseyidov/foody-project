@@ -63,9 +63,44 @@
 
 @keyframes fadeIn {
     from {
-      opacity: 0;
+        opacity: 0;
     }
+
     to {
-      opacity: 1;
+        opacity: 1;
     }
-  }
+}
+
+@media(max-width:992px) {
+    .faq {
+   font-size: 35px;
+    }
+    .faq-card :nth-child(1) {
+        font-size: 18px;
+    }
+
+    .faq-card :nth-child(2) {
+        font-size: 28px;
+    }
+}
+
+@media(max-width:768px) {
+  
+    .faq-card :nth-child(1) {
+        font-size: 16px;
+    }
+
+    .faq-card :nth-child(2) {
+        font-size: 24px;
+    }
+}
+
+@media(max-width:576px) {
+   
+    .faq-card :nth-child(1) {
+        font-size: 14px;
+        line-height: 18px;
+    }
+
+    
+}

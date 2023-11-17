@@ -76,16 +76,16 @@ export default function LoginPage() {
       </Head>
       <main className="sm:mr-32px sm:ml-32px" style={{ "zoom": "0.66" }}>
         <ClientHeader />
-        <div className="flex-col mx-3 my-3 flex sm:flex-row sm:mx-0 ">
-          <div className="w-3/6 bg-clientRed h-fit rounded-4 sm:mr-10" data-aos='fade-right'>
+        <div className="md:flex-row flex-col mx-3 my-3 flex sm:mx-0 ">
+          <div className="lg:w-3/6 md:w-[50%] w-full bg-clientRed lg:h-fit h-[160px] rounded-4 sm:mr-10" data-aos='fade-right'>
             <img
               alt=""
               src="/loginImages/login.svg"
-              className="w-5/6 h-[740px] ml-32px sm:mt-5 sm:ml-68px sm:mr-24 sm:mb-40"
+              className="lg:w-5/6 lg:h-[740px] w-[240px] h-[150px] lg:ml-32px sm:mt-5 sm:ml-68px lg::mr-24 sm:mb-40 mx-auto"
             />
           </div>
-          <div className="mx-auto" data-aos='fade-left'>
-            <div className="flex ml-20 flex-row sm:gap-x-16 sm:ml-174px sm:mb-18 sm:mt-105px mt-11 gap-x-9 mb-15">
+          <div className="lg:w-2/6 md:w-[50%] w-full mx-auto" >
+            <div className="flex lg:ml-20 flex-row sm:gap-x-16 sm:ml-174px sm:mb-18 sm:mt-105px mt-11 gap-x-9 mb-15 justify-center">
               <p className="text-clientRed sm:text-3xl text-xl font-medium ">
                 {t('Login')}
               </p>

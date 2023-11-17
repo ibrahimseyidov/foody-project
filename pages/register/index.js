@@ -80,16 +80,16 @@ export default function RegisterPage() {
       </Head>
       <main className="sm:mr-32px sm:ml-32px" style={{ "zoom": "0.66" }}>
         <ClientHeader />
-        <div className="flex-col mx-3 my-3 flex sm:flex-row sm:mx-0">
-          <div className="bg-clientRed py-3 w-3/6 sm:pt-24 sm:pl-40 sm:mr-10 sm:pb-48 sm:pr-15 px-10 rounded-4 mb-11" data-aos='fade-right'>
+        <div className="flex-col mx-3 my-3 flex lg:flex-row sm:mx-0">
+          <div className="bg-clientRed py-3 lg:w-3/6 w-full lg:h-[900px] h-[160px] sm:pt-24 sm:pl-40 sm:mr-10 sm:pb-48 sm:pr-15 px-10 rounded-4 mb-11" data-aos='fade-right'>
             <img
               alt="register"
               src="/loginImages/register.svg"
-              className="w-5/6 h-[630px]"
+              className="lg:w-5/6 lg:h-[630px] h-[150px] w-[240px] mx-auto"
             />
           </div>
-          <div className="w-2/6 mx-auto" data-aos='fade-left'>
-            <div className="flex ml-20 flex-row sm:gap-x-16 sm:ml-174px sm:mb-18 sm:mt-105px gap-x-9 mb-15">
+          <div className="lg:w-2/6 mx-auto w-full"  data-aos='fade-left'>
+            <div className="flex lg:ml-20 mx-auto justify-center flex-row sm:gap-x-16 sm:ml-174px sm:mb-18 sm:mt-105px gap-x-9 mb-15">
               <p onClick={() => router.push('/login')} className="cursor-pointer text-clientGray sm:text-3xl text-xl font-normal">
                 Login
               </p>
