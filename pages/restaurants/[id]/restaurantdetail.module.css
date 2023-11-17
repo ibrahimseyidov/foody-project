@@ -56,10 +56,12 @@
     padding-left: 10px;
     margin-right: 28px;
 }
-.restaurant-buttons :nth-child(2):hover{
+
+.restaurant-buttons :nth-child(2):hover {
     background-color: #fff;
     color: #D63626;
 }
+
 .restaurant-buttons :nth-child(2) {
     border-radius: 5px;
     width: 72px;
@@ -72,10 +74,12 @@
     font-weight: 400;
     letter-spacing: 0.42px;
 }
-.bg{
-    width: 100%;
+
+.bg {
+    width: 50%;
+    margin: 0 auto;
     height: 500px;
     background-position: center;
     background-repeat: no-repeat;
-    background-size: contain;
+    background-size: cover;
 }

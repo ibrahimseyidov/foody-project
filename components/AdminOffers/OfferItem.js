@@ -13,7 +13,7 @@ const OfferItem = ({ offerData }) => {
             <td><span className={styles['table-id']}>{(offer?.id).length > 4 && (offer?.id).slice(0,4)}</span></td>
             <td className='flex justify-center items-center'><Image width={60} height={60} src={offer.img_url} alt='offer' /></td>
             <td>{offer?.name}</td>
-            <td>{(offer?.description).length > 60 ? (offer?.description).slice(0, 60) + '...' : ''}</td>
+            <td>{(offer?.description).length > 60 ? (offer?.description).slice(0, 60) + '...' : offer?.description}</td>
             <td>
                 <button onClick={() => dispatch(openOfferModalEdit(offer))} className='mr-4'>
                     <Image src={editIcon} alt='edit-icon' />

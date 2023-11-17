@@ -57,7 +57,7 @@ const ProductItem = ({ productsData }) => {
                             {product?.img_url && <Image src={product.img_url} className='px-2 object-cover w-[160px] h-[160px]' width={160} height={160} alt='pizza' />}
                         </div>
                         <h3>{product?.name}</h3>
-                        <span>Papa John's</span>
+                        <span>{handleRestName(product?.rest_id)}</span>
                         <div className={styles['product-price']}>
                             <div>
                                 <span>${product?.price}</span>

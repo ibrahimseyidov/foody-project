@@ -3,33 +3,21 @@ import styles from "../common/DelModal/delmodal.module.css";
 import AOS from "aos";
 import "aos/dist/aos.css";
 import { useDispatch, useSelector } from "react-redux";
-import { closeOrderModal } from "../../redux/features/delModalSlice";
-import { useQuery } from "@tanstack/react-query";
-import axios from "axios";
+import { closeOrderHistoryModal, closeOrderModal } from "../../redux/features/delModalSlice";
 
-const ShowOrderModal = () => {
-  const { data: orderResult, isLoading, error } = useQuery({
-    queryKey: ["order"],
-    queryFn: async () => {
-      const accessToken = localStorage.getItem("access_token");
+const ShowOrderHistoryModal = ({ orderHistory }) => {
+  const orderResult = orderHistory?.result;
 
-      const headers = {
-        Authorization: `Bearer ${accessToken}`,
-        "Content-Type": "application/json",
-      };
-      const { data } = await axios.get("/api/order", { headers });
-      return data;
-    },
-  });
   const dispatch = useDispatch();
-  const selOrderModal = useSelector((state) => state.delModal.showOrderActive);
+  const selOrderHistoryModal = useSelector((state) => state.delModal.showOrderHistoryModal);
+  console.log(orderResult);
   useEffect(() => {
     AOS.init();
   }, []);
 
   return (
     <>
-      {selOrderModal && (
+      {selOrderHistoryModal && (
         <div>
           <div className={styles.overlay} data-aos="zoom-in">
             <div
@@ -41,15 +29,15 @@ const ShowOrderModal = () => {
                 boxShadow: "0px 3px 8px -2px rgba(0, 0, 0, 0.20)",
               }}
             >
-              <span className={styles["modal-head"]}>Orders</span>
-              {orderResult?.result.data?.map((item) => (
+              <span className={styles["modal-head"]}>History</span>
+              {orderResult?.data?.map((item) => (
                 <div key={item.id}>
                   <span className={styles["modal-para"]}>{item.name}</span>
-                  {item.id === selOrderModal && (
+                  {item.id === selOrderHistoryModal && (
                     <div>
                       <span>
                         {item.products
-                          ?.map((product) => `${product?.count}x ${product?.name}` )
+                          ?.map((product) => `${product?.count}x ${product?.name}`)
                           .join(", ")}
                       </span>
                     </div>
@@ -59,7 +47,7 @@ const ShowOrderModal = () => {
 
               <div className="max-md:flex max-md:flex-col-reverse mt-4">
                 <button
-                  onClick={() => dispatch(closeOrderModal())}
+                  onClick={() => dispatch(closeOrderHistoryModal())}
                   className={styles["delete-btn"]}
                 >
                   close
@@ -73,4 +61,4 @@ const ShowOrderModal = () => {
   );
 };
 
-export default ShowOrderModal;
+export default ShowOrderHistoryModal;

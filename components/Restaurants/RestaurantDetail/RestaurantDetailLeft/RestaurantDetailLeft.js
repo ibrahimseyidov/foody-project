@@ -7,7 +7,7 @@ import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import { ToastContainer, toast } from "react-toastify";
 import 'react-toastify/dist/ReactToastify.css';
 import { useRouter } from "next/router";
-const RestaurantDetailLeft = ({id }) => {
+const RestaurantDetailLeft = ({ id }) => {
   const { t } = useTranslation("common");
   const queryClient = useQueryClient();
   const { data, isLoading, isError } = useQuery({
@@ -19,35 +19,35 @@ const RestaurantDetailLeft = ({id }) => {
   });
   const { mutate: addProductToBasket } = useMutation({
     mutationFn: async (productId) => await axios.post('/api/basket/add', {
-        product_id: productId
+      product_id: productId
     }, {
-        headers: {
-            Authorization: `Bearer ${localStorage.getItem('access_token')}`
-        }
+      headers: {
+        Authorization: `Bearer ${localStorage.getItem('access_token')}`
+      }
     }),
     onSuccess: (data) => {
       toast.success("Product add to cart")
-        queryClient.invalidateQueries(["basket"]);
+      queryClient.invalidateQueries(["basket"]);
     },
     onError: (error) => {
       console.log("erro")
     }
-})
-const router=useRouter();
-const increaseProductCount = (productId) => {
-  if (localStorage.getItem('access_token')) {
-    addProductToBasket(productId);
-   
-  } else {
-    router.push("/login")
+  })
+  const router = useRouter();
+  const increaseProductCount = (productId) => {
+    if (localStorage.getItem('access_token')) {
+      addProductToBasket(productId);
+
+    } else {
+      router.push("/login")
+    }
   }
-}
 
   const productData = data?.result?.data;
   const restaurantProducts = productData?.filter((item) => item.rest_id === id);
   return (
     <>
-    <ToastContainer autoClose={8000} />
+      <ToastContainer autoClose={8000} />
       <div className={styles["products-bg"]}>
         <div className={styles["products-text"]}>
           <h2>{t("Products")}</h2>
@@ -66,14 +66,14 @@ const increaseProductCount = (productId) => {
                 </div>
                 <div className={styles["detail-title"]}>
                   <h3>{item?.name}</h3>
-                  <span>{item?.description}</span>
+                  <span>{(item?.description).length > 68 ? (item?.description).slice(0, 68) + '...' : item?.description}</span>
                 </div>
               </div>
               <div className="flex items-center">
                 <span className={styles.from}>
                   From <span className={styles.price}>${item?.price}</span>
                 </span>
-                <button className={styles["plus-btn"]} onClick={()=>increaseProductCount(item?.id)}>+</button>
+                <button className={styles["plus-btn"]} onClick={() => increaseProductCount(item?.id)}>+</button>
               </div>
             </div>
           );

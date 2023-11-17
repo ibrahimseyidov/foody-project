@@ -19,7 +19,7 @@ const index = () => {
   const mailref = useRef()
   const passwordref = useRef()
   const router = useRouter()
-  const notifySuccess = () => toast.success("Sign in successfully!", {autoClose: 2000});
+  const notifySuccess = () => toast.success("Sign in successfully!", { autoClose: 2000 });
   const notifyError = () => toast.error("Access Denied!");
   const signAdmin = async () => await axios.post('/api/auth/signin', {
     "email": email,

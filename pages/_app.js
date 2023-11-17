@@ -23,17 +23,14 @@ axios.interceptors.request.use(
 
 axios.interceptors.response.use(
   function (response) {
-    return response;
+    return response
   },
   async function (error) {
-    console.log(error);
     if (error.response && error.response.status === 401) {
       const isAvaibleToken = localStorage.getItem('refresh_token')
-
       if (isAvaibleToken) {
         return axios.post('/api/auth/refresh', { "refresh_token": isAvaibleToken })
           .then(response => {
-            console.log(response);
             // Yeni access token alındıysa isteği tekrarla ve işlemi tamamla
             localStorage.setItem(response?.data.access_token)
             localStorage.setItem(response?.data.refresh_token)
@@ -47,7 +44,10 @@ axios.interceptors.response.use(
             localStorage.removeItem("refresh_token");
             return Promise.reject();
           })
+      }else{
+        return
       }
+
     }
   }
 );
@@ -89,16 +89,16 @@ function MyApp({ Component, pageProps }) {
 
   if (isLoading) {
     return <div className='absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2'>
-        <BounceLoader
-            color="#D63626"
-            loading={true}
-            size={70}
-            aria-label="Loading Spinner"
-            data-testid="loader"
-        />
+      <BounceLoader
+        color="#D63626"
+        loading={true}
+        size={70}
+        aria-label="Loading Spinner"
+        data-testid="loader"
+      />
     </div>
-}
-  
+  }
+
   return (
     <QueryClientProvider client={queryClient}>
       <main className={roboto.className}>

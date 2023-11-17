@@ -141,14 +141,13 @@
 }
 
 .order-btn {
-    transition: 0.5s all ease;
+    transition: 0.8s all ease;
 }
 
 .order-btn:hover {
     background-color: #828282;
     border: none;
     color: #fff;
-    font-weight: 700;
 }
 
 .order-btn:active {

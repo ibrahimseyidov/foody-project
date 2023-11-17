@@ -8,6 +8,7 @@ const initialState = {
   offerDelModalActive: "",
   orderDelModalActive: "",
   delhistoryActive: "",
+  showOrderHistoryModal:false,
 };
 
 export const delModalSlice = createSlice({
@@ -23,8 +24,14 @@ export const delModalSlice = createSlice({
     showOrderModal: (state,action) => {
       state.showOrderActive = action.payload;
     },
+    showOrderHistoryModal: (state,action) => {
+      state.showOrderHistoryModal = action.payload;
+    },
     closeOrderModal: (state) => {
       state.showOrderActive = false;
+    },
+    closeOrderHistoryModal: (state) => {
+      state.showOrderHistoryModal = false;
     },
     openResDelModal: (state, action) => {
       state.resDelModalActive = action.payload;
@@ -34,7 +41,6 @@ export const delModalSlice = createSlice({
     },
     openDelCatModal: (state, action) => {
       state.catDelModalActive = action.payload;
-      console.log(action.payload);
     },
     closeDelCatModal: (state) => {
       state.catDelModalActive = false;
@@ -74,7 +80,9 @@ export const {
   openHisDelModal,
   closeHisDelModal,
   openOrderDelModal,
-  closeOrderDelModal
+  closeOrderDelModal,
+  showOrderHistoryModal,
+  closeOrderHistoryModal
 } = delModalSlice.actions;
 
 export default delModalSlice.reducer;

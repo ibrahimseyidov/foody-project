@@ -17,11 +17,11 @@ const CategoryItem = ({ categoryData }) => {
       <td>
         <span className={styles["table-id"]}>{(category?.id).length > 4 && (category?.id).slice(0,4)}</span>
       </td>
-      <td className="flex justify-center">
-        <Image width="60" height="60" src={category.img_url} alt="food" />
+      <td className="flex justify-center mx-auto w-1/2">
+        <Image width="50" height="50" src={category.img_url} alt="food" />
       </td>
-      <td>{category.name}</td>
-      <td>{category.slug}</td>
+      <td>{category?.name}</td>
+      <td>{category?.slug}</td>
       <td>
         <button
           onClick={() => dispatch(openCategoryModalEdit(category))}

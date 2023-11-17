@@ -52,7 +52,7 @@ const index = () => {
                   <div className={styles["restaurant-title"]}>
                     <h2>
                       {item?.name}
-                      {t("Restaurant")}
+                      {t(" Restaurant")}
                     </h2>
                     <span>{item?.address}</span>
                   </div>
