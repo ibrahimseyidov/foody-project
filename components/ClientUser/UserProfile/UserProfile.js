@@ -211,8 +211,8 @@ const UserProfile = () => {
                                 />
                             </button>
                         </div>
-                        <div className='flex justify-between'>
-                            <div className='w-1/2 mr-14'>
+                        <div className='flex md:flex-row flex-col w-full justify-between'>
+                            <div className='md:w-1/2 w-full mr-14'>
                                 <div className='flex flex-col'>
                                     <label className={styles['label']} htmlFor="contact">{t('Contact')}</label>
                                     <input className={styles['profile-inp']} onChange={(e) => handleChangeContact(e)} value={currentUserInfo?.contact} placeholder='Enter number' type="text" id='contact' />
@@ -227,7 +227,7 @@ const UserProfile = () => {
                                 </div>
                             </div>
 
-                            <div className='w-1/2'>
+                            <div className='md:w-1/2 w-full'>
                                 <div className='flex flex-col'>
                                     <label className={styles['label']} htmlFor="contact">{t('Email')}</label>
                                     <input className={styles['profile-inp']} onChange={(e) => handleChangeEmail(e)} value={currentUserInfo?.email} placeholder='Enter Email' type="email" />

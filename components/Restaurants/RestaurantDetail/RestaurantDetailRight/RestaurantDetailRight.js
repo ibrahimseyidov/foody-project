@@ -107,12 +107,19 @@ const RestaurantDetailRight = () => {
   const basketItems = userBasket?.result.data.items;
   return (
     <>
-      <div className={styles["basket-bg"]}>
-        { typeof basketItems==='undefined'||basketItems?.length===0  ? (
-          <div className="-mt-10 w-[345px]">
-            <Image width={800} height={1200} className='h-[610px] w-[700px] object-cover' src={emptyBasket} alt="empty-basket" />
-          </div>
-        ) : (
+      {" "}
+      {typeof basketItems === "undefined" || basketItems?.length === 0 ? (
+        <div className={styles.empty}>
+          <Image
+            width={800}
+            height={1200}
+            className="mx-auto"
+            src={emptyBasket}
+            alt="empty-basket"
+          />
+        </div>
+      ) : (
+        <div className={styles["basket-bg"]}>
           <>
             <div className={styles["basket-top"]}>
               <div className="flex">
@@ -133,13 +140,15 @@ const RestaurantDetailRight = () => {
                 {basketItems?.map((basket) => (
                   <div key={basket?.id} className={styles["basket-card"]}>
                     <div className="flex items-center">
-                      <div className="w-14">
-                        <Image
-                          src={basket?.img_url}
-                          width={200}
-                          height={200}
-                          alt="food"
-                        />
+                      <div className="flex-shrink-0">
+                        <div className="w-14">
+                          <Image
+                            src={basket?.img_url}
+                            width={200}
+                            height={200}
+                            alt="food"
+                          />
+                        </div>
                       </div>
                       <div className={styles["food-head"]}>
                         <h3 className="w-[240px] font-medium">
@@ -169,7 +178,7 @@ const RestaurantDetailRight = () => {
                   </div>
                 ))}
               </div>
-              <div className="absolute bottom-5 left-5 w-[90%]">
+              <div className="absolute bottom-2 left-5 lg:hidden block w-[90%]">
                 <Link
                   href="/user?page=user-checkout"
                   className={styles["basket-checkout"]}
@@ -183,9 +192,21 @@ const RestaurantDetailRight = () => {
                 </Link>
               </div>
             </div>
+
+            <div className="absolute lg:block hidden bottom-5 left-5 w-[90%]">
+              <Link
+                href="/user?page=user-checkout"
+                className={styles["basket-checkout"]}
+              >
+                <span className={styles["checkout-text"]}>{t("Checkout")}</span>
+                <div className={styles["checkout-bg"]}>
+                  $ {userBasket?.result.data.total_amount}
+                </div>
+              </Link>
+            </div>
           </>
-        )}
-      </div>
+        </div>
+      )}
       <ToastContainer />
     </>
   );

@@ -14,7 +14,7 @@ const index = () => {
 
   return (
     <ClientContainer>
-      <div className="flex gap-4 mt-4 mb-6">
+      <div className="lg:flex gap-7 mt-4 mb-6">
         <Leftsidebar handleCategoryClick={handleCategoryClick} />
         {/* <Rightdetail /> */}
         <ToastContainer />

@@ -17,7 +17,7 @@ const HomeSection6 = () => {
 
     return (
         <>
-            <section className='mb-72 h-[1000px]' data-aos="fade-up"
+            <section className='lg:mb-72 lg:h-[1000px]' data-aos="fade-up"
                 data-aos-duration="3000">
                 <div>
                     <div className='flex items-center flex-col mb-10'>
@@ -26,21 +26,21 @@ const HomeSection6 = () => {
                             Lorem ipsum is placeholder text commonly used in the graphic, print, and publishing industries for previewing layouts and visual mockups.
                         </p>
                     </div>
-                    <div className='flex justify-center'>
+                    <div className='flex lg:justify-center justify-between flex-wrap'>
                         <div className={styles['home-card']}>
                             <Image src={foodHam} alt='homeImage' />
                             <h3>Dubble Chees</h3>
-                            <p>Lorem ipsum is placeholder commonly used in the graphic</p>
+                            <p className='px-2'> Lorem ipsum is placeholder commonly used in the graphic</p>
                         </div>
                         <div className={styles['home-card']}>
                             <Image src={foodPizza} alt='homeImage' />
                             <h3>Margarita</h3>
-                            <p>Lorem ipsum is placeholder commonly used in the graphic</p>
+                            <p className='px-2'> Lorem ipsum is placeholder commonly used in the graphic</p>
                         </div>
                         <div className={styles['home-card']}>
                             <Image src={foodTwister} alt='homeImage' />
                             <h3>Twister Menu</h3>
-                            <p>Lorem ipsum is placeholder commonly used in the graphic</p>
+                            <p className='px-2'> Lorem ipsum is placeholder commonly used in the graphic</p>
                         </div>
                     </div>
                 </div>

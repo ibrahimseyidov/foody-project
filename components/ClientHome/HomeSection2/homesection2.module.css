@@ -54,3 +54,52 @@
     line-height: 30px;
     letter-spacing: 0.54px;
 }
+@media(max-width:1200px){
+    .features {
+        font-size: 30px;
+    }
+    
+    .home-para {
+        font-size: 16px;
+        line-height: 24px;
+    }
+      
+    .home-card :nth-child(2) {
+        font-size: 20px;
+        line-height: 40px;
+    }
+    
+    .home-card :nth-child(3) {
+        font-size: 16px;
+        line-height: 30px;
+    }
+    
+}
+@media(max-width:1050px){
+
+    .home-card {
+     width: 45%;
+     margin: 0 auto !important;
+     margin-bottom: 40px !important;
+    }
+    
+
+}
+@media(max-width:992px) {
+    .features {
+        font-size: 25px;
+        line-height: 30px;
+        margin-bottom: 10px;
+    }
+    .home-card {
+        width: 90% ;
+        margin: 0 auto;
+        padding: 0 16px;
+        margin-bottom: 40px !important;
+       }
+       .home-para {
+        font-size: 16px;
+        line-height: 28px;
+        width:100%;
+    }
+}

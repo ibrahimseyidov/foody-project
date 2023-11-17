@@ -56,8 +56,8 @@ const RestaurantDetailLeft = ({ id }) => {
           return (
             <div className={styles["product-card"]} key={item.id}>
               <div className="flex">
-                <div className="mr-9">
-                  <Image
+                <div className="lg:mr-9">
+                  <Image className={styles.img}
                     width={100}
                     height={100}
                     src={item?.img_url}

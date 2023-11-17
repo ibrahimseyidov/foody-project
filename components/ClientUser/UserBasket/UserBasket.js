@@ -103,7 +103,7 @@ const UserBasket = () => {
             <div key={basket?.id} className={styles['basket-card']}>
                 <div className='flex items-center'>
                     <div className='mr-7'>
-                        <Image src={basket?.img_url} width={200} height={200} alt='food' />
+                        <Image className={styles.img} src={basket?.img_url} width={200} height={200} alt='food' />
                     </div>
                     <div className={styles['food-head']}>
                         <h3>{basket?.name}</h3>
@@ -111,7 +111,7 @@ const UserBasket = () => {
                     </div>
                 </div>
                 <div className='flex'>
-                    <div className='flex flex-col mr-5 bg-white px-3 rounded-2xl'>
+                    <div className='flex flex-col mr-5 lg:bg-white bg-gray-200 px-3 rounded-2xl h-20'>
                         <button onClick={() => increaseProductCount(basket?.id)}>+</button>
                         <span className='font-bold'>{basket?.count}</span>
                         <button onClick={() => decreaseProductCount(basket?.id)}>-</button>

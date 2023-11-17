@@ -19,8 +19,8 @@ const ProfileLayout = ({ children }) => {
 
     return (
         <ClientContainer>
-            <section className='mt-4 mb-44'>
-                <div className='flex'>
+            <section className='mt-4 lg:mb-44'>
+                <div className='flex lg:flex-row flex-col-reverse'>
                     <div className={styles['profile-nav']}>
                         <nav>
                             <ul>
@@ -61,7 +61,7 @@ const ProfileLayout = ({ children }) => {
                 </div>
 
             </section>
-        </ClientContainer >
+        </ClientContainer>
     )
 }
 

@@ -120,7 +120,7 @@ const index = () => {
                                 </div>
                                 <div>
                                     <label className={styles['payment-text']} htmlFor="payment">Payment Method</label>
-                                    <div className='flex justify-between w-5/6 mt-4'>
+                                    <div className='flex lg:flex-row flex-col justify-between w-5/6 mt-4'>
                                         <div className={styles['checkbox-area']}>
                                             <input ref={payDoor} onChange={(e) => handleCheckbox(e)} type="radio" id='pay' name='pay' className={styles['rounded-checkbox']} />
                                             <label className={isChecked1 ? `${styles['green-box']}` : `${styles['gray-box']}`} htmlFor="pay">pay at the door</label>

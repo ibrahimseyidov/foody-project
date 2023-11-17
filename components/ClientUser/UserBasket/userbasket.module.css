@@ -2,10 +2,14 @@
     border-radius: 5px;
     background: #F3F4F6;
     width: 77%;
-    height: 735px;
+    height: 770px;
     padding: 41px 0px 33px 0px;
 }
-
+.img {
+    width: 96px;
+    object-fit: contain;
+    height: 96px;
+}
 .clear-btn {
     font-size: 16px !important;
     border: 1px solid red;
@@ -101,6 +105,7 @@
     justify-content: space-between;
     color: #fff;
     height: 58px;
+    margin-top: 30px;
     padding: 0 4px 0 52px;
 }
 
@@ -123,4 +128,74 @@
     display: flex;
     align-items: center;
     justify-content: center;
+}
+@media(max-width:1400px){
+    .basket-bg {
+        width: 70%;
+    }
+}
+@media(max-width:1200px){
+    .img {
+        width: 80px;
+        height: 80px;
+    }
+}
+@media(max-width:1024px) {
+    .basket-bg {
+        width: 100%;
+    }
+
+ 
+}
+
+@media(max-width:768px) {
+    .basket-bg {
+        background-color: #fff !important;
+    }
+
+    .img {
+        width: 90px;
+        height: 90px;
+    }
+
+    .checkout-bg {
+        padding: 0 4px 0 25px;
+        height: 41px;
+        margin-top: 30px;
+    }
+
+    .checkout-bg :nth-child(1) {
+        font-size: 16px;
+    }
+
+    .checkout-bg :nth-child(2) {
+        width: auto;
+        height: 36px;
+        padding: 0 15px;
+        font-size: 12px;
+    }
+
+}
+
+@media(max-width:576px) {
+    .img {
+        width: 60px;
+        height: 60px;
+    }
+
+    .food-head :nth-child(1) {
+        font-size: 14px;
+    }
+
+    .food-head :nth-child(2) {
+        font-size: 12px;
+    }
+
+    .basket-cards-container {
+        padding: 0 20px;
+    }
+
+    .basket-head {
+        margin: 20px;
+    }
 }

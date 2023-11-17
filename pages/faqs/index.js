@@ -27,7 +27,7 @@ const index = () => {
         <>
             <title>Foody | FAQs</title>
             <ClientContainer>
-                <section className='mt-20 mx-48 mb-72' data-aos='fade-up'>
+                <section className='lg:mt-20 lg:mx-48 lg:mb-72 m-10' data-aos='fade-up'>
                     <div className='flex justify-center'>
                         <h2 className={styles.faq}>{t('F.A.Q')}</h2>
                     </div>

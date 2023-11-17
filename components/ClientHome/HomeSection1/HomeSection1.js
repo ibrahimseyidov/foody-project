@@ -22,7 +22,7 @@ const HomeSection1 = () => {
 
   return (
     <>
-      <section className="mb-20">
+      <section className="lg:mb-20 mb-5">
         <div className={styles["home-client-bg"]}>
           <div className={styles["hamburger-left"]} data-aos="fade-up">
             <h2>{t("Our Food site makes it easy to find local food")}</h2>
@@ -45,7 +45,7 @@ const HomeSection1 = () => {
               </button>
             </div>
           </div>
-          <div className="h-[600px]">
+          <div className={styles["hamburger-right"]}>
             <div className={styles["hamburger-bg"]}></div>
             <Image
               src={hamburgerImg}
