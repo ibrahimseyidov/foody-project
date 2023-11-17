@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import hamburgerImg from "../../../assets/images/foodImages/hamburgerImg.png";
 import styles from "../HomeSection1/homesection1.module.css";
 import Image from "next/image";
@@ -12,9 +12,11 @@ import { useRouter } from "next/navigation";
 
 const HomeSection1 = () => {
   const { t } = useTranslation("common");
+  const [isLogoutUser, setIsLogoutUser] = useState(false)
   const router = useRouter();
 
   useEffect(() => {
+    setIsLogoutUser(localStorage.getItem('access_token'))
     AOS.init();
   }, []);
 
@@ -30,12 +32,14 @@ const HomeSection1 = () => {
               mockups.
             </p>
             <div className={styles["hamburger-btn"]}>
-              <button
-                className={styles["register-btn"]}
-                onClick={() => router.push("/register")}
-              >
-                {t("Register")}
-              </button>
+              {!isLogoutUser &&
+                <button
+                  className={styles["register-btn"]}
+                  onClick={() => router.push("/register")}
+                >
+                  {t("Register")}
+                </button>
+              }
               <button className={styles['order-btn']} onClick={() => router.push("/restaurants")}>
                 {t("Order now")}
               </button>

@@ -128,11 +128,10 @@ const EditModal = () => {
         rest_id: selProductRestID,
         price: productPriceRef.value,
       }),
-
     onSuccess: () => {
       toast.success("Added Product with Successfully!")
       setAddProductImg(null);
-      queryClient.invalidateQueries(["products"]);
+      queryClient.invalidateQueries(['products'])
     },
     onError: () => {
       toast.error("Couldn't Add Product!")
@@ -321,8 +320,7 @@ const EditModal = () => {
   };
 
   const handleAddProduct = () => {
-    // addCategory();
-    addProduct();
+      addProduct();
   };
 
   const handleUpdateProduct = () => {

@@ -10,11 +10,13 @@ import 'aos/dist/aos.css';
 import ClientHeader from "../../components/ClientHeader/ClientHeader";
 import { useTranslation } from 'next-i18next'
 import { useMutation } from "@tanstack/react-query";
+import { PulseLoader } from "react-spinners";
 
 export default function LoginPage() {
 
   const [userEmail, setUserEmail] = useState('')
   const [userPass, setUserPass] = useState('')
+  const [isLoading, setIsLoading] = useState(false)
 
   useEffect(() => {
     AOS.init()
@@ -29,14 +31,22 @@ export default function LoginPage() {
       "password": userPass
     }),
     onSuccess: (data) => {
-      setTimeout(() => {
-        toast.success('Signin successfully!', { autoClose: 2000 })
-      })
-      localStorage.setItem('refresh_token',data?.data.user.refresh_token)
-      localStorage.setItem('access_token', data?.data.user.access_token)
-      setTimeout(() => {
-        router.push('/')
-      }, 2000)
+      if (data) {
+        setIsLoading(true)
+        setTimeout(() => {
+          toast.success('Signin successfully!', { autoClose: 2000 })
+        })
+        localStorage.setItem('refresh_token', data?.data.user.refresh_token)
+        localStorage.setItem('access_token', data?.data.user.access_token)
+        setTimeout(() => {
+          router.push('/')
+        }, 2000)
+      } else {
+        setTimeout(() => {
+          toast.error('Please, Enter Correct Email and Password!')
+        })
+      }
+
     },
     onError: () => {
       setTimeout(() => {
@@ -107,7 +117,15 @@ export default function LoginPage() {
               </div>
             </div>
             <button onClick={() => signClient()} className="w-full text-22 text-white sm:h-68px bg-clientRed font-medium h-14">
-              {t('Login')}
+              {isLoading ? <div className='flex justify-center items-center mx-0 my-auto'>
+                <PulseLoader
+                  color="#fff"
+                  loading={true}
+                  size={10}
+                  aria-label="Loading Spinner"
+                  data-testid="loader"
+                />
+              </div> : t('Login')}
             </button>
           </div>
         </div>

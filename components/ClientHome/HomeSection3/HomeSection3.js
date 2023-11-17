@@ -16,7 +16,6 @@ const HomeSection3 = () => {
       return response.data;
     },
   });
-  console.log(data);
 
   if (isLoading) {
     return (

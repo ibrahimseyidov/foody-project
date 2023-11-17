@@ -12,26 +12,14 @@ import axios from "axios";
 
 const index = () => {
     const { t } = useTranslation('common')
-    const { data, isLoading, error } = useQuery({
-        queryKey: ["order"],
-        queryFn: async () => {
-          const accessToken = localStorage.getItem("access_token");
-    
-          const headers = {
-            Authorization: `Bearer ${accessToken}`,
-            "Content-Type": "application/json",
-          };
-          const { data } = await axios.get("/api/order",{headers});
-          return data;
-        },
-      });
+
     return (
         <>
             <AdminDashboard>
                 <ProductContainer>
-                   <OrderType pageName={"Orders"}/>
-                    <AdminOrders  orderData={...data} isLoading={isLoading} error={error} />
-                    <ShowOrderModal  orderData={...data} />
+                    <OrderType pageName={"Orders"} />
+                    <AdminOrders />
+                    <ShowOrderModal />
                     <DelModal />
                 </ProductContainer>
             </AdminDashboard>

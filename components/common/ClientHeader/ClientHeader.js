@@ -151,8 +151,8 @@ const ClientHeader = () => {
 
           <div className={styles['header-right-container']}>
             <div className={styles['search-inp']}>
-              {
-                (!isSignUser && !loading) &&
+              {/* {
+                (!isSignUser && !loading) && */}
                 <>
                   <input type="text" className={styles['search']} onChange={(e) => handleSearchRes(e)} placeholder={t('Search')} />
                   {searchRest && isInputActive ?
@@ -169,7 +169,7 @@ const ClientHeader = () => {
                     </ul> : ''
                   }
                 </>
-              }
+              {/* } */}
 
             </div>
             <div className='flex items-center'>
@@ -232,7 +232,7 @@ const ClientHeader = () => {
                     <span className='absolute -top-2 text-red-500 font-semibold text-md right-1 bg-white rounded-xl px-2'>{userBasketData?.result.data.total_item}</span></Link>
                   <div onClick={() => openUserModal()} className='flex items-center'>
                     {
-                      userData?.user.img_url && <Image className='rounded-full mr-3' width={50} height={50} src={userData?.user.img_url ? userData?.user.img_url : userIcon} />
+                      userData?.user.img_url && <Image className='mr-3 w-[40px] h-[40px]' style={{borderRadius: "50%"}} width={60} height={60} src={userData?.user.img_url ? userData?.user.img_url : userIcon} />
                     }
                     <p className='font-bold cursor-pointer'>{userData?.user.fullname}</p>
                   </div>

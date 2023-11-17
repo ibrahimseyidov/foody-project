@@ -1,11 +1,11 @@
 import React from "react";
 import styles from "../AdminCategory/admincategory.module.css";
 import Image from "next/image";
-import trashIcon from "../../assets/icons/trashIcon.svg";
+import eye from "../../assets/icons/eye.svg";
 import AOS from "aos";
 import "aos/dist/aos.css";
 import { useDispatch } from "react-redux";
-import { openHisDelModal } from "../../redux/features/delModalSlice";
+import { openHisDelModal, showOrderHistoryModal, showOrderModal } from "../../redux/features/delModalSlice";
 import { useQuery } from "@tanstack/react-query";
 import axios from "axios";
 import { BounceLoader } from "react-spinners";
@@ -14,8 +14,8 @@ import Cookies from "js-cookie";
 const AdminHistory = () => {
   const dispatch = useDispatch()
 
-  const { data: userOrder, isLoading, isError } = useQuery({
-    queryKey: ['order'],
+  const { data: userOrderHistory, isLoading, isError } = useQuery({
+    queryKey: ['order-history'],
     queryFn: async () => {
       const { data } = await axios.get('/api/order/history', {
         headers: {
@@ -25,7 +25,6 @@ const AdminHistory = () => {
       return data
     },
   })
-  console.log(userOrder);
   isError ? isError : ""
   const handleDate = (orderCreatedTime) => {
     const monthNames = ["Jan", "Feb", "March", "Apr", "May", "June", "July", "Aug", "Sep", "Oct", "Nov", "Dec"];
@@ -65,7 +64,7 @@ const AdminHistory = () => {
               </tr>
             </thead>
             <tbody className={styles["tbody"]}>
-              {userOrder?.result.data.map((history, i) => (
+              {userOrderHistory?.result.data.map((history, i) => (
                 <tr className={styles["table-row"]} key={history?.id}>
                   <td>
                     <span className={styles["table-id"]}>{(history?.id).length > 4 && (history?.id).slice(0, 4)}</span>
@@ -80,11 +79,11 @@ const AdminHistory = () => {
                   <td>{history?.amount}</td>
                   <td>{history?.payment_method === 1 ? "pay at the door by credit card" : "pay at the door"}</td>
                   <td>{history?.contact}</td>
-                  {/* <td className="mt-2 pr-3">
-                    <button onClick={() => dispatch(openHisDelModal(history?.id))}>
-                      <Image src={trashIcon} alt="trash-icon" />
+                  <td className="mt-2 pr-3">
+                    <button onClick={() => dispatch(showOrderHistoryModal(history?.id))}>
+                      <Image src={eye} alt="trash-icon" />
                     </button>
-                  </td> */}
+                  </td>
                 </tr>
               ))}
             </tbody>
