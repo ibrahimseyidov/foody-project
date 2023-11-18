@@ -19,9 +19,9 @@ function Leftres({ handleCategoryClick}) {
 
     },
   });
-  const getCategory=(id)=>{
+  const getCategory=(id,name)=>{
     setShowMobFilter(prevFilter=>!prevFilter);
-    handleCategoryClick(id);
+    handleCategoryClick(id,name);
   }
 
   useEffect(() => {
@@ -51,7 +51,7 @@ function Leftres({ handleCategoryClick}) {
           return (
             <div
               key={category?.id}
-              onClick={() => handleCategoryClick(category?.id)}
+              onClick={() => handleCategoryClick(category?.id,category?.name)}
             >
               <div className={styles["res-category"]}>
                 <Image
